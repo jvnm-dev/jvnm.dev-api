@@ -5,4 +5,7 @@ export const NavbarMenu = styled.ul`
   margin: 0;
   flex: 1;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `

@@ -6,6 +6,12 @@ export const Container = styled.div`
 
   ${props => props.flex && `
     display: flex;
+    justify-content: inherit;
+    align-items: inherit;
     flex: 1;
+  `}
+
+  ${props => props.fullHeight && `
+    height: 100%;
   `}
 `

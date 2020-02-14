@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   NavbarContainer,
@@ -12,22 +13,24 @@ import { Container } from '../'
 
 export const Navbar = () => (
   <NavbarContainer>
-    <Container flex>
-      <NavbarLogo>
-        JVM
+    <Container flex fullHeight>
+      <NavbarLogo to='/'>
+        <span>J</span>
+        <span>V</span>
+        <span>M</span>
       </NavbarLogo>
       <NavbarMenu>
         <NavbarMenuItem>
-          About
+          <Link to="/">About</Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          Lab
+          <Link to="/">Lab</Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          Blog
+          <Link to="/">Blog</Link>
         </NavbarMenuItem>
       </NavbarMenu>
-      <NavbarButton href="/">
+      <NavbarButton to="/">
         Contact
       </NavbarButton>
     </Container>
