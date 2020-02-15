@@ -7,16 +7,27 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
+import GoogleFontLoader from 'react-google-font-loader'
 
 import { HomeScreen } from './screens/Home'
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={HomeScreen} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <GoogleFontLoader
+        fonts={[
+          {
+            font: 'Montserrat',
+            weights: [400, 600]
+          }
+        ]}
+      />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={HomeScreen} />
+        </Switch>
+      </BrowserRouter>
+    </>
   )
 }
 

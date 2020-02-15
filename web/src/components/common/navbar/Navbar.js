@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Fade from 'react-reveal/Fade'
 
 import {
   NavbarContainer,
@@ -14,25 +15,31 @@ import { Container } from '../'
 export const Navbar = () => (
   <NavbarContainer>
     <Container flex fullHeight>
-      <NavbarLogo to='/'>
-        <span>J</span>
-        <span>V</span>
-        <span>M</span>
-      </NavbarLogo>
+      <Fade top>
+        <NavbarLogo to='/'>
+          <span>J</span>
+          <span>V</span>
+          <span>M</span>
+        </NavbarLogo>
+      </Fade>
       <NavbarMenu>
-        <NavbarMenuItem>
-          <Link to="/">About</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link to="/">Lab</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link to="/">Blog</Link>
-        </NavbarMenuItem>
+        <Fade top>
+          <NavbarMenuItem>
+            <Link to="/">About</Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link to="/">Lab</Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link to="/">Blog</Link>
+          </NavbarMenuItem>
+        </Fade>
       </NavbarMenu>
-      <NavbarButton to="/">
-        Contact
-      </NavbarButton>
+      <Fade top>
+        <NavbarButton to="/">
+          Contact
+        </NavbarButton>
+      </Fade>
     </Container>
   </NavbarContainer>
 )

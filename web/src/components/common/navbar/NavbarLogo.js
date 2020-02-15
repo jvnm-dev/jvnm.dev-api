@@ -2,14 +2,14 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const NavbarLogo = styled(Link)`
-  display: inline-block;
   text-decoration: none;
   font-weight: bold;
   font-size: 27px;
-  transition: 0.2s;
 
   span {
+    display: inline-block;
     color: #6961FB;
+    transition: 0.2s;
   }
 
   span:first-child {
@@ -21,6 +21,16 @@ export const NavbarLogo = styled(Link)`
   }
 
   :hover {
-    transform: scale(1.05);
+    span {
+      transform: translateY(-2px);
+    }
+
+    span:first-child {
+      transform: translateY(2px);
+    }
+
+    span:last-child {
+      transform: translateY(2px);
+    }
   }
 `
