@@ -1,16 +1,21 @@
 import React from 'react'
+import Fade from 'react-reveal/Fade'
 
-import { Navbar } from '../components/common/navbar/'
+import computerImage from '../assets/img/computer.jpeg'
 import {
   Container,
   Title,
   Text,
-  ColumnsContainer,
-  Column,
-  ImageColumn,
   Button,
   Section
 } from '../components/common'
+import {
+  ColumnsContainer,
+  Column,
+  ImageColumn,
+} from '../components/common/column'
+import { Navbar } from '../components/common/navbar/'
+import { Availability } from '../components/landing/Availability'
 
 export const HomeScreen = () => {
   return (
@@ -19,12 +24,15 @@ export const HomeScreen = () => {
       <Container centered>
         <Section>
           <ColumnsContainer>
-            <Column>
-              <Title>Software<br/>Engineer</Title>
-              <Text margin>Currently member of the Odoo bug fix team where I solve problems reported by customers in order to guarantee them the best possible experience.</Text>
-              <Button to="/">Learn more</Button>
+            <Column padding>
+                <Fade>
+                  <Title>Software Engineer</Title>
+                  <Text margin>Currently member of the Odoo bug fix team where I solve problems reported by customers in order to guarantee them the best possible experience.</Text>
+                  <Button to="/">Learn more</Button>
+                  <Availability />
+                </Fade>
             </Column>
-            <ImageColumn />
+            <ImageColumn background={computerImage} />
           </ColumnsContainer>
         </Section>
       </Container>

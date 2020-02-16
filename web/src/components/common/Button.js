@@ -12,6 +12,7 @@ export const Button = styled(Link)`
   border-radius: 5px;
   text-decoration: none;
   transition: 0.2s;
+  width: fit-content;
 
   :hover {
     transform: scale(1.025);
