@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
@@ -7,6 +7,7 @@ import {
   AvailabilityImage,
   AvailabilityText
 } from '../'
+import { AVAILABILITIES } from '../../../constants'
 
 const LAST_AVAILABILITY = gql`
   {
@@ -17,22 +18,37 @@ const LAST_AVAILABILITY = gql`
 `
 
 export const Availability = () => {
-  const { loading, error, data } = useQuery(LAST_AVAILABILITY);
+  const {loading, error, data} = useQuery(LAST_AVAILABILITY);
+  const [status, setStatus] = useState(AVAILABILITIES.loading)
+  const [statusText, setStatusText] = useState('Maybe available')
 
   useEffect(() => {
-    if (error) {
-      console.log('AVAILABILITY ERROR: ', error)
+    if (!loading) {
+      if (error) {
+        console.log('AVAILABILITY ERROR: ', error)
+      }
+
+      const loadedStatus = data?.lastAvailability?.status
+      const statusTexts = {
+        [AVAILABILITIES.available]: 'Available',
+        [AVAILABILITIES.partially_available]: 'Partially available',
+        [AVAILABILITIES.not_available]: 'Not available'
+      }
+      if (loadedStatus) {
+        setStatus(loadedStatus)
+        setStatusText(statusTexts[loadedStatus])
+      }
     }
-  })
+  }, [data, error, loading])
 
   return (
     <AvailabilityContainer>
       <AvailabilityImage
-        status={(!loading && data.lastAvailability && data.lastAvailability.status) || 2}
+        status={status}
         loading={loading}
       />
       <AvailabilityText>
-        <span>Available</span> for charity organization project
+        <span>{statusText}</span> for charity organization project
       </AvailabilityText>
     </AvailabilityContainer>
   )

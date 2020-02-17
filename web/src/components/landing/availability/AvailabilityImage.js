@@ -23,7 +23,8 @@ const AvailabilityIndicator = styled.span`
   background-color: ${({status}) => (
     status === AVAILABILITIES.available ? 'green' :
     status === AVAILABILITIES.partially_available ? 'orange' :
-    'red'
+    status === AVAILABILITIES.not_available ? 'red' :
+    'grey'
   )};
   border: 2px solid #FFF;
   border-radius: 50%;
