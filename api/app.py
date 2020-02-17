@@ -1,22 +1,16 @@
 from flask import Flask
 
-from jvm.extensions import db, migrate
-from jvm.settings import ProductionConfig, DevelopmentConfig
 from jvm.router import router
+from jvm.database import db_session
+from jvm.models.availability import Availability
 
-def create_app(config_object=ProductionConfig):
+def create_app():
     app = Flask(__name__.split('.')[0])
     app.url_map.strict_slashes = False
-    app.config.from_object(config_object)
-    register_extensions(app)
     return app
 
-def register_extensions(app):
-    db.init_app(app)
-    migrate.init_app(app, db)
-
-app = create_app(DevelopmentConfig)
+app = create_app()
 router(app)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
