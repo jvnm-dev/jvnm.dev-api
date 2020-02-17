@@ -1,4 +1,4 @@
-export { AvailabilityContainer } from './AvailabilityContainer'
-export { AvailabilityImage } from './AvailabilityImage'
-export { AvailabilityText } from './AvailabilityText'
-export { Availability } from './Availability'
+export { AvailabilityContainer } from './availability/AvailabilityContainer'
+export { AvailabilityImage } from './availability/AvailabilityImage'
+export { AvailabilityText } from './availability/AvailabilityText'
+export { Availability } from './availability/Availability'

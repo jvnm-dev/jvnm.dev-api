@@ -15,7 +15,7 @@ import {
   ImageColumn,
 } from '../components/common/column'
 import { Navbar } from '../components/common/navbar/'
-import { Availability } from '../components/landing/Availability'
+import { Availability } from '../components/landing'
 
 export const HomeScreen = () => {
   return (
@@ -27,7 +27,11 @@ export const HomeScreen = () => {
             <Column padding>
                 <Fade>
                   <Title>Software Engineer</Title>
-                  <Text margin>Currently member of the Odoo bug fix team where I solve problems reported by customers in order to guarantee them the best possible experience.</Text>
+                  <Text margin>
+                    Currently member of the Odoo bug fix team where I solve problems
+                    reported by customers in order to guarantee them the best possible
+                    experience.
+                  </Text>
                   <Button to="/">Learn more</Button>
                   <Availability />
                 </Fade>

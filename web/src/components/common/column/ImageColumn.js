@@ -9,6 +9,7 @@ const StyledImageColumn = styled(Column)`
   border-radius: 5px;
   position: relative;
   min-height: 60vh;
+  box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.25);
 `
 
 const Overlay = styled.div`
@@ -37,8 +38,8 @@ const Image = styled.img`
 
 export const ImageColumn = ({ background }) => {
   const columnRef = useRef(null)
-  const [overlayWidth, setOverlayWidth] = useState(false)
-  const [overlayHeight, setOverlayHeight] = useState(false)
+  const [overlayWidth, setOverlayWidth] = useState(0)
+  const [overlayHeight, setOverlayHeight] = useState(0)
 
   useEffect(() => {
     const { offsetWidth, offsetHeight } = columnRef.current
