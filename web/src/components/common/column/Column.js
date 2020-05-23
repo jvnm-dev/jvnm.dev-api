@@ -4,10 +4,9 @@ export const Column = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   ${props => props.centered && `
-    margin: 0 auto;
+    justify-content: center;
   `}
 
   ${props => props.padding && `

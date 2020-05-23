@@ -15,6 +15,7 @@ export const Button = styled(Link)`
   width: fit-content;
 
   :hover {
-    transform: scale(1.025);
+    transform: translateY(-1px);
+    box-shadow: 0px 0px 15px 0px rgba(28, 28, 28, 0.30);
   }
 `

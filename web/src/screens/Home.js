@@ -22,9 +22,9 @@ export const HomeScreen = () => {
     <>
       <Navbar />
       <Container centered>
-        <Section>
+        <Section verticallyCentered>
           <ColumnsContainer>
-            <Column padding>
+            <Column padding centered>
                 <Fade>
                   <Title>Software Engineer</Title>
                   <Text margin>
@@ -37,6 +37,16 @@ export const HomeScreen = () => {
                 </Fade>
             </Column>
             <ImageColumn background={computerImage} />
+          </ColumnsContainer>
+        </Section>
+        <Section>
+          <ColumnsContainer>
+            <Column>
+              <Title small>Education &amp; Experiences</Title>
+            </Column>
+            <Column>
+              <Title small>Technologies I work with</Title>
+            </Column>
           </ColumnsContainer>
         </Section>
       </Container>

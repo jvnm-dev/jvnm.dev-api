@@ -1,11 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 
 import {
   NavbarContainer,
   NavbarMenu,
-  NavbarMenuItem,
   NavbarLogo,
   NavbarButton
 } from './'
@@ -23,7 +21,7 @@ export const Navbar = () => (
         </NavbarLogo>
       </Fade>
       <NavbarMenu>
-        <Fade top>
+        {/* <Fade top>
           <NavbarMenuItem>
             <Link to="/">About</Link>
           </NavbarMenuItem>
@@ -33,7 +31,7 @@ export const Navbar = () => (
           <NavbarMenuItem>
             <Link to="/">Blog</Link>
           </NavbarMenuItem>
-        </Fade>
+        </Fade> */}
       </NavbarMenu>
       <Fade top>
         <NavbarButton to="/">

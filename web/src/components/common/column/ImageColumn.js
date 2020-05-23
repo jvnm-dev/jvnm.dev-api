@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { Column } from './'
@@ -11,10 +11,9 @@ const StyledImageColumn = styled(Column)`
   min-height: 60vh;
   box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.25);
 `
-
 const Overlay = styled.div`
-  height: ${props => props.height};
-  width: ${props => props.width};
+  height: 100%;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -26,7 +25,6 @@ const Overlay = styled.div`
     rgba(0,212,255 ,0.5) 100%
   );
 `
-
 const Image = styled.img`
   flex: 1;
   border-radius: 5px;
@@ -37,22 +35,9 @@ const Image = styled.img`
 `
 
 export const ImageColumn = ({ background }) => {
-  const columnRef = useRef(null)
-  const [overlayWidth, setOverlayWidth] = useState(0)
-  const [overlayHeight, setOverlayHeight] = useState(0)
-
-  useEffect(() => {
-    const { offsetWidth, offsetHeight } = columnRef.current
-    setOverlayWidth(offsetWidth + 'px')
-    setOverlayHeight(offsetHeight + 'px')
-  }, [columnRef, overlayHeight, overlayWidth])
-
   return (
-    <StyledImageColumn padding ref={columnRef}>
-      <Overlay
-        width={overlayWidth}
-        height={overlayHeight}
-      />
+    <StyledImageColumn padding>
+      <Overlay />
       <Image src={background} alt='Jason Van Malder - Computer' />
     </StyledImageColumn>
   )
