@@ -1,17 +1,21 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import {
+  ExperienceContainer,
   ExperienceImage,
   ExperienceInfo,
-  ExperienceTitle
+  ExperienceTitle,
+  ExperienceDetails,
 } from '../'
 
-export const Experience = ({ image, place, from, to, title }) => {
- return (
-   <Fragment>
-     <ExperienceImage src={image} alt={place} />
-     <ExperienceInfo place={place} from={from} to={to} />
-     <ExperienceTitle content={title} />
-   </Fragment>
- )
+export const Experience = ({ image, place, from, to, title, margin }) => {
+  return (
+    <ExperienceContainer margin={margin}>
+      <ExperienceImage src={image} alt={place} />
+      <ExperienceDetails>
+        <ExperienceInfo place={place} from={from} to={to} />
+        <ExperienceTitle>{title}</ExperienceTitle>
+      </ExperienceDetails>
+    </ExperienceContainer>
+  )
 }

@@ -15,7 +15,10 @@ import {
   ImageColumn,
 } from '../components/common/column'
 import { Navbar } from '../components/common/navbar/'
-import { Availability } from '../components/landing'
+import {
+  Availability,
+  Experiences,
+} from '../components/landing'
 
 export const HomeScreen = () => {
   return (
@@ -43,6 +46,7 @@ export const HomeScreen = () => {
           <ColumnsContainer>
             <Column>
               <Title small>Education &amp; Experiences</Title>
+              <Experiences />
             </Column>
             <Column>
               <Title small>Technologies I work with</Title>

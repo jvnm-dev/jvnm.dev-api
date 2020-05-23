@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import (scoped_session, sessionmaker)
+from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 db_uri = 'postgresql://postgres:postgres@localhost:5432/jvm_db'
