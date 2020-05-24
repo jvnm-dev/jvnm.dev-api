@@ -18,6 +18,7 @@ import { Navbar } from '../components/common/navbar/'
 import {
   Availability,
   Experiences,
+  Technologies,
 } from '../components/landing'
 
 export const HomeScreen = () => {
@@ -25,7 +26,7 @@ export const HomeScreen = () => {
     <>
       <Navbar />
       <Container centered>
-        <Section verticallyCentered>
+        <Section first horizontallyCentered>
           <ColumnsContainer>
             <Column padding centered>
                 <Fade>
@@ -42,7 +43,7 @@ export const HomeScreen = () => {
             <ImageColumn background={computerImage} />
           </ColumnsContainer>
         </Section>
-        <Section>
+        <Section horizontallyCentered>
           <ColumnsContainer>
             <Column>
               <Title small>Education &amp; Experiences</Title>
@@ -50,8 +51,12 @@ export const HomeScreen = () => {
             </Column>
             <Column>
               <Title small>Technologies I work with</Title>
+              <Technologies />
             </Column>
           </ColumnsContainer>
+        </Section>
+        <Section>
+          <Title small>Side Projects</Title>
         </Section>
       </Container>
     </>

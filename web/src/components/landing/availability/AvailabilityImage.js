@@ -21,9 +21,9 @@ const AvailabilityIndicator = styled.span`
   height: 14px;
   width: 14px;
   background-color: ${({status}) => (
-    status === AVAILABILITIES.available ? 'green' :
+    status === AVAILABILITIES.available ? '#6DC36D' :
     status === AVAILABILITIES.partially_available ? 'orange' :
-    status === AVAILABILITIES.not_available ? 'red' :
+    status === AVAILABILITIES.not_available ? '#CD2323' :
     'grey'
   )};
   border: 2px solid #FFF;

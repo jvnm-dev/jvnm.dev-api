@@ -11,3 +11,7 @@ export { ExperienceContainer } from './experience/ExperienceContainer'
 export { ExperienceDetails } from './experience/ExperienceDetails'
 export { ExperiencePlace } from './experience/ExperiencePlace'
 export { Experiences } from './experience/Experiences'
+
+export { Technology } from './technologies/Technology'
+export { TechnologiesContainer } from './technologies/TechnologiesContainer'
+export { Technologies } from './technologies/Technologies'

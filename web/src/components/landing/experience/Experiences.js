@@ -7,11 +7,12 @@ import { Experience } from '../'
 const EXPERIENCES = gql`
   {
     experiences {
-      image,
-      place,
-      dateFrom,
-      dateTo,
-      role,
+        id,
+        image,
+        place,
+        dateFrom,
+        dateTo,
+        role,
     }
   }
 `
@@ -26,14 +27,15 @@ export const Experiences = () => {
               console.log('EXPERIENCES ERROR: ', error)
             }
 
-            setExperiences(data.experiences ?? [])
-          }
+            setExperiences(data?.experiences ?? [])
+        }
     }, [loading, error, data])
 
     return (
         <Fragment>
             {experiences.map(experience => (
                 <Experience
+                    key={`exp-${experience.id}`}
                     image={experience.image}
                     place={experience.place}
                     from={experience.dateFrom}
