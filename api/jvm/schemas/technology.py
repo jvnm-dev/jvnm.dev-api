@@ -1,10 +1,17 @@
-from graphene import relay
-from graphene_sqlalchemy import SQLAlchemyObjectType
+from graphene import ObjectType, List
 
+from .default import DefaultSchema
 from ..models.technology import Technology as TechnologyModel
 
 
-class Technology(SQLAlchemyObjectType):
+class Technology(DefaultSchema):
     class Meta:
         model = TechnologyModel
-        interfaces = (relay.Node, )
+
+
+class TechnologyQuery(ObjectType):
+    technologies = List(Technology)
+
+    def resolve_technologies(self, info):
+        query = Technology.get_query(info)
+        return query.order_by(TechnologyModel.id).all()
