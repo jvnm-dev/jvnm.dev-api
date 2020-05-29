@@ -1,10 +1,17 @@
-from graphene import relay
-from graphene_sqlalchemy import SQLAlchemyObjectType
+from graphene import ObjectType, List
 
+from .default import DefaultSchema
 from ..models.experience import Experience as ExperienceModel
 
 
-class Experience(SQLAlchemyObjectType):
+class Experience(DefaultSchema):
     class Meta:
         model = ExperienceModel
-        interfaces = (relay.Node, )
+
+
+class ExperienceQuery(ObjectType):
+    experiences = List(Experience)
+
+    def resolve_experiences(self, info):
+        query = Experience.get_query(info)
+        return query.order_by(ExperienceModel.id).all()
