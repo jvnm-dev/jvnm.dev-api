@@ -10,34 +10,42 @@ import {
 
 import { Container } from '../'
 
-export const Navbar = () => (
-  <NavbarContainer>
-    <Container flex fullHeight>
-      <Fade top>
-        <NavbarLogo to='/'>
-          <span>J</span>
-          <span>V</span>
-          <span>M</span>
-        </NavbarLogo>
-      </Fade>
-      <NavbarMenu>
-        {/* <Fade top>
-          <NavbarMenuItem>
-            <Link to="/">About</Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link to="/">Lab</Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link to="/">Blog</Link>
-          </NavbarMenuItem>
-        </Fade> */}
-      </NavbarMenu>
-      <Fade top>
-        <NavbarButton to="/">
-          Contact
-        </NavbarButton>
-      </Fade>
-    </Container>
-  </NavbarContainer>
-)
+export const Navbar = () => {
+
+  const handleButtonClick = (e) => {
+    e.preventDefault()
+    window.location.href = 'mailto:jasonvanmalder@gmail.com'
+  }
+
+  return (
+    <NavbarContainer>
+      <Container flex fullHeight>
+        <Fade top>
+          <NavbarLogo to='/'>
+            <span>J</span>
+            <span>V</span>
+            <span>M</span>
+          </NavbarLogo>
+        </Fade>
+        <NavbarMenu>
+          {/* <Fade top>
+            <NavbarMenuItem>
+              <Link to="/">About</Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link to="/">Lab</Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link to="/">Blog</Link>
+            </NavbarMenuItem>
+          </Fade> */}
+        </NavbarMenu>
+        <Fade top>
+          <NavbarButton to="/" onClick={handleButtonClick}>
+            Contact
+          </NavbarButton>
+        </Fade>
+      </Container>
+    </NavbarContainer>
+  )
+}
