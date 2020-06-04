@@ -20,7 +20,6 @@ export const Projects = () => {
         const jvmProjects = Object.values(await fetchGet('https://api.github.com/users/jvm-odoo/repos'))
                                   .filter(p => !p.fork)
         const newProjects = [...bitskyTeamProjects, ...jvmProjects].map(p => {
-            console.log(p)
             const data = {
                 name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
                 description: p.description,

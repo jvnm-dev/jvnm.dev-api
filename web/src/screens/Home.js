@@ -67,7 +67,7 @@ export const HomeScreen = () => {
             </Column>
           </ColumnsContainer>
         </Section>
-        <Section column>
+        <Section column horizontallyCentered>
           <Title small>Side projects</Title>
           <Projects />
         </Section>
