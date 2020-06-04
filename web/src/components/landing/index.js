@@ -15,3 +15,6 @@ export { Experiences } from './experience/Experiences'
 export { Technology } from './technologies/Technology'
 export { TechnologiesContainer } from './technologies/TechnologiesContainer'
 export { Technologies } from './technologies/Technologies'
+
+export { Projects } from './projects/Projects'
+export { Project } from './projects/Project'

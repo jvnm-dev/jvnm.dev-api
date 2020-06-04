@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Fade from 'react-reveal/Fade'
 
 import computerImage from '../assets/img/computer.jpeg'
@@ -19,14 +19,26 @@ import {
   Availability,
   Experiences,
   Technologies,
+  Projects
 } from '../components/landing'
 
 export const HomeScreen = () => {
+  const secondSection = useRef(null)
+
+  const handleLearnMoreClick = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: secondSection.current.offsetTop,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <>
       <Navbar />
       <Container centered>
-        <Section first horizontallyCentered>
+        <Section first horizontallyCentered verticallyCentered>
           <ColumnsContainer>
             <Column padding centered>
                 <Fade>
@@ -36,14 +48,14 @@ export const HomeScreen = () => {
                     reported by customers in order to guarantee them the best possible
                     experience.
                   </Text>
-                  <Button to="/">Learn more</Button>
+                  <Button to='/' onClick={handleLearnMoreClick}>Learn more</Button>
                   <Availability />
                 </Fade>
             </Column>
             <ImageColumn background={computerImage} />
           </ColumnsContainer>
         </Section>
-        <Section horizontallyCentered>
+        <Section horizontallyCentered verticallyCentered ref={secondSection}>
           <ColumnsContainer>
             <Column>
               <Title small>Education &amp; Experiences</Title>
@@ -55,8 +67,9 @@ export const HomeScreen = () => {
             </Column>
           </ColumnsContainer>
         </Section>
-        <Section>
-          <Title small>Side Projects</Title>
+        <Section column>
+          <Title small>Side projects</Title>
+          <Projects />
         </Section>
       </Container>
     </>
