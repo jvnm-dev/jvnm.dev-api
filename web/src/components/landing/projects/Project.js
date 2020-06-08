@@ -23,19 +23,22 @@ const ProjectCardOverlay = styled.div`
 `
 
 const ProjectCard = styled.div`
-    width: calc(33% - 16px);
+    background: #FFF;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.10);
-    padding: 16px;
+    box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.20);
+    padding: 8px;
     margin-right: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     position: relative;
     box-sizing: border-box;
     transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     :hover {
         cursor: pointer;
-        box-shadow: 0px 0px 5px 0px rgba(28, 28, 28, 0.10);
+        box-shadow: 0px 0px 5px 0px rgba(28, 28, 28, 0.30);
         transform: scale(1.025);
     }
 
@@ -43,15 +46,37 @@ const ProjectCard = styled.div`
         opacity: 1;
         visibility: visible;
     }
+
+    @media only screen and (min-width: 768px) {
+        padding: 16px;
+        width: calc(33% - 16px);
+    }
 `
 
 const CardTitle = styled.h2`
     margin: 0;
+    font-size: 20px;
+
+    @media only screen and (min-width: 1024px) {
+        font-size: 24px;
+    }
 `
 
 const CardDescription = styled.p`
     color: #606060;
-    font-size: 18px;
+    font-size: 12px;
+
+    @media only screen and (min-width: 768px) {
+        font-size: 14px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: 16px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        font-size: 18px;
+    }
 `
 
 const CardFooter = styled.div`
@@ -75,7 +100,11 @@ const CardFooterText = styled.span`
     margin-left: 8px;
     color: #707070;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 12px;
+
+    @media only screen and (min-width: 768px) {
+        font-size: 14px;
+    }
 `
 
 export const Project = ({data: { name, description, language, license, url }}) => {

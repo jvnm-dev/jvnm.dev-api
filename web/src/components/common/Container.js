@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: block;
-  max-width: 1200px;
   font-family: 'Montserrat';
 
   ${props => props.flex && `
@@ -15,8 +14,9 @@ export const Container = styled.div`
   ${props => props.fullHeight && `
     height: 100%;
   `}
+`
 
-  ${props => props.centered && `
-    margin: 0 auto;
-  `}
+export const WavyContainer = styled(Container)`
+  background: linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%);
+  clip-path: url(#wave);
 `

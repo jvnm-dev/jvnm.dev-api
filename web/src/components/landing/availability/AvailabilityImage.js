@@ -9,17 +9,22 @@ const AvailabilityImageContainer = styled.div`
 `
 
 const Image = styled.img`
-  height: 64px;
-  width: 64px;
+  height: 48px;
+  width: 48px;
   border-radius: 50%;
+
+  @media only screen and (min-width: 1440px) {
+    height: 64px;
+    width: 64px;
+  }
 `
 
 const AvailabilityIndicator = styled.span`
   position: absolute;
   bottom: 5px;
   right: 0;
-  height: 14px;
-  width: 14px;
+  height: 10px;
+  width: 10px;
   background-color: ${({status}) => (
     status === AVAILABILITIES.available ? '#6DC36D' :
     status === AVAILABILITIES.partially_available ? 'orange' :
@@ -28,6 +33,11 @@ const AvailabilityIndicator = styled.span`
   )};
   border: 2px solid #FFF;
   border-radius: 50%;
+
+  @media only screen and (min-width: 1440px) {
+    height: 14px;
+    width: 14px;
+  }
 `
 
 export const AvailabilityImage = ({ status, loading }) => {

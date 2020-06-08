@@ -9,6 +9,11 @@ export const ProjectsContainer = styled.div`
     margin-top: 48px;
     width: 100%;
     flex-wrap: wrap;
+    flex-direction: column;
+
+    @media only screen and (min-width: 768px) {
+        flex-direction: row;
+    }
 `
 
 export const Projects = () => {

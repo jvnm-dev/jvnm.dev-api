@@ -3,11 +3,15 @@ import Fade from 'react-reveal/Fade'
 
 import computerImage from '../assets/img/computer.jpeg'
 import {
+  WaveClipPath,
+} from '../components/common/svg'
+import {
   Container,
+  WavyContainer,
   Title,
   Text,
   Button,
-  Section
+  Section,
 } from '../components/common'
 import {
   ColumnsContainer,
@@ -19,7 +23,7 @@ import {
   Availability,
   Experiences,
   Technologies,
-  Projects
+  Projects,
 } from '../components/landing'
 
 export const HomeScreen = () => {
@@ -37,8 +41,12 @@ export const HomeScreen = () => {
   return (
     <>
       <Navbar />
-      <Container centered>
-        <Section first horizontallyCentered verticallyCentered>
+      <Container>
+        <Section
+          first
+          horizontallyCentered
+          verticallyCentered
+        >
           <ColumnsContainer>
             <Column padding centered>
                 <Fade>
@@ -55,23 +63,34 @@ export const HomeScreen = () => {
             <ImageColumn background={computerImage} />
           </ColumnsContainer>
         </Section>
-        <Section horizontallyCentered verticallyCentered ref={secondSection}>
-          <ColumnsContainer>
+        <Section
+          horizontallyCentered
+          verticallyCentered
+          ref={secondSection}
+        >
+          <ColumnsContainer mobileColumn>
             <Column>
               <Title small>Education &amp; Experiences</Title>
               <Experiences />
             </Column>
             <Column>
-              <Title small>Technologies I work with</Title>
+              <Title small marginMobile>Technologies I work with</Title>
               <Technologies />
             </Column>
           </ColumnsContainer>
         </Section>
-        <Section column horizontallyCentered>
-          <Title small>Side projects</Title>
+      </Container>
+      <WaveClipPath />
+      <WavyContainer>
+        <Section
+          column
+          horizontallyCentered
+          mobilePadding
+        >
+          <Title small inverse>Side projects</Title>
           <Projects />
         </Section>
-      </Container>
+      </WavyContainer>
     </>
   )
 }

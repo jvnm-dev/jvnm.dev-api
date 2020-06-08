@@ -39,4 +39,4 @@ const Router = () => {
 }
 
 ReactDOM.render(<Router />, document.getElementById('root'))
-serviceWorker.unregister()
+serviceWorker.register()

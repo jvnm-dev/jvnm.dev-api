@@ -4,12 +4,18 @@ import styled from 'styled-components'
 import { Column } from './'
 
 const StyledImageColumn = styled(Column)`
+  display: none;
+  box-sizing: border-box;
   padding: 48px 24px;
   overflow: hidden;
   border-radius: 5px;
   position: relative;
   min-height: 60vh;
   box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.25);
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+  }
 `
 const Overlay = styled.div`
   height: 100%;

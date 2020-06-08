@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const TechnologyContainer = styled.div`
-    margin-top: 48px;
+    margin-top: 36px;
     margin-right: 24px;
     position: relative;
 
@@ -12,10 +12,29 @@ const TechnologyContainer = styled.div`
             opacity: 1;
         }
     }
+
+    @media only screen and (min-width: 1024px) {
+        margin-top: 48px;
+    }
 `
 const TechnologyImage = styled.img`
-    height: 70px;
-    width: 70px;
+    height: 40px;
+    width: 40px;
+
+    @media only screen and (min-width: 768px) {
+        height: 36px;
+        width: 36px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        height: 50px;
+        width: 50px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        height: 70px;
+        width: 70px;
+    }
 `
 
 const TechnologyTooltipContainer = styled.div`
@@ -23,11 +42,30 @@ const TechnologyTooltipContainer = styled.div`
     display: flex;
     height: 70px;
     width: 70px;
+    font-size: 16px;
     justify-content: center;
     align-items: center;
     position: absolute;
     opacity: 0;
     transition: 0.2s;
+
+    @media only screen and (min-width: 768px) {
+        height: 36px;
+        width: 36px;
+        font-size: 11px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        height: 50px;
+        width: 50px;
+        font-size: 13px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        height: 70px;
+        width: 70px;
+        font-size: 16px;
+    }
 `
 
 const TechnologyTooltip = styled.span`
