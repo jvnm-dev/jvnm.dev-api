@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<svg>
+  <clipPath
+    clipPathUnits="objectBoundingBox"
+    id="wave"
+  >
+    <path
+      d="M1,0c0,0-0.3,0.1-0.5,0.1S0.3,0,0,0.1V1h1L1,0z"
+    />
+  </clipPath>
+</svg>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.img
+    alt="Jason Van Malder"
+    src="me.jpg"
+  />
+  <styled.span />
+</styled.div>
+`;

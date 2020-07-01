@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost'
 
 import { Technology, TechnologiesContainer } from '../'
 
-const TECHNOLOGIES = gql`
+export const TECHNOLOGIES = gql`
   {
     technologies {
         id,

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.p
+    small={true}
+  >
+    <styled.span />
+  </styled.p>
+  <styled.p
+    bold={true}
+    color="#E1E1E1"
+    mobileInvisible={true}
+    small={true}
+  >
+     / 
+  </styled.p>
+  <styled.div>
+    <styled.p
+      bold={true}
+      color="#6057F9"
+      small={true}
+    >
+      From 
+    </styled.p>
+  </styled.div>
+</styled.div>
+`;

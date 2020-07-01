@@ -9,7 +9,7 @@ import {
 } from '../'
 import { AVAILABILITIES } from '../../../constants'
 
-const LAST_AVAILABILITY = gql`
+export const LAST_AVAILABILITY = gql`
   {
     lastAvailability {
       status

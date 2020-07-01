@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.nav>
+  <styled.div
+    flex={true}
+    fullHeight={true}
+  >
+    <Fade
+      top={true}
+    >
+      <Styled(Link)
+        to="/"
+      >
+        <span>
+          J
+        </span>
+        <span>
+          V
+        </span>
+        <span>
+          M
+        </span>
+      </Styled(Link)>
+    </Fade>
+    <styled.ul />
+    <Fade
+      top={true}
+    >
+      <Styled(Styled(Link))
+        onClick={[Function]}
+        to="/"
+      >
+        Contact
+      </Styled(Styled(Link))>
+    </Fade>
+  </styled.div>
+</styled.nav>
+`;

@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost'
 
 import { Experience } from '../'
 
-const EXPERIENCES = gql`
+export const EXPERIENCES = gql`
   {
     experiences {
         id,

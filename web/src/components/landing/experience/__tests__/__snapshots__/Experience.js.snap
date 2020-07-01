@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.img />
+  <styled.div>
+    <ExperienceInfo />
+    <styled.h3 />
+  </styled.div>
+</styled.div>
+`;

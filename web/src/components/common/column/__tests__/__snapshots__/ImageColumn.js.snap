@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Styled(styled.div)
+  padding={true}
+>
+  <styled.div />
+  <styled.img
+    alt="Jason Van Malder - Computer"
+  />
+</Styled(styled.div)>
+`;
