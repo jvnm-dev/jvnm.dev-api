@@ -14,13 +14,17 @@ import { Helmet } from 'react-helmet'
 
 import { BACKEND_URL } from './constants'
 import { ErrorBoundary } from './components/error'
-import { HomeScreen } from './screens/Home'
+import { Home, Maintenance } from './screens'
 
 const client = new ApolloClient({
   uri: `${BACKEND_URL}/graphql`,
 });
 
 const Router = () => {
+  if (process.env.REACT_APP_MAINTENANCE_MODE === "yes") {
+    return <Maintenance />
+  }
+
   return (
     <ErrorBoundary>
       <Helmet
@@ -42,7 +46,7 @@ const Router = () => {
         />
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={HomeScreen} />
+            <Route exact path='/' component={Home} />
           </Switch>
         </BrowserRouter>
       </ApolloProvider>

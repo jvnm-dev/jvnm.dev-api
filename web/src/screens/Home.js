@@ -26,7 +26,7 @@ import {
   Projects,
 } from '../components/landing'
 
-export const HomeScreen = () => {
+export const Home = () => {
   const secondSection = useRef(null)
 
   const handleLearnMoreClick = (e) => {
