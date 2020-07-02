@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+import { useSelector, useDispatch } from 'react-redux'
 
 import {
   AvailabilityContainer,
@@ -8,6 +9,7 @@ import {
   AvailabilityText
 } from '../'
 import { AVAILABILITIES } from '../../../constants'
+import { setAvailability } from '../../../redux/slices/availability'
 
 export const LAST_AVAILABILITY = gql`
   {
@@ -18,9 +20,11 @@ export const LAST_AVAILABILITY = gql`
 `
 
 export const Availability = () => {
-  const {loading, error, data} = useQuery(LAST_AVAILABILITY);
-  const [status, setStatus] = useState(AVAILABILITIES.loading)
-  const [statusText, setStatusText] = useState('Maybe available')
+  const {loading, error, data} = useQuery(LAST_AVAILABILITY)
+  const dispatch = useDispatch()
+  const availability = useSelector((state) => {
+    return state.availability
+  })
 
   useEffect(() => {
     if (!loading) {
@@ -29,26 +33,30 @@ export const Availability = () => {
       }
 
       const loadedStatus = data?.lastAvailability?.status
+
       const statusTexts = {
         [AVAILABILITIES.available]: 'Available',
         [AVAILABILITIES.partially_available]: 'Partially available',
         [AVAILABILITIES.not_available]: 'Not available'
       }
+
       if (loadedStatus) {
-        setStatus(loadedStatus)
-        setStatusText(statusTexts[loadedStatus])
+        dispatch(setAvailability({
+          status: loadedStatus,
+          statusText: statusTexts[loadedStatus],
+        }))
       }
     }
-  }, [data, error, loading])
+  }, [data, error, loading, dispatch])
 
   return (
     <AvailabilityContainer>
       <AvailabilityImage
-        status={status}
+        status={availability.status}
         loading={loading}
       />
       <AvailabilityText>
-        <span>{statusText}</span> for charity organization project
+        <span>{availability.statusText}</span> for charity organization project
       </AvailabilityText>
     </AvailabilityContainer>
   )

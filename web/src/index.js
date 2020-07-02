@@ -11,7 +11,9 @@ import GoogleFontLoader from 'react-google-font-loader'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { Helmet } from 'react-helmet'
+import { Provider } from 'react-redux'
 
+import { store } from './redux/store'
 import { BACKEND_URL } from './constants'
 import { ErrorBoundary } from './components/error'
 import { Home, Maintenance } from './screens'
@@ -36,19 +38,21 @@ const Router = () => {
         <link rel="canonical" href="https://jvnm.dev" />
       </Helmet>
       <ApolloProvider client={client}>
-        <GoogleFontLoader
-          fonts={[
-            {
-              font: 'Montserrat',
-              weights: [400, 600]
-            }
-          ]}
-        />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path='/' component={Home} />
-          </Switch>
-        </BrowserRouter>
+        <Provider store={store}>
+          <GoogleFontLoader
+            fonts={[
+              {
+                font: 'Montserrat',
+                weights: [400, 600]
+              }
+            ]}
+          />
+          <BrowserRouter>
+            <Switch>
+              <Route exact path='/' component={Home} />
+            </Switch>
+          </BrowserRouter>
+        </Provider>
       </ApolloProvider>
     </ErrorBoundary>
   )
