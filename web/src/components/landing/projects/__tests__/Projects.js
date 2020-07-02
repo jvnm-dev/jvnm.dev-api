@@ -6,8 +6,6 @@ import { mount } from 'enzyme'
 import { Projects } from '../Projects'
 import { executeMockProviderTestCase } from '../../../../helpers/test'
 
-
-
 global.fetch = jest.fn((url) =>
   Promise.resolve({
     json: () => Promise.resolve([{

@@ -1692,7 +1692,7 @@ exports[`renders correctly with data 1`] = `
                         small={true}
                       >
                         <p
-                          className="sc-fzozJi cwgPiZ"
+                          className="sc-fzozJi bYewJi"
                         >
                           <styled.span>
                             <span
@@ -1710,7 +1710,7 @@ exports[`renders correctly with data 1`] = `
                         small={true}
                       >
                         <p
-                          className="sc-fzozJi fWAqhZ"
+                          className="sc-fzozJi fMWuJC"
                           color="#E1E1E1"
                         >
                            / 
@@ -1726,7 +1726,7 @@ exports[`renders correctly with data 1`] = `
                             small={true}
                           >
                             <p
-                              className="sc-fzozJi fQVrOh"
+                              className="sc-fzozJi emtxRK"
                               color="#6057F9"
                             >
                               From 
@@ -1739,7 +1739,7 @@ exports[`renders correctly with data 1`] = `
                             small={true}
                           >
                             <p
-                              className="sc-fzozJi kMpsa"
+                              className="sc-fzozJi fQijeF"
                               color="#E1E1E1"
                             >
                                - 
@@ -1751,7 +1751,7 @@ exports[`renders correctly with data 1`] = `
                             small={true}
                           >
                             <p
-                              className="sc-fzozJi ZLNcr"
+                              className="sc-fzozJi iJbMkM"
                               color="#ABC5D4"
                             >
                               to
@@ -1813,7 +1813,7 @@ exports[`renders correctly with data 1`] = `
                         small={true}
                       >
                         <p
-                          className="sc-fzozJi cwgPiZ"
+                          className="sc-fzozJi bYewJi"
                         >
                           <styled.span>
                             <span
@@ -1831,7 +1831,7 @@ exports[`renders correctly with data 1`] = `
                         small={true}
                       >
                         <p
-                          className="sc-fzozJi fWAqhZ"
+                          className="sc-fzozJi fMWuJC"
                           color="#E1E1E1"
                         >
                            / 
@@ -1847,7 +1847,7 @@ exports[`renders correctly with data 1`] = `
                             small={true}
                           >
                             <p
-                              className="sc-fzozJi fQVrOh"
+                              className="sc-fzozJi emtxRK"
                               color="#6057F9"
                             >
                               From 
@@ -1860,7 +1860,7 @@ exports[`renders correctly with data 1`] = `
                             small={true}
                           >
                             <p
-                              className="sc-fzozJi kMpsa"
+                              className="sc-fzozJi fQijeF"
                               color="#E1E1E1"
                             >
                                - 
@@ -1872,7 +1872,7 @@ exports[`renders correctly with data 1`] = `
                             small={true}
                           >
                             <p
-                              className="sc-fzozJi ZLNcr"
+                              className="sc-fzozJi iJbMkM"
                               color="#ABC5D4"
                             >
                               to2

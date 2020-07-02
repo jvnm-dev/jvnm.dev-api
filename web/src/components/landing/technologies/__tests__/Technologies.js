@@ -25,8 +25,6 @@ const mocks = [
   },
 ]
 
-
-
 it('renders correctly with data', async () => {
   const wrapper = await mountWrapperWithMockedData(
     <Technologies />,

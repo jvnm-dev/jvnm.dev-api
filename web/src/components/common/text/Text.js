@@ -7,6 +7,7 @@ export const Text = styled.p`
   font-size: ${({small}) => small ? '12px' : '16px'};
   font-weight: ${({bold}) => bold ? 'bolder' : 'normal'};
   line-height: 1.5;
+  text-align: ${({centered}) => centered ? 'center' : 'left'};
 
   ${({margin}) => margin && `
     margin: 24px 0;
