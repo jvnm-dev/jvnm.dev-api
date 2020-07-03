@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchGet } from '../../../helpers/fetch'
 import { Project } from '../'
+import { Loader } from '../../common'
 import { setProjects } from '../../../redux/slices/projects'
 
 export const ProjectsContainer = styled.div`
@@ -45,6 +46,10 @@ export const Projects = () => {
     useEffect(() => {
         getProjects()
     }, [getProjects])
+
+    if (projects.length === 0) {
+        return <Loader />
+    }
 
     return (
         <ProjectsContainer>

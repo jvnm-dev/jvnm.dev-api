@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { Loader } from '../../common'
 import { Experience } from '../'
 import { setExperiences } from '../../../redux/slices/experiences'
 
@@ -33,6 +34,10 @@ export const Experiences = () => {
             dispatch(setExperiences(data?.experiences ?? []))
         }
     }, [loading, error, data, dispatch])
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <Fragment>

@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { Loader } from '../../common'
 import { Technology, TechnologiesContainer } from '../'
 import { setTechnologies } from '../../../redux/slices/technologies'
 
@@ -30,6 +31,10 @@ export const Technologies = () => {
             dispatch(setTechnologies(data?.technologies ?? []))
         }
     }, [loading, error, data, dispatch])
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <TechnologiesContainer>
