@@ -2,7 +2,7 @@ import React from 'react'
 import toJson from 'enzyme-to-json'
 
 import { Technologies, TECHNOLOGIES } from '../Technologies'
-import { mountWrapperWithMockedData } from '../../../../helpers/test'
+import { mountWrapperWithMockedData, withReduxProvider } from '../../../../helpers/test'
 
 const mocks = [
   {
@@ -27,7 +27,7 @@ const mocks = [
 
 it('renders correctly with data', async () => {
   const wrapper = await mountWrapperWithMockedData(
-    <Technologies />,
+    withReduxProvider(<Technologies />),
     mocks
   )
 

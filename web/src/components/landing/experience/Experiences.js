@@ -1,8 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { Experience } from '../'
+import { setExperiences } from '../../../redux/slices/experiences'
 
 export const EXPERIENCES = gql`
   {
@@ -18,8 +20,9 @@ export const EXPERIENCES = gql`
 `
 
 export const Experiences = () => {
+    const dispatch = useDispatch()
     const {loading, error, data} = useQuery(EXPERIENCES);
-    const [experiences, setExperiences] = useState([])
+    const experiences = useSelector(({ experiences }) => experiences)
 
     useEffect(() => {
         if (!loading) {
@@ -27,9 +30,9 @@ export const Experiences = () => {
               console.log('EXPERIENCES ERROR: ', error)
             }
 
-            setExperiences(data?.experiences ?? [])
+            dispatch(setExperiences(data?.experiences ?? []))
         }
-    }, [loading, error, data])
+    }, [loading, error, data, dispatch])
 
     return (
         <Fragment>

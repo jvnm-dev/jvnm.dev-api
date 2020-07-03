@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { Technology, TechnologiesContainer } from '../'
+import { setTechnologies } from '../../../redux/slices/technologies'
 
 export const TECHNOLOGIES = gql`
   {
@@ -15,8 +17,9 @@ export const TECHNOLOGIES = gql`
 `
 
 export const Technologies = () => {
-    const {loading, error, data} = useQuery(TECHNOLOGIES);
-    const [technologies, setTechnologies] = useState([])
+    const dispatch = useDispatch()
+    const {loading, error, data} = useQuery(TECHNOLOGIES)
+    const technologies = useSelector(({ technologies }) => technologies)
 
     useEffect(() => {
         if (!loading) {
@@ -24,9 +27,9 @@ export const Technologies = () => {
               console.log('TECHNOLOGIES ERROR: ', error)
             }
 
-            setTechnologies(data?.technologies ?? [])
+            dispatch(setTechnologies(data?.technologies ?? []))
         }
-    }, [loading, error, data])
+    }, [loading, error, data, dispatch])
 
     return (
         <TechnologiesContainer>

@@ -20,11 +20,9 @@ export const LAST_AVAILABILITY = gql`
 `
 
 export const Availability = () => {
-  const {loading, error, data} = useQuery(LAST_AVAILABILITY)
   const dispatch = useDispatch()
-  const availability = useSelector((state) => {
-    return state.availability
-  })
+  const {loading, error, data} = useQuery(LAST_AVAILABILITY)
+  const availability = useSelector(({ availability }) => availability)
 
   useEffect(() => {
     if (!loading) {

@@ -3,6 +3,9 @@ import toJson from 'enzyme-to-json'
 import { act } from 'react-dom/test-utils'
 import { mount, shallow } from 'enzyme'
 import { MockedProvider } from '@apollo/react-testing'
+import { Provider } from 'react-redux'
+
+import { store } from '../redux/store'
 
 const wait = (time = 0) => new Promise(res => setTimeout(res, time))
 
@@ -32,3 +35,9 @@ export const mountWrapperWithMockedData = async (Component, mocks) => {
   await executeMockProviderTestCase(wrapper)
   return wrapper
 }
+
+export const withReduxProvider = (Component) => (
+  <Provider store={store}>
+    {Component}
+  </Provider>
+)

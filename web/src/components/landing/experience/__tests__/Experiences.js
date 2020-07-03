@@ -2,7 +2,7 @@ import React from 'react'
 import toJson from 'enzyme-to-json'
 
 import { Experiences, EXPERIENCES } from '../Experiences'
-import { mountWrapperWithMockedData } from '../../../../helpers/test'
+import { mountWrapperWithMockedData, withReduxProvider } from '../../../../helpers/test'
 
 const mocks = [
   {
@@ -43,7 +43,7 @@ const convertToProps = (experienceData) => {
 
 it('renders correctly with data', async () => {
   const wrapper = await mountWrapperWithMockedData(
-    <Experiences />,
+    withReduxProvider(<Experiences />),
     mocks
   )
 

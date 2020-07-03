@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils'
 import { mount } from 'enzyme'
 
 import { Projects } from '../Projects'
-import { executeMockProviderTestCase } from '../../../../helpers/test'
+import { executeMockProviderTestCase, withReduxProvider } from '../../../../helpers/test'
 
 global.fetch = jest.fn((url) =>
   Promise.resolve({
@@ -23,7 +23,7 @@ it('renders correctly with data', async () => {
   let wrapper
 
   act(() => {
-    wrapper = mount(<Projects />)
+    wrapper = mount(withReduxProvider(<Projects />))
   })
 
   await executeMockProviderTestCase(wrapper)

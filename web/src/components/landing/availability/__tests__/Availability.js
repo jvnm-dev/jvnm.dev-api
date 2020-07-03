@@ -3,7 +3,7 @@ import toJson from 'enzyme-to-json'
 
 import { Availability, LAST_AVAILABILITY } from '../Availability'
 import { AVAILABILITIES } from '../../../../constants'
-import { mountWrapperWithMockedData } from '../../../../helpers/test'
+import { mountWrapperWithMockedData, withReduxProvider } from '../../../../helpers/test'
 
 const generateMock = (status) => (
   [{
@@ -18,7 +18,7 @@ const generateMock = (status) => (
 
 it('renders correctly when server down/loading', async () => {
   const wrapper = await mountWrapperWithMockedData(
-    <Availability />,
+    withReduxProvider(<Availability />),
     generateMock(AVAILABILITIES.loading)
   )
 
@@ -28,7 +28,7 @@ it('renders correctly when server down/loading', async () => {
 
 it('renders correctly when available', async () => {
   const wrapper = await mountWrapperWithMockedData(
-    <Availability />,
+    withReduxProvider(<Availability />),
     generateMock(AVAILABILITIES.available)
   )
 
@@ -37,7 +37,7 @@ it('renders correctly when available', async () => {
 
 it('renders correctly when server partially available', async () => {
   const wrapper = await mountWrapperWithMockedData(
-    <Availability />,
+    withReduxProvider(<Availability />),
     generateMock(AVAILABILITIES.partially_available)
   )
 
@@ -46,7 +46,7 @@ it('renders correctly when server partially available', async () => {
 
 it('renders correctly when server not available', async () => {
   const wrapper = await mountWrapperWithMockedData(
-    <Availability />,
+    withReduxProvider(<Availability />),
     generateMock(AVAILABILITIES.not_available)
   )
 
