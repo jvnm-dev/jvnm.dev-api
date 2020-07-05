@@ -1652,262 +1652,279 @@ exports[`renders correctly with data 1`] = `
       }
     }
   >
-    <Provider
-      store={
+    <ThemeProvider
+      theme={
         Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
+          "background": "#FEFEFE",
+          "headerBorder": "#EEE",
+          "mode": "light",
+          "text": "#797979",
+          "themeSwitcherShadow": "0px 0px 25px 0px rgba(0,0,0,0.15)",
+          "title": Object {
+            "default": "#24292E",
+            "inverse": "#FEFEFE",
+          },
+          "wavyContainer": "linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)",
         }
       }
     >
-      <Experiences>
-        <Experience
-          from="web"
-          image="prout"
-          key="exp-1"
-          place="github"
-          title="tester"
-          to="to"
-        >
-          <styled.div>
-            <div
-              className="sc-fznZeY dhvofZ"
-            >
-              <styled.img
-                alt="github"
-                src="prout"
+      <Provider
+        store={
+          Object {
+            "dispatch": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+            Symbol(observable): [Function],
+          }
+        }
+      >
+        <Experiences>
+          <Experience
+            from="web"
+            image="prout"
+            key="exp-1"
+            place="github"
+            title="tester"
+            to="to"
+          >
+            <styled.div>
+              <div
+                className="sc-fzqBZW dLqHGr"
               >
-                <img
+                <styled.img
                   alt="github"
-                  className="sc-AxgMl tHnVO"
                   src="prout"
-                />
-              </styled.img>
-              <styled.div>
-                <div
-                  className="sc-fzokOt kcDGkd"
                 >
-                  <ExperienceInfo
-                    from="web"
-                    place="github"
-                    to="to"
+                  <img
+                    alt="github"
+                    className="sc-fznyAO jMigaE"
+                    src="prout"
+                  />
+                </styled.img>
+                <styled.div>
+                  <div
+                    className="sc-fzqNJr jTANKt"
                   >
-                    <styled.div>
-                      <div
-                        className="sc-fzplWN cjfDJf"
-                      >
-                        <styled.p
-                          small={true}
-                        >
-                          <p
-                            className="sc-fzozJi bYewJi"
-                          >
-                            <styled.span>
-                              <span
-                                className="sc-fzqBZW keVMtl"
-                              >
-                                github
-                              </span>
-                            </styled.span>
-                          </p>
-                        </styled.p>
-                        <styled.p
-                          bold={true}
-                          color="#E1E1E1"
-                          mobileInvisible={true}
-                          small={true}
-                        >
-                          <p
-                            className="sc-fzozJi fMWuJC"
-                            color="#E1E1E1"
-                          >
-                             / 
-                          </p>
-                        </styled.p>
-                        <styled.div>
-                          <div
-                            className="sc-fznyAO buKZiX"
-                          >
-                            <styled.p
-                              bold={true}
-                              color="#6057F9"
-                              small={true}
-                            >
-                              <p
-                                className="sc-fzozJi emtxRK"
-                                color="#6057F9"
-                              >
-                                From 
-                                web
-                              </p>
-                            </styled.p>
-                            <styled.p
-                              bold={true}
-                              color="#E1E1E1"
-                              small={true}
-                            >
-                              <p
-                                className="sc-fzozJi fQijeF"
-                                color="#E1E1E1"
-                              >
-                                 - 
-                              </p>
-                            </styled.p>
-                            <styled.p
-                              bold={true}
-                              color="#ABC5D4"
-                              small={true}
-                            >
-                              <p
-                                className="sc-fzozJi iJbMkM"
-                                color="#ABC5D4"
-                              >
-                                to
-                              </p>
-                            </styled.p>
-                          </div>
-                        </styled.div>
-                      </div>
-                    </styled.div>
-                  </ExperienceInfo>
-                  <styled.h3>
-                    <h3
-                      className="sc-fznKkj ka-DBcc"
+                    <ExperienceInfo
+                      from="web"
+                      place="github"
+                      to="to"
                     >
-                      tester
-                    </h3>
-                  </styled.h3>
-                </div>
-              </styled.div>
-            </div>
-          </styled.div>
-        </Experience>
-        <Experience
-          from="web2"
-          image="prout2"
-          key="exp-2"
-          place="github2"
-          title="tester2"
-          to="to2"
-        >
-          <styled.div>
-            <div
-              className="sc-fznZeY dhvofZ"
-            >
-              <styled.img
-                alt="github2"
-                src="prout2"
+                      <styled.div>
+                        <div
+                          className="sc-fznKkj liwple"
+                        >
+                          <styled.p
+                            small={true}
+                          >
+                            <p
+                              className="sc-AxhCb jIRXyo"
+                            >
+                              <styled.span>
+                                <span
+                                  className="sc-fzoyAV liPVmy"
+                                >
+                                  github
+                                </span>
+                              </styled.span>
+                            </p>
+                          </styled.p>
+                          <styled.p
+                            bold={true}
+                            color="#E1E1E1"
+                            mobileInvisible={true}
+                            small={true}
+                          >
+                            <p
+                              className="sc-AxhCb hEswAA"
+                              color="#E1E1E1"
+                            >
+                               / 
+                            </p>
+                          </styled.p>
+                          <styled.div>
+                            <div
+                              className="sc-fznZeY jtSeaW"
+                            >
+                              <styled.p
+                                bold={true}
+                                color="#6057F9"
+                                small={true}
+                              >
+                                <p
+                                  className="sc-AxhCb eNAXWA"
+                                  color="#6057F9"
+                                >
+                                  From 
+                                  web
+                                </p>
+                              </styled.p>
+                              <styled.p
+                                bold={true}
+                                color="#E1E1E1"
+                                small={true}
+                              >
+                                <p
+                                  className="sc-AxhCb jyFLnr"
+                                  color="#E1E1E1"
+                                >
+                                   - 
+                                </p>
+                              </styled.p>
+                              <styled.p
+                                bold={true}
+                                color="#ABC5D4"
+                                small={true}
+                              >
+                                <p
+                                  className="sc-AxhCb iIddUS"
+                                  color="#ABC5D4"
+                                >
+                                  to
+                                </p>
+                              </styled.p>
+                            </div>
+                          </styled.div>
+                        </div>
+                      </styled.div>
+                    </ExperienceInfo>
+                    <styled.h3>
+                      <h3
+                        className="sc-fzokOt lvMbV"
+                      >
+                        tester
+                      </h3>
+                    </styled.h3>
+                  </div>
+                </styled.div>
+              </div>
+            </styled.div>
+          </Experience>
+          <Experience
+            from="web2"
+            image="prout2"
+            key="exp-2"
+            place="github2"
+            title="tester2"
+            to="to2"
+          >
+            <styled.div>
+              <div
+                className="sc-fzqBZW dLqHGr"
               >
-                <img
+                <styled.img
                   alt="github2"
-                  className="sc-AxgMl tHnVO"
                   src="prout2"
-                />
-              </styled.img>
-              <styled.div>
-                <div
-                  className="sc-fzokOt kcDGkd"
                 >
-                  <ExperienceInfo
-                    from="web2"
-                    place="github2"
-                    to="to2"
+                  <img
+                    alt="github2"
+                    className="sc-fznyAO jMigaE"
+                    src="prout2"
+                  />
+                </styled.img>
+                <styled.div>
+                  <div
+                    className="sc-fzqNJr jTANKt"
                   >
-                    <styled.div>
-                      <div
-                        className="sc-fzplWN cjfDJf"
-                      >
-                        <styled.p
-                          small={true}
-                        >
-                          <p
-                            className="sc-fzozJi bYewJi"
-                          >
-                            <styled.span>
-                              <span
-                                className="sc-fzqBZW keVMtl"
-                              >
-                                github2
-                              </span>
-                            </styled.span>
-                          </p>
-                        </styled.p>
-                        <styled.p
-                          bold={true}
-                          color="#E1E1E1"
-                          mobileInvisible={true}
-                          small={true}
-                        >
-                          <p
-                            className="sc-fzozJi fMWuJC"
-                            color="#E1E1E1"
-                          >
-                             / 
-                          </p>
-                        </styled.p>
-                        <styled.div>
-                          <div
-                            className="sc-fznyAO buKZiX"
-                          >
-                            <styled.p
-                              bold={true}
-                              color="#6057F9"
-                              small={true}
-                            >
-                              <p
-                                className="sc-fzozJi emtxRK"
-                                color="#6057F9"
-                              >
-                                From 
-                                web2
-                              </p>
-                            </styled.p>
-                            <styled.p
-                              bold={true}
-                              color="#E1E1E1"
-                              small={true}
-                            >
-                              <p
-                                className="sc-fzozJi fQijeF"
-                                color="#E1E1E1"
-                              >
-                                 - 
-                              </p>
-                            </styled.p>
-                            <styled.p
-                              bold={true}
-                              color="#ABC5D4"
-                              small={true}
-                            >
-                              <p
-                                className="sc-fzozJi iJbMkM"
-                                color="#ABC5D4"
-                              >
-                                to2
-                              </p>
-                            </styled.p>
-                          </div>
-                        </styled.div>
-                      </div>
-                    </styled.div>
-                  </ExperienceInfo>
-                  <styled.h3>
-                    <h3
-                      className="sc-fznKkj ka-DBcc"
+                    <ExperienceInfo
+                      from="web2"
+                      place="github2"
+                      to="to2"
                     >
-                      tester2
-                    </h3>
-                  </styled.h3>
-                </div>
-              </styled.div>
-            </div>
-          </styled.div>
-        </Experience>
-      </Experiences>
-    </Provider>
+                      <styled.div>
+                        <div
+                          className="sc-fznKkj liwple"
+                        >
+                          <styled.p
+                            small={true}
+                          >
+                            <p
+                              className="sc-AxhCb jIRXyo"
+                            >
+                              <styled.span>
+                                <span
+                                  className="sc-fzoyAV liPVmy"
+                                >
+                                  github2
+                                </span>
+                              </styled.span>
+                            </p>
+                          </styled.p>
+                          <styled.p
+                            bold={true}
+                            color="#E1E1E1"
+                            mobileInvisible={true}
+                            small={true}
+                          >
+                            <p
+                              className="sc-AxhCb hEswAA"
+                              color="#E1E1E1"
+                            >
+                               / 
+                            </p>
+                          </styled.p>
+                          <styled.div>
+                            <div
+                              className="sc-fznZeY jtSeaW"
+                            >
+                              <styled.p
+                                bold={true}
+                                color="#6057F9"
+                                small={true}
+                              >
+                                <p
+                                  className="sc-AxhCb eNAXWA"
+                                  color="#6057F9"
+                                >
+                                  From 
+                                  web2
+                                </p>
+                              </styled.p>
+                              <styled.p
+                                bold={true}
+                                color="#E1E1E1"
+                                small={true}
+                              >
+                                <p
+                                  className="sc-AxhCb jyFLnr"
+                                  color="#E1E1E1"
+                                >
+                                   - 
+                                </p>
+                              </styled.p>
+                              <styled.p
+                                bold={true}
+                                color="#ABC5D4"
+                                small={true}
+                              >
+                                <p
+                                  className="sc-AxhCb iIddUS"
+                                  color="#ABC5D4"
+                                >
+                                  to2
+                                </p>
+                              </styled.p>
+                            </div>
+                          </styled.div>
+                        </div>
+                      </styled.div>
+                    </ExperienceInfo>
+                    <styled.h3>
+                      <h3
+                        className="sc-fzokOt lvMbV"
+                      >
+                        tester2
+                      </h3>
+                    </styled.h3>
+                  </div>
+                </styled.div>
+              </div>
+            </styled.div>
+          </Experience>
+        </Experiences>
+      </Provider>
+    </ThemeProvider>
   </ApolloProvider>
 </MockedProvider>
 `;

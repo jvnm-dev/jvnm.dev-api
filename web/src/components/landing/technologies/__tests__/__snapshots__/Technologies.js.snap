@@ -1277,96 +1277,113 @@ exports[`renders correctly with data 1`] = `
       }
     }
   >
-    <Provider
-      store={
+    <ThemeProvider
+      theme={
         Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
+          "background": "#FEFEFE",
+          "headerBorder": "#EEE",
+          "mode": "light",
+          "text": "#797979",
+          "themeSwitcherShadow": "0px 0px 25px 0px rgba(0,0,0,0.15)",
+          "title": Object {
+            "default": "#24292E",
+            "inverse": "#FEFEFE",
+          },
+          "wavyContainer": "linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)",
         }
       }
     >
-      <Technologies>
-        <styled.div>
-          <div
-            className="sc-fzpjYC fhfrdD"
-          >
-            <Technology
-              image="prout"
-              key="tech-1"
-              name="ProutHolyProut"
+      <Provider
+        store={
+          Object {
+            "dispatch": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+            Symbol(observable): [Function],
+          }
+        }
+      >
+        <Technologies>
+          <styled.div>
+            <div
+              className="sc-fznJRM cLGzac"
             >
-              <styled.div>
-                <div
-                  className="sc-fzqNJr fQDQJh"
-                >
-                  <styled.div>
-                    <div
-                      className="sc-fzoLag ioXuHk"
-                    >
-                      <styled.span>
-                        <span
-                          className="sc-fzoXzr xvXhk"
-                        >
-                          ProutHolyProut
-                        </span>
-                      </styled.span>
-                    </div>
-                  </styled.div>
-                  <styled.img
-                    alt="ProutHolyProut"
-                    src="prout"
+              <Technology
+                image="prout"
+                key="tech-1"
+                name="ProutHolyProut"
+              >
+                <styled.div>
+                  <div
+                    className="sc-fzoLag fbsTyr"
                   >
-                    <img
+                    <styled.div>
+                      <div
+                        className="sc-fzpjYC fonLLN"
+                      >
+                        <styled.span>
+                          <span
+                            className="sc-fznxsB liesOE"
+                          >
+                            ProutHolyProut
+                          </span>
+                        </styled.span>
+                      </div>
+                    </styled.div>
+                    <styled.img
                       alt="ProutHolyProut"
-                      className="sc-fzoyAV gxcifL"
                       src="prout"
-                    />
-                  </styled.img>
-                </div>
-              </styled.div>
-            </Technology>
-            <Technology
-              image="prout2"
-              key="tech-2"
-              name="ProutML"
-            >
-              <styled.div>
-                <div
-                  className="sc-fzqNJr fQDQJh"
-                >
-                  <styled.div>
-                    <div
-                      className="sc-fzoLag ioXuHk"
                     >
-                      <styled.span>
-                        <span
-                          className="sc-fzoXzr xvXhk"
-                        >
-                          ProutML
-                        </span>
-                      </styled.span>
-                    </div>
-                  </styled.div>
-                  <styled.img
-                    alt="ProutML"
-                    src="prout2"
+                      <img
+                        alt="ProutHolyProut"
+                        className="sc-fzoXzr dKhsDZ"
+                        src="prout"
+                      />
+                    </styled.img>
+                  </div>
+                </styled.div>
+              </Technology>
+              <Technology
+                image="prout2"
+                key="tech-2"
+                name="ProutML"
+              >
+                <styled.div>
+                  <div
+                    className="sc-fzoLag fbsTyr"
                   >
-                    <img
+                    <styled.div>
+                      <div
+                        className="sc-fzpjYC fonLLN"
+                      >
+                        <styled.span>
+                          <span
+                            className="sc-fznxsB liesOE"
+                          >
+                            ProutML
+                          </span>
+                        </styled.span>
+                      </div>
+                    </styled.div>
+                    <styled.img
                       alt="ProutML"
-                      className="sc-fzoyAV gxcifL"
                       src="prout2"
-                    />
-                  </styled.img>
-                </div>
-              </styled.div>
-            </Technology>
-          </div>
-        </styled.div>
-      </Technologies>
-    </Provider>
+                    >
+                      <img
+                        alt="ProutML"
+                        className="sc-fzoXzr dKhsDZ"
+                        src="prout2"
+                      />
+                    </styled.img>
+                  </div>
+                </styled.div>
+              </Technology>
+            </div>
+          </styled.div>
+        </Technologies>
+      </Provider>
+    </ThemeProvider>
   </ApolloProvider>
 </MockedProvider>
 `;

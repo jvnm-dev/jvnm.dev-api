@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Title = styled.h1`
   font-size: ${({small}) => small ? '26px' : '60px'};
-  color: ${({inverse}) => inverse ? '#FFF' : '#24292E'};
+  color: ${({inverse, theme}) => inverse ? theme.title?.inverse : theme.title?.default};
   font-weight: 600;
   margin: ${({marginMobile}) => marginMobile ? '36px 0 0 0' : '0'};
 

@@ -23,7 +23,7 @@ const ProjectCardOverlay = styled.div`
 `
 
 const ProjectCard = styled.div`
-    background: #FFF;
+    background: ${({ theme }) => theme.background };
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.20);
     padding: 8px;
@@ -56,6 +56,7 @@ const ProjectCard = styled.div`
 const CardTitle = styled.h2`
     margin: 0;
     font-size: 20px;
+    color: ${({ theme }) => theme.title?.default };
 
     @media only screen and (min-width: 1024px) {
         font-size: 24px;
@@ -63,7 +64,7 @@ const CardTitle = styled.h2`
 `
 
 const CardDescription = styled.p`
-    color: #606060;
+    color: ${({ theme }) => theme.text };
     font-size: 12px;
 
     @media only screen and (min-width: 768px) {
@@ -98,7 +99,7 @@ const CardLanguageBall = styled.span`
 
 const CardFooterText = styled.span`
     margin-left: 8px;
-    color: #707070;
+    color: ${({ theme }) => theme.text };
     font-weight: 100;
     font-size: 12px;
 

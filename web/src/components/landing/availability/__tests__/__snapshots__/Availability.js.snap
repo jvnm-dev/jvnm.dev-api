@@ -903,64 +903,81 @@ exports[`renders correctly when server down/loading 1`] = `
       }
     }
   >
-    <Provider
-      store={
+    <ThemeProvider
+      theme={
         Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
+          "background": "#FEFEFE",
+          "headerBorder": "#EEE",
+          "mode": "light",
+          "text": "#797979",
+          "themeSwitcherShadow": "0px 0px 25px 0px rgba(0,0,0,0.15)",
+          "title": Object {
+            "default": "#24292E",
+            "inverse": "#FEFEFE",
+          },
+          "wavyContainer": "linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)",
         }
       }
     >
-      <Availability>
-        <styled.div>
-          <div
-            className="sc-AxjAm iZilVu"
-          >
-            <AvailabilityImage
-              loading={false}
-              status={0}
+      <Provider
+        store={
+          Object {
+            "dispatch": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+            Symbol(observable): [Function],
+          }
+        }
+      >
+        <Availability>
+          <styled.div>
+            <div
+              className="sc-AxjAm iZilVu"
             >
-              <styled.div>
-                <div
-                  className="sc-AxirZ gpWHsK"
-                >
-                  <styled.img
-                    alt="Jason Van Malder"
-                    src="me.jpg"
-                  >
-                    <img
-                      alt="Jason Van Malder"
-                      className="sc-AxiKw jKjsTW"
-                      src="me.jpg"
-                    />
-                  </styled.img>
-                  <styled.span
-                    status={0}
-                  >
-                    <span
-                      className="sc-AxhCb gFhkBz"
-                    />
-                  </styled.span>
-                </div>
-              </styled.div>
-            </AvailabilityImage>
-            <styled.p>
-              <p
-                className="sc-AxhUy gWGACW"
+              <AvailabilityImage
+                loading={false}
+                status={0}
               >
-                <span>
-                  Maybe available
-                </span>
-                 for charity organization project
-              </p>
-            </styled.p>
-          </div>
-        </styled.div>
-      </Availability>
-    </Provider>
+                <styled.div>
+                  <div
+                    className="sc-AxirZ gpWHsK"
+                  >
+                    <styled.img
+                      alt="Jason Van Malder"
+                      src="me.jpg"
+                    >
+                      <img
+                        alt="Jason Van Malder"
+                        className="sc-AxiKw jKjsTW"
+                        src="me.jpg"
+                      />
+                    </styled.img>
+                    <styled.span
+                      status={0}
+                    >
+                      <span
+                        className="sc-AxhCb bVTlux"
+                      />
+                    </styled.span>
+                  </div>
+                </styled.div>
+              </AvailabilityImage>
+              <styled.p>
+                <p
+                  className="sc-AxhUy bKqoLi"
+                >
+                  <span>
+                    Maybe available
+                  </span>
+                   for charity organization project
+                </p>
+              </styled.p>
+            </div>
+          </styled.div>
+        </Availability>
+      </Provider>
+    </ThemeProvider>
   </ApolloProvider>
 </MockedProvider>
 `;

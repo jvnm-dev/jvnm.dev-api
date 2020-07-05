@@ -21,13 +21,13 @@ exports[`renders correctly an error 1`] = `
           >
             <img
               alt="Error"
-              className="sc-AxheI hGrgpC"
+              className="sc-AxmLO bmcvVM"
               src="error.svg"
             />
           </styled.img>
           <styled.h1>
             <h1
-              className="sc-AxiKw hovzAl"
+              className="sc-AxiKw drZJMY"
             >
               Oops!
             </h1>
@@ -37,7 +37,7 @@ exports[`renders correctly an error 1`] = `
             margin={true}
           >
             <p
-              className="sc-AxhCb dYIa-dg"
+              className="sc-AxhCb fVUwQN"
             >
               Something went wrong. 
               Try to 
@@ -67,11 +67,11 @@ exports[`renders correctly an error 1`] = `
           >
             <styled.summary>
               <summary
-                className="sc-Axmtr bNtBlk"
+                className="sc-fzozJi dMxRXQ"
               >
                 <styled.p>
                   <p
-                    className="sc-AxhCb jmDxZL"
+                    className="sc-AxhCb borSJa"
                   >
                     Details
                   </p>

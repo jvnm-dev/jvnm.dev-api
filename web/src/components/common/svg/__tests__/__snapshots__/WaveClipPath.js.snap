@@ -1,14 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<svg>
-  <clipPath
-    clipPathUnits="objectBoundingBox"
-    id="wave"
-  >
-    <path
-      d="M1,0c0,0-0.3,0.1-0.5,0.1S0.3,0,0,0.1V1h1L1,0z"
-    />
-  </clipPath>
-</svg>
+<ContextProvider
+  value={
+    Object {
+      "background": "#FEFEFE",
+      "headerBorder": "#EEE",
+      "mode": "light",
+      "text": "#797979",
+      "themeSwitcherShadow": "0px 0px 25px 0px rgba(0,0,0,0.15)",
+      "title": Object {
+        "default": "#24292E",
+        "inverse": "#FEFEFE",
+      },
+      "wavyContainer": "linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)",
+    }
+  }
+>
+  <WaveClipPath />
+</ContextProvider>
 `;

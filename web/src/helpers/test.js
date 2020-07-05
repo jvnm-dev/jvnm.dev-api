@@ -4,8 +4,10 @@ import { act } from 'react-dom/test-utils'
 import { mount, shallow } from 'enzyme'
 import { MockedProvider } from '@apollo/react-testing'
 import { Provider } from 'react-redux'
+import { ThemeProvider } from 'styled-components'
 
 import { store } from '../redux/store'
+import { THEME_LIGHT } from '../constants'
 
 const wait = (time = 0) => new Promise(res => setTimeout(res, time))
 
@@ -17,7 +19,10 @@ export const executeMockProviderTestCase = async (wrapperInstance) => (
 )
 
 export const shallowMatchSnapshot = (Component) => {
-  const wrapper = shallow(Component)
+  const wrapper = shallow(
+    <ThemeProvider theme={THEME_LIGHT}>
+      {Component}
+    </ThemeProvider>)
   expect(toJson(wrapper)).toMatchSnapshot()
 }
 
@@ -27,7 +32,9 @@ export const mountWrapperWithMockedData = async (Component, mocks) => {
   act(() => {
     wrapper = mount(
       <MockedProvider mocks={mocks} addTypename={false}>
-        {Component}
+        <ThemeProvider theme={THEME_LIGHT}>
+          {Component}
+        </ThemeProvider>
       </MockedProvider>
     )
   })

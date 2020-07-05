@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Text = styled.p`
   display: ${({mobileInvisible}) => mobileInvisible ? 'none' : 'inline-block'};
   margin: 0;
-  color: ${({color}) => color ? color : '#797979'};
+  color: ${({color, theme}) => color ? color : theme.text};
   font-size: ${({small}) => small ? '12px' : '16px'};
   font-weight: ${({bold}) => bold ? 'bolder' : 'normal'};
   line-height: 1.5;

@@ -17,6 +17,18 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <styled.p />
+  <Provider
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+  >
+    <ThemeSwitcher />
+  </Provider>
 </ContextProvider>
 `;

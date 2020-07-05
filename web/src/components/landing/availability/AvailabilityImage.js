@@ -31,7 +31,7 @@ const AvailabilityIndicator = styled.span`
     status === AVAILABILITIES.not_available ? '#CD2323' :
     'grey'
   )};
-  border: 2px solid #FFF;
+  border: 2px solid ${({ theme }) => theme.background};
   border-radius: 50%;
 
   @media only screen and (min-width: 1440px) {

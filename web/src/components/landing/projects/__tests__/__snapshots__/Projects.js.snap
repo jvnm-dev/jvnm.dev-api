@@ -15,7 +15,7 @@ exports[`renders correctly with data 1`] = `
   <Projects>
     <styled.div>
       <div
-        className="sc-fzoXWK jAICvC"
+        className="sc-fznxKY fxxYqV"
       >
         <Project
           data={
@@ -33,12 +33,12 @@ exports[`renders correctly with data 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-fznJRM eySefL"
+              className="sc-fzoiQi cjCNOj"
               onClick={[Function]}
             >
               <styled.div>
                 <div
-                  className="sc-fznxsB dHldqA"
+                  className="sc-fznWqX jOJPpb"
                 >
                   <FontAwesomeIcon
                     border={false}
@@ -93,36 +93,36 @@ exports[`renders correctly with data 1`] = `
               </styled.div>
               <styled.h2>
                 <h2
-                  className="sc-fznWqX jgHalL"
+                  className="sc-fzqARJ mEltG"
                 >
                   Proutrepo
                 </h2>
               </styled.h2>
               <styled.p>
                 <p
-                  className="sc-fzoiQi cBCgxH"
+                  className="sc-fzqNqU gptDrQ"
                 >
                   proutdescription
                 </p>
               </styled.p>
               <styled.div>
                 <div
-                  className="sc-fzqARJ ZxOiY"
+                  className="sc-fzoyTs eDTpZF"
                 >
                   <styled.div>
                     <div
-                      className="sc-fzqNqU geLIdj"
+                      className="sc-fzoNJl feEVSz"
                     >
                       <styled.span
                         bgColor={[Function]}
                       >
                         <span
-                          className="sc-fzoyTs cYShbh"
+                          className="sc-fzoXWK iOMWMz"
                         />
                       </styled.span>
                       <styled.span>
                         <span
-                          className="sc-fzoNJl jhsLPg"
+                          className="sc-fzpmMD iUgEQw"
                         >
                           proutlanguage
                         </span>
@@ -131,7 +131,7 @@ exports[`renders correctly with data 1`] = `
                   </styled.div>
                   <styled.span>
                     <span
-                      className="sc-fzoNJl jhsLPg"
+                      className="sc-fzpmMD iUgEQw"
                     >
                       <FontAwesomeIcon
                         border={false}
@@ -207,12 +207,12 @@ exports[`renders correctly with data 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-fznJRM eySefL"
+              className="sc-fzoiQi cjCNOj"
               onClick={[Function]}
             >
               <styled.div>
                 <div
-                  className="sc-fznxsB dHldqA"
+                  className="sc-fznWqX jOJPpb"
                 >
                   <FontAwesomeIcon
                     border={false}
@@ -267,36 +267,36 @@ exports[`renders correctly with data 1`] = `
               </styled.div>
               <styled.h2>
                 <h2
-                  className="sc-fznWqX jgHalL"
+                  className="sc-fzqARJ mEltG"
                 >
                   Proutrepo
                 </h2>
               </styled.h2>
               <styled.p>
                 <p
-                  className="sc-fzoiQi cBCgxH"
+                  className="sc-fzqNqU gptDrQ"
                 >
                   proutdescription
                 </p>
               </styled.p>
               <styled.div>
                 <div
-                  className="sc-fzqARJ ZxOiY"
+                  className="sc-fzoyTs eDTpZF"
                 >
                   <styled.div>
                     <div
-                      className="sc-fzqNqU geLIdj"
+                      className="sc-fzoNJl feEVSz"
                     >
                       <styled.span
                         bgColor={[Function]}
                       >
                         <span
-                          className="sc-fzoyTs cYShbh"
+                          className="sc-fzoXWK iOMWMz"
                         />
                       </styled.span>
                       <styled.span>
                         <span
-                          className="sc-fzoNJl jhsLPg"
+                          className="sc-fzpmMD iUgEQw"
                         >
                           proutlanguage
                         </span>
@@ -305,7 +305,7 @@ exports[`renders correctly with data 1`] = `
                   </styled.div>
                   <styled.span>
                     <span
-                      className="sc-fzoNJl jhsLPg"
+                      className="sc-fzpmMD iUgEQw"
                     >
                       <FontAwesomeIcon
                         border={false}

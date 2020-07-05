@@ -17,6 +17,6 @@ export const Container = styled.div`
 `
 
 export const WavyContainer = styled(Container)`
-  background: linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%);
+  background: ${({ theme }) => theme.wavyContainer};
   clip-path: url(#wave);
 `

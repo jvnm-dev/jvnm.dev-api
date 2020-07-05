@@ -7,8 +7,9 @@ export const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid ${({ theme }) => theme.headerBorder};
   padding: 0 24px;
+  transition: 0.2s;
 
   ${Container} {
     @media only screen and (min-width: 768px) {

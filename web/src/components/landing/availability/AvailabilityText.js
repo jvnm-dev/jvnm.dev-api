@@ -4,11 +4,11 @@ export const AvailabilityText = styled.p`
   margin: 0;
   font-weight: 600;
   font-size: 12px;
-  color: #797979;
+  color: ${({ theme }) => theme.text};
   margin-left: 16px;
 
   span {
-    color: #1C1C1C;
+    color: ${({ theme }) => theme.title?.default};
   }
 
   @media only screen and (min-width: 1024px) {

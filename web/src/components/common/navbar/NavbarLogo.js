@@ -13,7 +13,7 @@ export const NavbarLogo = styled(Link)`
   }
 
   span:first-child {
-    color: #1C1C1C;
+    color: ${({theme}) => theme.title?.default};
   }
 
   span:last-child {
