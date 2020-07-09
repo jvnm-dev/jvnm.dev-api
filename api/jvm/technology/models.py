@@ -1,9 +1,8 @@
 from sqlalchemy import Column, Integer, String
 
-from ..database import Base
+from jvm.database import db
 
-
-class Technology(Base):
+class Technology(db.Model):
     __tablename__ = 'technology'
 
     id = Column(Integer, primary_key=True)

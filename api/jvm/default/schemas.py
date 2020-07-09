@@ -1,7 +1,6 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
-
 class DefaultSchema(SQLAlchemyObjectType):
     class Meta:
         abstract = True

@@ -1,23 +1,8 @@
-from flask import Flask
-from flask_migrate import Migrate
-from flask_cors import CORS
+from flask.helpers import get_debug_flag
 
-from jvm.router import router
-from jvm.database import db_uri, Base
+from jvm.app import create_app
+from jvm.settings import DevConfig, ProdConfig
 
+CONFIG = DevConfig if get_debug_flag() else ProdConfig
 
-def create_app(db_uri):
-    app = Flask(__name__.split('.')[0])
-    app.url_map.strict_slashes = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    return app
-
-
-app = create_app(db_uri)
-CORS(app)
-migrate = Migrate(app, Base)
-router(app)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+app = create_app(CONFIG)

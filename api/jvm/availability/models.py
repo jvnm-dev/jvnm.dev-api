@@ -1,9 +1,8 @@
 from sqlalchemy import Column, Integer
 
-from ..database import Base
+from jvm.database import db
 
-
-class Availability(Base):
+class Availability(db.Model):
     __tablename__ = 'availability'
 
     id = Column(Integer, primary_key=True)
