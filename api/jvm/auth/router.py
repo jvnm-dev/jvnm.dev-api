@@ -6,7 +6,4 @@ def router(app):
     @app.route('/auth/signin', methods=['POST'])
     def signin():
         data = json.loads(request.data)
-        return UserController.signin({
-            'email': data.get('email'),
-            'password': data.get('password'),
-        })
+        return UserController.signin(data)

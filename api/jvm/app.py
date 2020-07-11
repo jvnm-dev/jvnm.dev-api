@@ -6,14 +6,16 @@ from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 
 from jvm.extensions import db, jwt, cors
 from jvm.settings import ProdConfig
-from jvm.default.router import router
+from jvm.router import router
 
 def create_app(config_object=ProdConfig):
     app = Flask(__name__.split('.')[0])
     app.url_map.strict_slashes = False
     app.config.from_object(config_object)
-    register_extensions(app)
-    register_routes(app)
+    with app.app_context():
+        register_extensions(app)
+        register_routes(app)
+        db.create_all()
     return app
 
 def register_extensions(app):

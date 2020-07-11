@@ -22,5 +22,5 @@ class ProdConfig(Config):
 class DevConfig(Config):
     ENV = 'dev'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost:5432/jvm_db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost:5433/jvm_db'
     GRAPHIQL = True
