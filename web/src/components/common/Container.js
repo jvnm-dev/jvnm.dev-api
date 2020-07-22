@@ -9,6 +9,7 @@ export const Container = styled.div`
     justify-content: inherit;
     align-items: inherit;
     flex: 1;
+    flex-wrap: wrap;
   `}
 
   ${props => props.fullHeight && `

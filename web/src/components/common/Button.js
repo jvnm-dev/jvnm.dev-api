@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const Button = styled(Link)`
   display: inline-block;
-  color: #FFF;
+  color: #FFF !important;
   background: linear-gradient(135deg, rgba(90,81,250,1) 0%, rgba(179,204,210,1) 100%, rgba(0,212,255,1) 100%);
   box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.25);
   font-weight: bold;
@@ -12,7 +12,8 @@ export const Button = styled(Link)`
   border-radius: 5px;
   text-decoration: none;
   transition: 0.2s;
-  width: fit-content;
+  text-align: center;
+  width: ${({ width }) => width === 'full' ? 'calc(100% - 50px);' : 'fit-content'};
 
   :hover {
     transform: translateY(-1px);
@@ -21,9 +22,11 @@ export const Button = styled(Link)`
 
   @media only screen and (min-width: 1024px) {
     padding: 12.5px 30px 12.5px 30px;
+    width: ${({ width }) => width === 'full' ? 'calc(100% - 60px);' : 'fit-content'};
   }
 
   @media only screen and (min-width: 1440px) {
     padding: 15px 40px 15px 40px;
+    width: ${({ width }) => width === 'full' ? 'calc(100% - 80px);' : 'fit-content'};
   }
 `

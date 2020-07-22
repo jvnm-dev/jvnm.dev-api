@@ -1,34 +1,45 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory, Link } from 'react-router-dom'
 
 import {
   NavbarContainer,
   NavbarMenu,
+  NavbarMenuItem,
   NavbarLogo,
   NavbarButton
 } from './'
 
 import { Container } from '../'
+import { setToken } from '../../../redux/slices/session'
 
-export const Navbar = () => {
 
-  const handleButtonClick = (e) => {
+export const Navbar = ({ contact, dashboard }) => {
+  const history = useHistory()
+  const session = useSelector(({ session }) => session)
+  const dispatch = useDispatch()
+
+  const handleContactButtonClick = (e) => {
     e.preventDefault()
     window.location.href = 'mailto:jasonvanmalder@gmail.com'
+  }
+
+  const handleSignOutButtonClick = (e) => {
+    e.preventDefault()
+    dispatch(setToken(undefined))
+    history.push('/')
   }
 
   return (
     <NavbarContainer>
       <Container flex fullHeight>
-        <Fade top>
-          <NavbarLogo to='/'>
-            <span>J</span>
-            <span>V</span>
-            <span>M</span>
-          </NavbarLogo>
-        </Fade>
+        <NavbarLogo to='/'>
+          <span>J</span>
+          <span>V</span>
+          <span>M</span>
+        </NavbarLogo>
         <NavbarMenu>
-          {/* <Fade top>
+          {/*
             <NavbarMenuItem>
               <Link to="/">About</Link>
             </NavbarMenuItem>
@@ -38,13 +49,23 @@ export const Navbar = () => {
             <NavbarMenuItem>
               <Link to="/">Blog</Link>
             </NavbarMenuItem>
-          </Fade> */}
+          */}
+          { dashboard && (
+            <NavbarMenuItem>
+              <Link to="/dashboard/">Landing Data</Link>
+            </NavbarMenuItem>
+          )}
         </NavbarMenu>
-        <Fade top>
-          <NavbarButton to="/" onClick={handleButtonClick}>
+        { contact && (
+          <NavbarButton to="/" onClick={handleContactButtonClick}>
             Contact
           </NavbarButton>
-        </Fade>
+        )}
+        { !contact && session.token && (
+          <NavbarButton to="/" onClick={handleSignOutButtonClick}>
+            Sign out
+          </NavbarButton>
+        )}
       </Container>
     </NavbarContainer>
   )

@@ -8,12 +8,13 @@ import {
   AvailabilityImage,
   AvailabilityText
 } from '../'
-import { AVAILABILITIES } from '../../../constants'
+import { STATUS_TEXTS } from '../../../constants'
 import { setAvailability } from '../../../redux/slices/availability'
 
 export const LAST_AVAILABILITY = gql`
   {
-    lastAvailability {
+    availability {
+      id,
       status
     }
   }
@@ -30,18 +31,12 @@ export const Availability = () => {
         console.log('AVAILABILITY ERROR: ', error)
       }
 
-      const loadedStatus = data?.lastAvailability?.status
-
-      const statusTexts = {
-        [AVAILABILITIES.available]: 'Available',
-        [AVAILABILITIES.partially_available]: 'Partially available',
-        [AVAILABILITIES.not_available]: 'Not available'
-      }
+      const loadedStatus = data?.availability?.status
 
       if (loadedStatus) {
         dispatch(setAvailability({
           status: loadedStatus,
-          statusText: statusTexts[loadedStatus],
+          statusText: STATUS_TEXTS[loadedStatus],
         }))
       }
     }
@@ -51,7 +46,6 @@ export const Availability = () => {
     <AvailabilityContainer>
       <AvailabilityImage
         status={availability.status}
-        loading={loading}
       />
       <AvailabilityText>
         <span>{availability.statusText}</span> for charity organization project

@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer
 
 from jvm.database import db
 
+
 class Availability(db.Model):
     __tablename__ = 'availability'
 

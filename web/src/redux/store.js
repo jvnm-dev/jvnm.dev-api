@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist'
 
+import sessionReducer from '../redux/slices/session'
 import themeReducer from '../redux/slices/themes'
 import availabilityReducer from '../redux/slices/availability'
 import experiencesReducer from '../redux/slices/experiences'
@@ -18,6 +19,7 @@ import technologiesReducer from '../redux/slices/technologies'
 import projectsReducer from '../redux/slices/projects'
 
 const reducers = combineReducers({
+  session: sessionReducer,
   theme: themeReducer,
   availability: availabilityReducer,
   experiences: experiencesReducer,
