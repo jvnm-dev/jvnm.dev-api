@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String
 
 from jvm.database import db
 
+
 class Technology(db.Model):
     __tablename__ = 'technology'
 

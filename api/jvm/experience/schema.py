@@ -3,6 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 
 from .models import Experience as ExperienceModel
 
+
 class ExperienceAttribute:
     id = graphene.ID(required=True)
     image = graphene.String()
@@ -11,10 +12,12 @@ class ExperienceAttribute:
     date_to = graphene.String()
     role = graphene.String()
 
+
 class Experience(SQLAlchemyObjectType, ExperienceAttribute):
     class Meta:
         model = ExperienceModel
         interfaces = (graphene.relay.Node,)
+
 
 class ExperienceQuery(graphene.ObjectType):
     experiences = graphene.List(Experience)

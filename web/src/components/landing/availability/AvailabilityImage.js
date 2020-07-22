@@ -44,7 +44,7 @@ export const AvailabilityImage = ({ status, loading }) => {
   return (
     <AvailabilityImageContainer>
       <Image src={me} alt="Jason Van Malder" />
-      {!loading && (<AvailabilityIndicator status={status} />)}
+      <AvailabilityIndicator status={status} />
     </AvailabilityImageContainer>
   )
 }

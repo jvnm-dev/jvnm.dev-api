@@ -9,11 +9,15 @@ export const NavbarMenuItem = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #1C1C1C;
+    color: ${({ theme }) => theme.title.default};
     text-decoration: none;
     font-weight: 600;
     transition: 0.2s;
     height: 100%;
+
+    :visited {
+      color: ${({ theme }) => theme.title.default} !important;
+    }
   }
 
   :hover {

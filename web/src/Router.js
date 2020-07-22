@@ -1,27 +1,42 @@
-import React from 'react'
 import 'normalize.css'
-import {
-  BrowserRouter,
-  Switch,
-  Route
-} from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
+import { Redirect } from 'react-router-dom'
 
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
-import { Home, Maintenance } from './screens'
+import { Home, Maintenance, SignIn, Dashboard } from './screens'
 
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.background};
-    transition: 0.2s;
+    transition: background 0.2s;
   }
-`;
+
+  a, a:visited {
+    color: ${({ theme }) => theme.colorPrimary};
+  }
+`
+
+const ProtectedRoute = ({ component: Component, session, ...rest }) => {
+  return (
+    <Route {...rest} render={
+      props => {
+        if (session.token) {
+          return <Component {...rest} {...props} />
+        } else {
+          return <Redirect to='/signin' />
+        }
+      }
+    } />
+  )
+}
 
 export const Router = () => {
-  const theme = useSelector(({ theme }) => theme)
+  const { theme, session } = useSelector(({ theme, session }) => ({ theme, session }))
 
   return (
     <ThemeProvider theme={theme}>
@@ -34,7 +49,9 @@ export const Router = () => {
                 <ErrorBoundary>
                   <BrowserRouter>
                     <Switch>
-                      <Route exact path='/' component={Home} />
+                      <Route exact path='/signin' component={SignIn} />
+                      <ProtectedRoute exact path='/dashboard' session={session} component={Dashboard} />
+                      <Route component={Home} /> {/* fallback for all others routes */}
                     </Switch>
                   </BrowserRouter>
                 </ErrorBoundary>

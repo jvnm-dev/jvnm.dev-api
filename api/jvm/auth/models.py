@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String
 
 from jvm.database import db
 
+
 class User(db.Model):
     __tablename__ = 'user'
 

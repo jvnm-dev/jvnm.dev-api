@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import Fade from 'react-reveal/Fade'
 
 import computerImage from '../assets/img/computer.jpeg'
 import {
@@ -40,7 +39,7 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar contact />
       <Container>
         <Section
           first
@@ -49,16 +48,14 @@ export const Home = () => {
         >
           <ColumnsContainer>
             <Column padding centered>
-                <Fade>
-                  <Title>Software Engineer</Title>
-                  <Text margin>
-                    Currently member of the Odoo bug fix team where I solve problems
-                    reported by customers in order to guarantee them the best possible
-                    experience.
-                  </Text>
-                  <Button to='/' onClick={handleLearnMoreClick}>Learn more</Button>
-                  <Availability />
-                </Fade>
+                <Title>Software Engineer</Title>
+                <Text margin>
+                  Currently member of the Odoo bug fix team where I solve problems
+                  reported by customers in order to guarantee them the best possible
+                  experience.
+                </Text>
+                <Button to='/' onClick={handleLearnMoreClick}>Learn more</Button>
+                <Availability />
             </Column>
             <ImageColumn background={computerImage} />
           </ColumnsContainer>

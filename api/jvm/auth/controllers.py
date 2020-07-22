@@ -1,10 +1,9 @@
 import bcrypt
-import os
 from flask import jsonify
 from flask_jwt_extended import create_access_token
 
 from .models import User as UserModel
-from jvm.database import db
+
 
 class User:
     @staticmethod
@@ -18,13 +17,18 @@ class User:
 
     @staticmethod
     def signin(data):
-        if data.get('email') and data.get('password'):
-            user = UserModel.query.filter_by(email=data['email']).first()
+        email = data.get('jvm_email')
+        password = data.get('jvm_password')
+
+        if email and password:
+            user = UserModel.query.filter_by(email=email).first()
 
             if user:
-                if User.check_password(data['password'], user.password):
+                if User.check_password(password, user.password):
                     return jsonify({
-                        'jwt': create_access_token(identity=data['email'])
+                        'jwt': create_access_token(identity={
+                                    'email': email
+                               }),
                     }), 200
 
                 return jsonify({

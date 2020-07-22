@@ -1,5 +1,5 @@
 env/
-jvm/migrations/
-migrations/
+jvmenv/
 __pycache__/
 */__pycache__/
+db.sql

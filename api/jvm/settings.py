@@ -1,5 +1,4 @@
 import os
-from datetime import timedelta
 
 
 class Config(object):
@@ -22,5 +21,5 @@ class ProdConfig(Config):
 class DevConfig(Config):
     ENV = 'dev'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost:5433/jvm_db'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     GRAPHIQL = True
