@@ -31,7 +31,8 @@ export const Experiences = () => {
               console.log('EXPERIENCES ERROR: ', error)
             }
 
-            dispatch(setExperiences(data?.experiences ?? []))
+            const experiences = data?.experiences ?? []
+            dispatch(setExperiences([...experiences].sort((a, b) => b.id - a.id)))
         }
     }, [loading, error, data, dispatch])
 

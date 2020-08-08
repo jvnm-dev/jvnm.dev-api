@@ -9,8 +9,22 @@ import { Redirect } from 'react-router-dom'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
 import { Home, Maintenance, SignIn, Dashboard } from './screens'
+import montserratRegular from './assets/fonts/Montserrat-Regular.ttf'
+import montserratSemibold from './assets/fonts/Montserrat-SemiBold.ttf'
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    src: url(${montserratRegular}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    src: url(${montserratSemibold}) format('truetype');
+  }
+
   body {
     background-color: ${({ theme }) => theme.background};
     transition: background 0.2s;

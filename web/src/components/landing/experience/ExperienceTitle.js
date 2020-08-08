@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ExperienceTitle = styled.h3`
+export const ExperienceTitle = styled.h2`
   margin: 0;
   color: ${({ theme }) => theme.text};
   font-weight: normal;

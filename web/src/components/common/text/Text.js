@@ -13,6 +13,10 @@ export const Text = styled.p`
     margin: 24px 0;
   `}
 
+  ${({intro}) => intro && `
+    max-width: 490px;
+  `}
+
   @media only screen and (min-width: 768px) {
     display: inline-block;
     font-size: ${({small}) => small ? '10px' : '16px'};

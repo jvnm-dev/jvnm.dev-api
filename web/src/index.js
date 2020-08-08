@@ -1,6 +1,5 @@
 import React from 'react'
 import ApolloClient from 'apollo-boost'
-import GoogleFontLoader from 'react-google-font-loader'
 import { Provider as ReduxProvider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { store } from './redux/store'
@@ -31,14 +30,6 @@ const App = () => {
             <meta charset="utf-8" />
             <link rel="canonical" href="https://jvnm.dev" />
           </Helmet>
-          <GoogleFontLoader
-            fonts={[
-              {
-                font: 'Montserrat',
-                weights: [400, 600]
-              }
-            ]}
-          />
           <Router />
         </PersistGate>
       </ReduxProvider>

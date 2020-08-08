@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: block;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
 
   ${props => props.flex && `
     display: flex;

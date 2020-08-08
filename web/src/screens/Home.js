@@ -49,12 +49,10 @@ export const Home = () => {
           <ColumnsContainer>
             <Column padding centered>
                 <Title>Software Engineer</Title>
-                <Text margin>
-                  Currently member of the Odoo bug fix team where I solve problems
-                  reported by customers in order to guarantee them the best possible
-                  experience.
+                <Text margin intro={true}>
+                  Currently working as a consultant for a company specialized in IPTV, media management and secure solutions for the medical sector.
                 </Text>
-                <Button to='/' onClick={handleLearnMoreClick}>Learn more</Button>
+                <Button name='learnmore' to='/' onClick={handleLearnMoreClick}>Learn more</Button>
                 <Availability />
             </Column>
             <ImageColumn background={computerImage} />

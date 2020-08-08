@@ -6,7 +6,7 @@ export const THEME_LIGHT = {
     default: '#24292E',
     inverse: '#FEFEFE',
   },
-  text: '#797979',
+  text: '#525252',
   wavyContainer: 'linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)',
   themeSwitcherShadow: '0px 0px 25px 0px rgba(0,0,0,0.15)',
   inputBackground: '#F5F5F5',
