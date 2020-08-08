@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun } from '@fortawesome/free-solid-svg-icons'
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
-import { THEME_LIGHT, THEME_DARK } from '../../constants/themes'
 import { setTheme } from '../../redux/slices/themes'
 
 const ThemeSwitcherButton = styled.button`
@@ -39,16 +38,16 @@ export const ThemeSwitcher = () => {
 
   const toggleTheme = () => {
       dispatch(setTheme(
-        theme.mode === THEME_LIGHT.mode
-          ? THEME_DARK
-          : THEME_LIGHT
+        theme === 'THEME_LIGHT'
+          ? 'THEME_DARK'
+          : 'THEME_LIGHT'
       ))
   }
 
   return (
     <ThemeSwitcherButton onClick={toggleTheme}>
       {
-        theme.mode === THEME_LIGHT.mode
+        theme.mode === 'THEME_LIGHT'
           ? <FontAwesomeIcon icon={faMoon} />
           : <FontAwesomeIcon icon={faSun} />
       }

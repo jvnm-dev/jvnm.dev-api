@@ -28,7 +28,7 @@ export const Availability = () => {
   useEffect(() => {
     if (!loading) {
       if (error) {
-        console.log('AVAILABILITY ERROR: ', error)
+        throw new Error('AVAILABILITY ERROR: ', error)
       }
 
       const loadedStatus = data?.availability?.status

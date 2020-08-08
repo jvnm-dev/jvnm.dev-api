@@ -6,11 +6,12 @@ import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import { Redirect } from 'react-router-dom'
 
+import montserratRegular from './assets/fonts/Montserrat-Regular.ttf'
+import montserratSemibold from './assets/fonts/Montserrat-SemiBold.ttf'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
 import { Home, Maintenance, SignIn, Dashboard } from './screens'
-import montserratRegular from './assets/fonts/Montserrat-Regular.ttf'
-import montserratSemibold from './assets/fonts/Montserrat-SemiBold.ttf'
+import { themes } from './constants'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -53,7 +54,7 @@ export const Router = () => {
   const { theme, session } = useSelector(({ theme, session }) => ({ theme, session }))
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
       {
         process.env.REACT_APP_MAINTENANCE_MODE === 'yes'

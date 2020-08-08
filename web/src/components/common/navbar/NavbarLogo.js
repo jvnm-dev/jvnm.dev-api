@@ -9,15 +9,17 @@ export const NavbarLogo = styled(Link)`
   span {
     display: inline-block;
     color: #6961FB;
-    transition: 0.2s;
+    text-shadow: -1px 1px 1px #6961FB;
   }
 
   span:first-child {
     color: ${({theme}) => theme.title?.default};
+    text-shadow: -1px 1px 1px ${({theme}) => theme.title?.default};
   }
 
   span:last-child {
     color: #AECAD2;
+    text-shadow: -1px 1px 1px #AECAD2;
   }
 
   :hover {

@@ -47,7 +47,7 @@ export const AvailabilitySelector = () => {
   useEffect(() => {
     if (!loading) {
       if (error) {
-        console.log('AvailabilitySelector: failed loading availabilities')
+        throw new Error('AvailabilitySelector: failed loading availabilities')
       }
     }
   }, [error, loading])

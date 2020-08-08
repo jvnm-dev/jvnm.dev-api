@@ -26,7 +26,7 @@ export const Projects = () => {
     const getProjects = useCallback(async () => {
         const bitskyTeamProjects = Object.values(await fetchGet('https://api.github.com/orgs/bitsky-team/repos'))
                                          .filter(p => !p.fork)
-        const jvmProjects = Object.values(await fetchGet('https://api.github.com/users/jvm-odoo/repos'))
+        const jvmProjects = Object.values(await fetchGet('https://api.github.com/users/jvnm-dev/repos'))
                                   .filter(p => !p.fork)
         let loadedProjects = [...bitskyTeamProjects, ...jvmProjects]
         if (loadedProjects.filter(p => typeof p !== 'string').length > 0) { // handle max rate error

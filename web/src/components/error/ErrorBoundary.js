@@ -30,6 +30,7 @@ export class ErrorBoundary extends Component {
 
   refresh(e) {
     e.preventDefault()
+    localStorage.clear()
     window.location.reload()
   }
 

@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { THEME_LIGHT } from '../../constants/themes'
+import { themes } from '../../constants'
 
 const themeSlice = createSlice({
   name: 'theme',
-  initialState: THEME_LIGHT,
+  initialState: themes.THEME_LIGHT,
   reducers: {
     setTheme: (state, action) => state = action.payload
   }

@@ -25,7 +25,7 @@ export const Technologies = () => {
     useEffect(() => {
         if (!loading) {
             if (error) {
-              console.log('TECHNOLOGIES ERROR: ', error)
+                throw new Error('TECHNOLOGIES ERROR: ', error)
             }
 
             dispatch(setTechnologies(data?.technologies ?? []))

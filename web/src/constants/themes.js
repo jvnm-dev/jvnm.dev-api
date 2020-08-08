@@ -1,4 +1,4 @@
-export const THEME_LIGHT = {
+const THEME_LIGHT = {
   mode: 'light',
   background: '#FEFEFE',
   headerBorder: '#EEE',
@@ -14,7 +14,7 @@ export const THEME_LIGHT = {
   colorPrimary: '#6961FB',
 }
 
-export const THEME_DARK = {
+const THEME_DARK = {
   mode: 'dark',
   background: '#212121',
   headerBorder: '#2f2f2f',
@@ -30,3 +30,7 @@ export const THEME_DARK = {
   colorPrimary: '#B5B7FB',
 }
 
+export const themes = {
+  'THEME_LIGHT': THEME_LIGHT,
+  'THEME_DARK': THEME_DARK,
+}

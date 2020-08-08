@@ -52,7 +52,7 @@ export const Home = () => {
                 <Text margin intro={true}>
                   Currently working as a consultant for a company specialized in IPTV, media management and secure solutions for the medical sector.
                 </Text>
-                <Button name='learnmore' to='/' onClick={handleLearnMoreClick}>Learn more</Button>
+                <Button aria-label='Learn more' to='/' onClick={handleLearnMoreClick}>Learn more</Button>
                 <Availability />
             </Column>
             <ImageColumn background={computerImage} />

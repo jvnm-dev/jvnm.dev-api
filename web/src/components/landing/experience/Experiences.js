@@ -28,7 +28,7 @@ export const Experiences = () => {
     useEffect(() => {
         if (!loading) {
             if (error) {
-              console.log('EXPERIENCES ERROR: ', error)
+                throw new Error('EXPERIENCES ERROR: ', error)
             }
 
             const experiences = data?.experiences ?? []

@@ -42,7 +42,7 @@ export const SignIn = () => {
                     <Form autocomplete='off'>
                         <Input name='jvm_email' type='text' placeholder='Email' onChange={handleChange} />
                         <Input name='jvm_password' type='password' placeholder='Password' onChange={handleChange} />
-                        <Button name='signin' to='/' width='full' onClick={onSubmit}>{loading ? 'Loading...' : 'Sign in'}</Button>
+                        <Button aria-label='Sign in' to='/' width='full' onClick={onSubmit}>{loading ? 'Loading...' : 'Sign in'}</Button>
                     </Form>
                     <Text small>Want to <Link to='/'>go back?</Link></Text>
                 </Section>
