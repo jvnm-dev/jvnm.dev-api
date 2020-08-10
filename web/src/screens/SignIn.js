@@ -9,7 +9,7 @@ import { BACKEND_URL } from '../constants'
 import { fetchPost } from '../helpers/fetch'
 import { setToken } from '../redux/slices/session'
 
-export const SignIn = () => {
+const SignIn = () => {
     const [formData, setFormData] = useState({})
     const [loading, setLoading] = useState(false)
     const session = useSelector(({ session }) => session)
@@ -51,3 +51,5 @@ export const SignIn = () => {
     )
 
 }
+
+export default SignIn

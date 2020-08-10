@@ -25,7 +25,7 @@ import {
   Projects,
 } from '../components/landing'
 
-export const Home = () => {
+const Home = () => {
   const secondSection = useRef(null)
 
   const handleLearnMoreClick = (e) => {
@@ -89,3 +89,5 @@ export const Home = () => {
     </>
   )
 }
+
+export default Home

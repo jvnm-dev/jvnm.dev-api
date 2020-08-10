@@ -10,7 +10,7 @@ import {
 
 import { ErrorImage } from '../components/error'
 
-export const Maintenance = () => (
+const Maintenance = () => (
   <Container>
     <Section
       column
@@ -26,3 +26,5 @@ export const Maintenance = () => (
     </Section>
   </Container>
 )
+
+export default Maintenance

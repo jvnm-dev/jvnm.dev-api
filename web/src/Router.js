@@ -1,29 +1,39 @@
 import 'normalize.css'
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import { Redirect } from 'react-router-dom'
 
-import montserratRegular from './assets/fonts/Montserrat-Regular.ttf'
-import montserratSemibold from './assets/fonts/Montserrat-SemiBold.ttf'
+import montserratRegular from './assets/fonts/montserrat-regular-webfont.woff'
+import montserratRegular2 from './assets/fonts/montserrat-regular-webfont.woff2'
+import montserratSemibold from './assets/fonts/montserrat-semibold-webfont.woff'
+import montserratSemibold2 from './assets/fonts/montserrat-semibold-webfont.woff2'
+
+import { Loader } from './components/common'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
-import { Home, Maintenance, SignIn, Dashboard } from './screens'
 import { THEMES } from './constants'
+
+const Home = lazy(() => import('./screens/Home'))
+const Maintenance = lazy(() => import('./screens/Maintenance'))
+const SignIn = lazy(() => import('./screens/SignIn'))
+const Dashboard = lazy(() => import('./screens/Dashboard'))
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Montserrat';
-    font-weight: 400;
-    src: url(${montserratRegular}) format('truetype');
+    src: url(${montserratRegular2}) format('woff2'),
+        url(${montserratRegular}) format('woff');
+    font-weight: normal;
   }
 
   @font-face {
-    font-family: 'Montserrat';
-    font-weight: 600;
-    src: url(${montserratSemibold}) format('truetype');
+      font-family: 'Montserrat';
+      src: url(${montserratSemibold2}) format('woff2'),
+          url(${montserratSemibold}) format('woff');
+      font-weight: bold;
   }
 
   body {
@@ -63,11 +73,13 @@ export const Router = () => {
             : (
                 <>
                     <BrowserRouter>
-                      <Switch>
-                        <Route exact path='/signin' component={SignIn} />
-                        <ProtectedRoute exact path='/dashboard' session={session} component={Dashboard} />
-                        <Route component={Home} /> {/* fallback for all others routes */}
-                      </Switch>
+                      <Suspense fallback={<Loader full />}>
+                        <Switch>
+                          <Route exact path='/signin' component={SignIn} />
+                          <ProtectedRoute exact path='/dashboard' session={session} component={Dashboard} />
+                          <Route component={Home} /> {/* fallback for all others routes */}
+                        </Switch>
+                      </Suspense>
                     </BrowserRouter>
                 </>
               )

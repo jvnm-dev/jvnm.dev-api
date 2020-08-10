@@ -7,6 +7,11 @@ const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({full}) => full && `
+    height: 100vh;
+    width: 100vw;
+  `}
 `
 
 const LoaderImage = styled.img`
@@ -14,8 +19,8 @@ const LoaderImage = styled.img`
   width: 64px;
 `
 
-export const Loader = () => (
-  <LoaderContainer>
+export const Loader = ({ full }) => (
+  <LoaderContainer full={full}>
     <LoaderImage src={loaderImage} alt="Loading..." />
   </LoaderContainer>
 )

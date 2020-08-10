@@ -4,7 +4,7 @@ import { Navbar } from '../components/common/navbar'
 import { AvailabilitySelector } from '../components/dashboard'
 
 
-export const Dashboard = () => {
+const Dashboard = () => {
   return (
     <>
       <Navbar dashboard />
@@ -12,3 +12,5 @@ export const Dashboard = () => {
     </>
   )
 }
+
+export default Dashboard
