@@ -47,7 +47,7 @@ export class ErrorBoundary extends Component {
               <ErrorImage src={errorImage} alt="Error" />
               <Title>Oops!</Title>
               <Text margin centered>
-                Something went wrong. {this.state.isMobile && <br />}Try to <a href='/' onClick={this.refresh}>refresh the page</a>.<br/>
+                Something went wrong. {this.state.isMobile && <br />}Try to <a href='/' onClick={this.refresh}>click here</a>.<br/>
                 If the problem persists, {this.state.isMobile && <br />}<a href='mailto:jasonvanmalder@gmail.com'>please contact me</a>.
               </Text>
               {this.state.isDebug && (

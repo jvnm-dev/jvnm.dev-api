@@ -11,7 +11,7 @@ import montserratSemibold from './assets/fonts/Montserrat-SemiBold.ttf'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
 import { Home, Maintenance, SignIn, Dashboard } from './screens'
-import { themes } from './constants'
+import { THEMES } from './constants'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -54,27 +54,27 @@ export const Router = () => {
   const { theme, session } = useSelector(({ theme, session }) => ({ theme, session }))
 
   return (
-    <ThemeProvider theme={themes[theme]}>
-      <GlobalStyle />
-      {
-        process.env.REACT_APP_MAINTENANCE_MODE === 'yes'
-          ? <Maintenance />
-          : (
-              <>
-                <ErrorBoundary>
-                  <BrowserRouter>
-                    <Switch>
-                      <Route exact path='/signin' component={SignIn} />
-                      <ProtectedRoute exact path='/dashboard' session={session} component={Dashboard} />
-                      <Route component={Home} /> {/* fallback for all others routes */}
-                    </Switch>
-                  </BrowserRouter>
-                </ErrorBoundary>
-              </>
-            )
-      }
-      <ThemeSwitcher />
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider theme={THEMES[theme]}>
+        <GlobalStyle />
+        {
+          process.env.REACT_APP_MAINTENANCE_MODE === 'yes'
+            ? <Maintenance />
+            : (
+                <>
+                    <BrowserRouter>
+                      <Switch>
+                        <Route exact path='/signin' component={SignIn} />
+                        <ProtectedRoute exact path='/dashboard' session={session} component={Dashboard} />
+                        <Route component={Home} /> {/* fallback for all others routes */}
+                      </Switch>
+                    </BrowserRouter>
+                </>
+              )
+        }
+        <ThemeSwitcher />
+      </ThemeProvider>
+    </ErrorBoundary>
   )
 }
 

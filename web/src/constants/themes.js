@@ -1,5 +1,9 @@
+import { faSun } from '@fortawesome/free-solid-svg-icons'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
+
 const THEME_LIGHT = {
-  mode: 'light',
+  name: 'THEME_LIGHT',
+  icon: faSun,
   background: '#FEFEFE',
   headerBorder: '#EEE',
   title: {
@@ -15,7 +19,8 @@ const THEME_LIGHT = {
 }
 
 const THEME_DARK = {
-  mode: 'dark',
+  name: 'THEME_DARK',
+  icon: faMoon,
   background: '#212121',
   headerBorder: '#2f2f2f',
   title: {
@@ -30,7 +35,7 @@ const THEME_DARK = {
   colorPrimary: '#B5B7FB',
 }
 
-export const themes = {
+export const THEMES = {
   'THEME_LIGHT': THEME_LIGHT,
   'THEME_DARK': THEME_DARK,
 }

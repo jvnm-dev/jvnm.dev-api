@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun } from '@fortawesome/free-solid-svg-icons'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
+import { THEMES } from '../../constants'
 import { setTheme } from '../../redux/slices/themes'
 
 const ThemeSwitcherButton = styled.button`
@@ -35,22 +34,15 @@ const ThemeSwitcherButton = styled.button`
 export const ThemeSwitcher = () => {
   const dispatch = useDispatch()
   const theme = useSelector(({ theme }) => theme)
+  const nextTheme = Object.values(THEMES).find(t => t.name !== theme)
 
   const toggleTheme = () => {
-      dispatch(setTheme(
-        theme === 'THEME_LIGHT'
-          ? 'THEME_DARK'
-          : 'THEME_LIGHT'
-      ))
+    dispatch(setTheme(nextTheme.name))
   }
 
   return (
     <ThemeSwitcherButton onClick={toggleTheme}>
-      {
-        theme.mode === 'THEME_LIGHT'
-          ? <FontAwesomeIcon icon={faMoon} />
-          : <FontAwesomeIcon icon={faSun} />
-      }
+      <FontAwesomeIcon icon={nextTheme.icon} />
     </ThemeSwitcherButton>
   )
 }

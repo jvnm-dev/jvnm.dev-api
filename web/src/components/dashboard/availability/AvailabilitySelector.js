@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { gql } from 'apollo-boost'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 
@@ -23,7 +23,6 @@ const UPDATE_AVAILABILITY = gql`
 `
 
 export const AvailabilitySelector = () => {
-  const availability = useSelector(({ availability }) => availability)
   const dispatch = useDispatch()
   const { loading, error, data } = useQuery(LAST_AVAILABILITY)
   const [ updateAvailability ] = useMutation(UPDATE_AVAILABILITY)
@@ -57,7 +56,7 @@ export const AvailabilitySelector = () => {
   }
 
   return (
-    <select value={availability.status} onChange={handleChange}>
+    <select value={data.availability.status} onChange={handleChange}>
       {Object.keys(AVAILABILITIES).map((k, i) => (
         <option key={i} value={AVAILABILITIES[k]}>{k.replace('_', ' ')}</option>
       ))}
