@@ -57,12 +57,12 @@ export const Navbar = ({ contact, dashboard }) => {
           )}
         </NavbarMenu>
         { contact && (
-          <NavbarButton to="/" onClick={handleContactButtonClick}>
+          <NavbarButton aria-label='Contact' to="/" onClick={handleContactButtonClick}>
             Contact
           </NavbarButton>
         )}
         { !contact && session.token && (
-          <NavbarButton to="/" onClick={handleSignOutButtonClick}>
+          <NavbarButton aria-label='Sign out' to="/" onClick={handleSignOutButtonClick}>
             Sign out
           </NavbarButton>
         )}

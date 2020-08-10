@@ -41,7 +41,7 @@ export const ThemeSwitcher = () => {
   }
 
   return (
-    <ThemeSwitcherButton onClick={toggleTheme}>
+    <ThemeSwitcherButton aria-label='Switch Theme' onClick={toggleTheme}>
       <FontAwesomeIcon icon={nextTheme.icon} />
     </ThemeSwitcherButton>
   )

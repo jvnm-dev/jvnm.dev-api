@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_gzip import Gzip
 
 from jvm.extensions import db, jwt, cors
 from jvm.settings import ProdConfig
@@ -20,6 +21,7 @@ def register_extensions(app):
     db.init_app(app)
     jwt.init_app(app)
     cors.init_app(app)
+    Gzip(app)
 
 
 def register_routes(app):

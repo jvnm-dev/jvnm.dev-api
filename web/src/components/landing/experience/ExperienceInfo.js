@@ -31,7 +31,7 @@ export const ExperienceInfo = ({ place, from, to }) => {
         {to && (
           <Fragment>
             <Text small bold color='#E1E1E1'>&nbsp;-&nbsp;</Text>
-            <Text small bold color='#ABC5D4'>{to}</Text>
+            <Text small bold color='#597A82'>{to}</Text>
           </Fragment>
         )}
       </DatesContainer>
