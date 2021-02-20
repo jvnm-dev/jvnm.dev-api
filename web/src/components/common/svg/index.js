@@ -1,1 +1,0 @@
-export { WaveClipPath } from './WaveClipPath'
