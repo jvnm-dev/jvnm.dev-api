@@ -19,12 +19,12 @@ export interface IExperience {
     role: string,
 }
 
-export const Experience = ({ image, place, dateFrom, dateTo, title, margin }: IExperience) => {
+export const Experience = ({ image, place, dateFrom, dateTo, title }: Partial<IExperience>) => {
     return (
-        <ExperienceContainer margin={margin}>
+        <ExperienceContainer>
             <ExperienceImage src={image} alt={place} />
             <ExperienceDetails>
-                <ExperienceInfo place={place} from={dateFrom} to={dateTo} />
+                <ExperienceInfo place={place} dateFrom={dateFrom} dateTo={dateTo} />
                 <ExperienceTitle>{title}</ExperienceTitle>
             </ExperienceDetails>
         </ExperienceContainer>

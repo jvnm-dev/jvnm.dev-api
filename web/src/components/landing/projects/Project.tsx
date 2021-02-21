@@ -101,7 +101,7 @@ const CardFooterText = styled.span`
     }
 `
 
-export const Project = ({data: { name, description, language, license, url }}: { data: IProject }) => {
+export const Project = ({data: { name, description, language, license, url }}: { data: Partial<IProject> }) => {
     const computeLanguageColor = (language: string) => {
         switch (language) {
             case 'TypeScript':
@@ -118,7 +118,7 @@ export const Project = ({data: { name, description, language, license, url }}: {
     }
 
     const redirect = () => {
-        window.location.href = url;
+        window.location.href = url ?? '';
     }
 
     return (
@@ -130,10 +130,10 @@ export const Project = ({data: { name, description, language, license, url }}: {
             <CardDescription>{description}</CardDescription>
             <CardFooter>
                 <CardLanguage>
-                    <CardLanguageBall bgColor={() => computeLanguageColor(language)} />
+                    <CardLanguageBall bgColor={() => computeLanguageColor(language ?? '')} />
                     <CardFooterText>{language}</CardFooterText>
                 </CardLanguage>
-                <CardFooterText><FontAwesomeIcon icon={faFileAlt} /> {license}</CardFooterText>
+                <CardFooterText><FontAwesomeIcon icon={faFileAlt} /> {license?.spdx_id}</CardFooterText>
             </CardFooter>
         </ProjectCard>
     )

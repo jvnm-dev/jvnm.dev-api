@@ -7,6 +7,7 @@ import { Loader } from '../../common'
 import { setAvailability } from '../../../redux/slices/availability'
 import { AVAILABILITIES, STATUS_TEXTS } from '../../../constants'
 import { LAST_AVAILABILITY } from '../../landing/availability/Availability'
+import {IAvailabilityKeys} from "../../../constants/availabilities";
 
 const UPDATE_AVAILABILITY = gql`
   mutation UpdateAvailability ($id: ID!, $status: Int!) {
@@ -39,7 +40,7 @@ export const AvailabilitySelector = () => {
 
         dispatch(setAvailability({
             status: newValue,
-            statusText: STATUS_TEXTS[newValue],
+            statusText: STATUS_TEXTS[newValue as any],
         }))
     }
 
@@ -58,7 +59,7 @@ export const AvailabilitySelector = () => {
     return (
         <select value={data.availability.status} onChange={handleChange}>
             {Object.keys(AVAILABILITIES).map((k, i) => (
-                <option key={i} value={AVAILABILITIES[k]}>{k.replace('_', ' ')}</option>
+                <option key={i} value={AVAILABILITIES[k as keyof IAvailabilityKeys]}>{k.replace('_', ' ')}</option>
             ))}
         </select>
     )

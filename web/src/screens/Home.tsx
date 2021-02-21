@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, MouseEvent } from 'react'
 
 import computerImage from '../assets/img/computer.jpeg'
 import {
@@ -28,10 +28,10 @@ import {
 export const Home = () => {
     const secondSection = useRef(null)
 
-    const handleLearnMoreClick = (e) => {
+    const handleLearnMoreClick = (e: MouseEvent) => {
         e.preventDefault();
         window.scrollTo({
-            top: secondSection.current.offsetTop,
+            top: (secondSection?.current as any)?.offsetTop ?? 0,
             left: 0,
             behavior: 'smooth'
         })

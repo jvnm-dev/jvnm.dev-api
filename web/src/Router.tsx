@@ -12,7 +12,9 @@ import montserratSemibold2 from './assets/fonts/montserrat-semibold-webfont.woff
 import { Loader } from './components/common'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
-import { THEMES } from './constants/themes'
+import {ITheme, THEMES} from './constants/themes'
+import {ISession, ISessionReducer} from "./redux/slices/session";
+import {IThemeReducer, IThemes} from "./redux/slices/themes";
 
 const Home = lazy(() => import('./screens/Home'))
 const Maintenance = lazy(() => import('./screens/Maintenance'))
@@ -33,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
       font-weight: bold;
   }
   body {
-    background-color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }: { theme: ITheme}) => theme.background};
     transition: background 0.2s;
   }
   a, a:visited {
@@ -41,9 +43,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const ProtectedRoute = ({ component: Component, session, ...rest }) => {
+const ProtectedRoute = ({ component: Component, session, exact, path, ...rest }: {
+    component: any
+    session: ISession
+    exact: boolean
+    path: string
+}) => {
     return (
-        <Route {...rest} render={
+        <Route exact={exact} path={path} {...rest} render={
             props => {
                 if (session.token) {
                     return <Component {...rest} {...props} />
@@ -56,11 +63,16 @@ const ProtectedRoute = ({ component: Component, session, ...rest }) => {
 }
 
 export const Router = () => {
-    const { theme, session } = useSelector(({ theme, session }) => ({ theme, session }))
+    const { theme, session } = useSelector(({ theme, session }: { theme: IThemeReducer, session: ISessionReducer}) => (
+        { theme, session })
+    )
+
+    // @ts-ignore
+    const selectedTheme = THEMES[theme]
 
     return (
         <ErrorBoundary>
-            <ThemeProvider theme={THEMES[theme]}>
+            <ThemeProvider theme={selectedTheme}>
                 <GlobalStyle />
                 {
                     process.env.REACT_APP_MAINTENANCE_MODE === 'yes'
@@ -71,7 +83,7 @@ export const Router = () => {
                                     <Suspense fallback={<Loader full />}>
                                         <Switch>
                                             <Route exact path='/signin' component={SignIn} />
-                                            <ProtectedRoute exact path='/dashboard' session={session} component={Dashboard} />
+                                            <ProtectedRoute exact path='/dashboard' session={session.session} component={Dashboard} />
                                             <Route component={Home} /> {/* fallback for all others routes */}
                                         </Switch>
                                     </Suspense>

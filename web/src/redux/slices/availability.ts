@@ -3,7 +3,7 @@ import { AVAILABILITIES } from '../../constants'
 
 export interface IAvailabilityReducer {
     availability: {
-        status: string,
+        status: number,
         statusText: string,
     }
 }

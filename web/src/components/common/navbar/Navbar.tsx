@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ import {
 } from './'
 
 import { Container } from '../'
-import {ISession, setToken} from '../../../redux/slices/session'
+import {ISessionReducer, setToken} from '../../../redux/slices/session'
 
 interface INavbarProps {
     contact?: boolean,
@@ -20,15 +20,15 @@ interface INavbarProps {
 
 export const Navbar = ({ contact, dashboard }: INavbarProps) => {
     const history = useHistory()
-    const session = useSelector(({ session }: ISession) => session)
+    const session = useSelector(({ session }: ISessionReducer) => session)
     const dispatch = useDispatch()
 
-    const handleContactButtonClick = (e) => {
+    const handleContactButtonClick = (e: MouseEvent) => {
         e.preventDefault()
         window.location.href = 'mailto:jasonvanmalder@gmail.com'
     }
 
-    const handleSignOutButtonClick = (e) => {
+    const handleSignOutButtonClick = (e: MouseEvent) => {
         e.preventDefault()
         dispatch(setToken(undefined))
         history.push('/')

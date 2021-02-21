@@ -43,13 +43,13 @@ export const Experiences = () => {
 
     return (
         <Fragment>
-            {experiences.map((experience: IExperience) => (
+            {experiences.map((experience: Partial<IExperience>) => (
                 <Experience
                     key={`exp-${experience.id}`}
                     image={experience.image}
                     place={experience.place}
-                    from={experience.dateFrom}
-                    to={experience.dateTo}
+                    dateFrom={experience.dateFrom}
+                    dateTo={experience.dateTo}
                     title={experience.role}
                 />
             ))}

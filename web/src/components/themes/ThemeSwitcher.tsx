@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { THEMES } from '../../constants'
-import { setTheme } from '../../redux/slices/themes'
+import {IThemeReducer, setTheme} from '../../redux/slices/themes'
 
 const ThemeSwitcherButton = styled.button`
   position: fixed;
@@ -30,22 +30,18 @@ const ThemeSwitcherButton = styled.button`
   }
 `
 
-interface IThemeContainer {
-    theme: string
-}
-
 export const ThemeSwitcher = () => {
     const dispatch = useDispatch()
-    const theme = useSelector(({ theme }: IThemeContainer) => theme)
+    const theme = useSelector(({ theme }: IThemeReducer) => theme)
     const nextTheme = Object.values(THEMES).find(t => t.name !== theme)
 
     const toggleTheme = () => {
-        dispatch(setTheme(nextTheme.name))
+        dispatch(setTheme(nextTheme?.name))
     }
 
     return (
         <ThemeSwitcherButton aria-label='Switch Theme' onClick={toggleTheme}>
-            <FontAwesomeIcon icon={nextTheme.icon} />
+            {nextTheme && <FontAwesomeIcon icon={nextTheme.icon} />}
         </ThemeSwitcherButton>
     )
 }

@@ -62,7 +62,7 @@ export const Projects = () => {
                     name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
                     description: p.description,
                     language: p.language,
-                    license: p?.license?.spdx_id,
+                    license: p?.license,
                     url: p.svn_url,
                 }} />
             })}

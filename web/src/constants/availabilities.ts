@@ -1,3 +1,10 @@
+export interface IAvailabilityKeys {
+    loading: number,
+    available: number,
+    partially_available: number,
+    not_available: number,
+}
+
 export const AVAILABILITIES = {
     loading: 0,
     available: 1,

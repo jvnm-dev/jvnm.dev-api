@@ -1,3 +1,6 @@
 .vscode/
 .netlify/
 */.env
+.idea
+.netlify
+.DS_Store

@@ -1,8 +1,24 @@
 
-import { faSun } from '@fortawesome/free-solid-svg-icons'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faSun, faMoon, IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
-const THEME_LIGHT = {
+export interface ITheme {
+    name: string,
+    icon: IconDefinition,
+    background: string,
+    headerBorder: string,
+    title: {
+        default: string,
+        inverse: string,
+    },
+    text: string,
+    wavyContainer: string,
+    themeSwitcherShadow: string,
+    inputBackground: string,
+    inputForeground: string,
+    colorPrimary: string,
+}
+
+const THEME_LIGHT: ITheme = {
     name: 'THEME_LIGHT',
     icon: faSun,
     background: '#FEFEFE',
@@ -19,7 +35,7 @@ const THEME_LIGHT = {
     colorPrimary: '#6961FB',
 }
 
-const THEME_DARK = {
+const THEME_DARK: ITheme = {
     name: 'THEME_DARK',
     icon: faMoon,
     background: '#212121',
