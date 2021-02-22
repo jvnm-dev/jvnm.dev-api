@@ -1,5 +1,2 @@
-env/
-jvmenv/
-__pycache__/
-*/__pycache__/
-db.sql
+.idea
+.env
