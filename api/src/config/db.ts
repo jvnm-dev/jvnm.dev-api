@@ -1,5 +1,5 @@
-import {config} from 'https://deno.land/x/dotenv/mod.ts'
-import {Client} from 'https://deno.land/x/postgres/mod.ts'
+import { config } from 'https://deno.land/x/dotenv/mod.ts'
+import { Client } from 'https://deno.land/x/postgres/mod.ts'
 import { ServerLogger } from '../utils/ServerLogger.ts'
 
 class Database {
@@ -37,6 +37,7 @@ class Database {
         if (this.client) {
             try {
                 await this.client?.connect()
+                ServerLogger.log('Connected!')
                 this.connected = true
                 return
             } catch (e) {
@@ -46,7 +47,42 @@ class Database {
 
         throw new Error('Database: no client')
     }
+
+    async findAll(
+        table: string,
+        where: string = '',
+        fields: string = '*'
+    ): Promise<any[] | undefined> {
+        if (!this.client) return
+
+        let query = `SELECT ${fields} FROM ${table};`
+
+        if (where) {
+            query = `${query} ${where}`
+        }
+
+        const result = await this.client.queryObject(query)
+
+        return result?.rows
+    }
+
+    async findFirst(
+        table: string,
+        where: string = '',
+        fields: string = '*'
+    ): Promise<any | undefined> {
+        if (!this.client) return
+
+        let query = `SELECT ${fields} FROM ${table};`
+
+        if (where) {
+            query = `${query} ${where}`
+        }
+
+        const result = await this.findAll(table, where, fields)
+
+        return result?.[0]
+    }
 }
 
 export const db = Database
-db.instance

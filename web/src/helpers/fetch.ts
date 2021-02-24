@@ -6,7 +6,7 @@ export const fetchGet = async (url: string) => {
 export const fetchPost = async (url: string, data: any, token?: string) => {
     const headers: Headers = new Headers({
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
     })
 
     if (token) {
@@ -17,7 +17,7 @@ export const fetchPost = async (url: string, data: any, token?: string) => {
         method: 'POST',
         headers,
         mode: 'cors',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
     })
 
     return response.json()

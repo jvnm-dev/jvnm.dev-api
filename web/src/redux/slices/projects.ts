@@ -1,16 +1,16 @@
-import {createSlice, Slice} from '@reduxjs/toolkit'
+import { createSlice, Slice } from '@reduxjs/toolkit'
 
 export interface IProject {
-    id: string,
-    name: string,
-    description: string,
-    language: string,
+    id: string
+    name: string
+    description: string
+    language: string
     license: {
-        spdx_id: string,
-    },
-    svn_url: string,
-    url: string,
-    fork: boolean,
+        spdx_id: string
+    }
+    svn_url: string
+    url: string
+    fork: boolean
 }
 
 export interface IProjectReducer {
@@ -21,8 +21,8 @@ const projectsSlice: Slice = createSlice({
     name: 'projects',
     initialState: [],
     reducers: {
-        setProjects: (state, action) => state = action.payload
-    }
+        setProjects: (state, action) => (state = action.payload),
+    },
 })
 
 export const { setProjects } = projectsSlice.actions

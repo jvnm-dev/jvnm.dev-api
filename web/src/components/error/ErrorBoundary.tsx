@@ -1,18 +1,13 @@
-import React, {Component, ErrorInfo, MouseEvent} from 'react'
+import React, { Component, ErrorInfo, MouseEvent } from 'react'
 
 import errorImage from '../../assets/img/error.svg'
-import {
-    Container,
-    Section,
-    Title,
-    Text,
-} from '../common'
+import { Container, Section, Title, Text } from '../common'
 import { ErrorImage, ErrorDetailsSummary } from './'
 
 interface IErrorBoundaryState {
-    error: Error | null,
-    errorInfo: ErrorInfo | null,
-    isDebug: boolean,
+    error: Error | null
+    errorInfo: ErrorInfo | null
+    isDebug: boolean
     isMobile: boolean
 }
 
@@ -59,17 +54,30 @@ export class ErrorBoundary extends Component<any, IErrorBoundaryState> {
                         <ErrorImage src={errorImage} alt="Error" />
                         <Title>Oops!</Title>
                         <Text margin centered>
-                            Something went wrong. {this.state.isMobile && <br />}Try to <a href='/' onClick={this.refresh}>refresh the page</a>.<br/>
-                            If the problem persists, {this.state.isMobile && <br />}<a href='mailto:jasonvanmalder@gmail.com'>please contact me</a>.
+                            Something went wrong.{' '}
+                            {this.state.isMobile && <br />}Try to{' '}
+                            <a href="/" onClick={this.refresh}>
+                                refresh the page
+                            </a>
+                            .<br />
+                            If the problem persists,{' '}
+                            {this.state.isMobile && <br />}
+                            <a href="mailto:jasonvanmalder@gmail.com">
+                                please contact me
+                            </a>
+                            .
                         </Text>
                         {this.state.isDebug && (
                             <details style={{ whiteSpace: 'pre-wrap' }}>
-                                <ErrorDetailsSummary><Text>Details</Text></ErrorDetailsSummary>
+                                <ErrorDetailsSummary>
+                                    <Text>Details</Text>
+                                </ErrorDetailsSummary>
                                 <pre>
-                                    {this.state.error && this.state.error.toString()}
+                                    {this.state.error &&
+                                        this.state.error.toString()}
                                     <br />
                                     {this.state.errorInfo.componentStack}
-                                  </pre>
+                                </pre>
                             </details>
                         )}
                     </Section>

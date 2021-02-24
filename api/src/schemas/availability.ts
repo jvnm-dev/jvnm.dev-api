@@ -1,4 +1,4 @@
-import {gql} from '../config/deps.ts'
+import { gql } from '../config/deps.ts'
 
 export const availabilitySchema = gql`
     type Availability {

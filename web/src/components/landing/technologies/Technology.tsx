@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ITechnology} from "../../../redux/slices/technologies";
+import { ITechnology } from '../../../redux/slices/technologies'
 
 const TechnologyContainer = styled.div`
     margin-top: 36px;
@@ -65,7 +65,7 @@ const TechnologyTooltip = styled.span`
     cursor: default;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.6);
-    color: #FFF;
+    color: #fff;
     border-radius: 5px;
 `
 

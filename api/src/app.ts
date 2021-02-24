@@ -1,8 +1,8 @@
-import {Application, applyGraphQL, Router} from './config/deps.ts'
-import {db} from './config/db.ts'
-import {schemas} from './schemas/index.ts'
-import {resolvers} from './resolvers/index.ts'
-import {logLevels, ServerLogger} from './utils/ServerLogger.ts'
+import { Application, applyGraphQL, oakCors, Router } from './config/deps.ts'
+import { db } from './config/db.ts'
+import { schemas } from './schemas/index.ts'
+import { resolvers } from './resolvers/index.ts'
+import { logLevels, ServerLogger } from './utils/ServerLogger.ts'
 
 export class App {
     public app: Application
@@ -28,13 +28,17 @@ export class App {
     public async run(): Promise<void> {
         try {
             ServerLogger.log(`Server start on port ${this.port}`)
-            await this.app.listen({port: this.port})
+            await this.app.listen({ port: this.port })
         } catch (e) {
-            ServerLogger.log('Failed to start server ' + e.message, logLevels.ERR)
+            ServerLogger.log(
+                'Failed to start server ' + e.message,
+                logLevels.ERR
+            )
         }
     }
 
     private initializeMiddleware() {
+        this.app.use(oakCors({ origin: '*' }))
         this.app.use(ServerLogger.newRequest())
     }
 
@@ -43,7 +47,7 @@ export class App {
             Router,
             path: '/graphql',
             typeDefs: schemas,
-            resolvers: {},
+            resolvers: resolvers,
         })
 
         this.app.use(GraphQLService.routes(), GraphQLService.allowedMethods())

@@ -7,14 +7,14 @@ import {
     NavbarMenu,
     NavbarMenuItem,
     NavbarLogo,
-    NavbarButton
+    NavbarButton,
 } from './'
 
 import { Container } from '../'
-import {ISessionReducer, setToken} from '../../../redux/slices/session'
+import { ISessionReducer, setToken } from '../../../redux/slices/session'
 
 interface INavbarProps {
-    contact?: boolean,
+    contact?: boolean
     dashboard?: boolean
 }
 
@@ -37,7 +37,7 @@ export const Navbar = ({ contact, dashboard }: INavbarProps) => {
     return (
         <NavbarContainer>
             <Container flex fullHeight>
-                <NavbarLogo to='/'>
+                <NavbarLogo to="/">
                     <span>J</span>
                     <span>V</span>
                     <span>M</span>
@@ -54,19 +54,27 @@ export const Navbar = ({ contact, dashboard }: INavbarProps) => {
               <Link to="/">Blog</Link>
             </NavbarMenuItem>
           */}
-                    { dashboard && (
+                    {dashboard && (
                         <NavbarMenuItem>
                             <Link to="/dashboard/">Landing Data</Link>
                         </NavbarMenuItem>
                     )}
                 </NavbarMenu>
-                { contact && (
-                    <NavbarButton aria-label='Contact' to="/" onClick={handleContactButtonClick}>
+                {contact && (
+                    <NavbarButton
+                        aria-label="Contact"
+                        to="/"
+                        onClick={handleContactButtonClick}
+                    >
                         Contact
                     </NavbarButton>
                 )}
-                { !contact && session.token && (
-                    <NavbarButton aria-label='Sign out' to="/" onClick={handleSignOutButtonClick}>
+                {!contact && session.token && (
+                    <NavbarButton
+                        aria-label="Sign out"
+                        to="/"
+                        onClick={handleSignOutButtonClick}
+                    >
                         Sign out
                     </NavbarButton>
                 )}

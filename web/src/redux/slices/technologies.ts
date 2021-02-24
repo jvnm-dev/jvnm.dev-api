@@ -1,9 +1,9 @@
-import {createSlice, Slice} from '@reduxjs/toolkit'
+import { createSlice, Slice } from '@reduxjs/toolkit'
 
 export interface ITechnology {
-    id: string,
-    image: string,
-    name: string,
+    id: string
+    image: string
+    name: string
 }
 
 export interface ITechnologiesReducer {
@@ -14,8 +14,8 @@ const technologiesSlice: Slice = createSlice({
     name: 'technologies',
     initialState: [],
     reducers: {
-        setTechnologies: (state, action) => state = action.payload
-    }
+        setTechnologies: (state, action) => (state = action.payload),
+    },
 })
 
 export const { setTechnologies } = technologiesSlice.actions

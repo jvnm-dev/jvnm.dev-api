@@ -1,4 +1,4 @@
-import {createSlice, Slice} from '@reduxjs/toolkit'
+import { createSlice, Slice } from '@reduxjs/toolkit'
 
 export interface ISession {
     token: string
@@ -12,11 +12,12 @@ export const sessionSlice: Slice = createSlice({
     name: 'session',
     initialState: {},
     reducers: {
-        setToken: (state, action) => state = {
-            ...state,
-            token: action.payload,
-        }
-    }
+        setToken: (state, action) =>
+            (state = {
+                ...state,
+                token: action.payload,
+            }),
+    },
 })
 
 export const { setToken } = sessionSlice.actions

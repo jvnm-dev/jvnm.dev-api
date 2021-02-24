@@ -1,9 +1,9 @@
-import {gql} from '../config/deps.ts'
+import { gql } from '../config/deps.ts'
 
 export const technologySchema = gql`
     type Technology {
         id: ID
-        image: String,
-        name: String,
+        image: String
+        name: String
     }
 `

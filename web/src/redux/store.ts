@@ -1,5 +1,10 @@
 import storage from 'redux-persist/lib/storage'
-import { configureStore, combineReducers, getDefaultMiddleware, Store } from '@reduxjs/toolkit'
+import {
+    configureStore,
+    combineReducers,
+    getDefaultMiddleware,
+    Store,
+} from '@reduxjs/toolkit'
 import {
     persistReducer,
     persistStore,
@@ -8,7 +13,7 @@ import {
     PAUSE,
     PERSIST,
     PURGE,
-    REGISTER
+    REGISTER,
 } from 'redux-persist'
 
 import sessionReducer from './slices/session'
@@ -17,7 +22,7 @@ import availabilityReducer from './slices/availability'
 import experiencesReducer from './slices/experiences'
 import technologiesReducer from './slices/technologies'
 import projectsReducer from './slices/projects'
-import {Persistor} from "redux-persist/es/types";
+import { Persistor } from 'redux-persist/es/types'
 
 export const reducers = combineReducers({
     session: sessionReducer,
@@ -28,10 +33,10 @@ export const reducers = combineReducers({
     projects: projectsReducer,
 })
 
-const persistConfig  = {
+const persistConfig = {
     key: 'root',
     whitelist: ['session', 'theme'],
-    storage
+    storage,
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -40,9 +45,9 @@ export const store: Store = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-        }
-    })
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+    }),
 })
 
 export const persistor: Persistor = persistStore(store)

@@ -1,40 +1,41 @@
 {
-  "name": "web",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "serve": "vite preview"
-  },
-  "dependencies": {
-    "@apollo/react-hooks": "^4.0.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@reduxjs/toolkit": "^1.5.0",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.7",
-    "apollo-boost": "^0.4.9",
-    "graphql": "^15.5.0",
-    "normalize.css": "^8.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-helmet": "^6.1.0",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "redux-persist": "^6.0.0",
-    "styled-components": "^5.2.1"
-  },
-  "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.15.2",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-helmet": "^6.1.0",
-    "@types/react-redux": "^7.1.16",
-    "@types/redux-persist": "^4.3.1",
-    "@vitejs/plugin-react-refresh": "^1.1.0",
-    "typescript": "^4.1.2",
-    "vite": "^2.0.0"
-  }
+    "name": "web",
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "@apollo/react-hooks": "^4.0.0",
+        "@fortawesome/fontawesome-svg-core": "^1.2.34",
+        "@fortawesome/free-solid-svg-icons": "^5.15.2",
+        "@fortawesome/react-fontawesome": "^0.1.14",
+        "@reduxjs/toolkit": "^1.5.0",
+        "@types/react-router-dom": "^5.1.7",
+        "@types/styled-components": "^5.1.7",
+        "apollo-boost": "^0.4.9",
+        "graphql": "^15.5.0",
+        "normalize.css": "^8.0.1",
+        "prop-types": "^15.7.2",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
+        "react-helmet": "^6.1.0",
+        "react-redux": "^7.2.2",
+        "react-router-dom": "^5.2.0",
+        "redux-persist": "^6.0.0",
+        "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+        "@fortawesome/free-brands-svg-icons": "^5.15.2",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-helmet": "^6.1.0",
+        "@types/react-redux": "^7.1.16",
+        "@types/redux-persist": "^4.3.1",
+        "@vitejs/plugin-react-refresh": "^1.1.0",
+        "prettier": "2.2.1",
+        "typescript": "^4.1.2",
+        "vite": "^2.0.0"
+    }
 }

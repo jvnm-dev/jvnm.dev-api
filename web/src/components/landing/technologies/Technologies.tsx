@@ -5,22 +5,28 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { Loader } from '../../common'
 import { Technology, TechnologiesContainer } from '../'
-import {ITechnologiesReducer, setTechnologies} from '../../../redux/slices/technologies'
+import {
+    ITechnologiesReducer,
+    ITechnology,
+    setTechnologies,
+} from '../../../redux/slices/technologies'
 
 export const TECHNOLOGIES = gql`
-  {
-    technologies {
-        id,
-        image,
-        name,
+    {
+        technologies {
+            id
+            image
+            name
+        }
     }
-  }
 `
 
 export const Technologies = () => {
     const dispatch = useDispatch()
-    const {loading, error, data} = useQuery(TECHNOLOGIES)
-    const technologies = useSelector(({ technologies }: ITechnologiesReducer) => technologies)
+    const { loading, error, data } = useQuery(TECHNOLOGIES)
+    const technologies = useSelector(
+        ({ technologies }: ITechnologiesReducer) => technologies
+    )
 
     useEffect(() => {
         if (!loading) {
@@ -38,7 +44,7 @@ export const Technologies = () => {
 
     return (
         <TechnologiesContainer>
-            {technologies.map(technology => (
+            {technologies.map((technology: ITechnology) => (
                 <Technology
                     key={`tech-${technology.id}`}
                     image={technology.image}

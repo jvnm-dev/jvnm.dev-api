@@ -1,8 +1,8 @@
 export interface IAvailabilityKeys {
-    loading: number,
-    available: number,
-    partially_available: number,
-    not_available: number,
+    loading: number
+    available: number
+    partially_available: number
+    not_available: number
 }
 
 export const AVAILABILITIES = {
@@ -15,5 +15,5 @@ export const AVAILABILITIES = {
 export const STATUS_TEXTS = {
     [AVAILABILITIES.available]: 'Available',
     [AVAILABILITIES.partially_available]: 'Partially available',
-    [AVAILABILITIES.not_available]: 'Not available'
+    [AVAILABILITIES.not_available]: 'Not available',
 }

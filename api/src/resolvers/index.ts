@@ -1,6 +1,6 @@
-import {AvailabilityQueries, AvailabilityMutations} from './availability.ts'
-import {ExperienceQueries, ExperienceMutations} from './experience.ts'
-import {TechnologyQueries, TechnologyMutations} from './technology.ts'
+import { AvailabilityQueries, AvailabilityMutations } from './availability.ts'
+import { ExperienceQueries, ExperienceMutations } from './experience.ts'
+import { TechnologyQueries, TechnologyMutations } from './technology.ts'
 
 export const resolvers = {
     Query: {
@@ -8,10 +8,10 @@ export const resolvers = {
         ...ExperienceQueries,
         ...TechnologyQueries,
     },
-
+    /*
     Mutation: {
         ...AvailabilityMutations,
         ...ExperienceMutations,
         ...TechnologyMutations,
-    }
+    }*/
 }

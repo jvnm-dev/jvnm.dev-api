@@ -22,11 +22,12 @@ const App = (): JSX.Element => {
         <ApolloProvider client={client}>
             <ReduxProvider store={store}>
                 <PersistGate loading={<Loader />} persistor={persistor}>
-                    <Helmet
-                        titleTemplate="%s | Jason Van Malder"
-                    >
+                    <Helmet titleTemplate="%s | Jason Van Malder">
                         <title>Home</title>
-                        <meta name="description" content="A software engineer personal website/lab" />
+                        <meta
+                            name="description"
+                            content="A software engineer personal website/lab"
+                        />
                         <meta charSet="utf-8" />
                         <link rel="canonical" href="https://jvnm.dev" />
                     </Helmet>

@@ -1,30 +1,35 @@
 import React, { Fragment, useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Loader } from '../../common'
 import { Experience } from '../'
-import {IExperienceReducer, setExperiences} from '../../../redux/slices/experiences'
-import {IExperience} from "./Experience";
+import {
+    IExperienceReducer,
+    setExperiences,
+} from '../../../redux/slices/experiences'
+import { IExperience } from './Experience'
 
 export const EXPERIENCES = gql`
-  {
-    experiences {
-        id,
-        image,
-        place,
-        dateFrom,
-        dateTo,
-        role,
+    {
+        experiences {
+            id
+            image
+            place
+            datefrom
+            dateto
+            role
+        }
     }
-  }
 `
 
 export const Experiences = () => {
     const dispatch = useDispatch()
-    const {loading, error, data} = useQuery(EXPERIENCES);
-    const experiences = useSelector(({ experiences }: IExperienceReducer) => experiences)
+    const { loading, error, data } = useQuery(EXPERIENCES)
+    const experiences = useSelector(
+        ({ experiences }: IExperienceReducer) => experiences
+    )
 
     useEffect(() => {
         if (!loading) {
@@ -33,7 +38,9 @@ export const Experiences = () => {
             }
 
             const experiences = data?.experiences ?? []
-            dispatch(setExperiences([...experiences].sort((a, b) => b.id - a.id)))
+            dispatch(
+                setExperiences([...experiences].sort((a, b) => b.id - a.id))
+            )
         }
     }, [loading, error, data, dispatch])
 
@@ -48,8 +55,8 @@ export const Experiences = () => {
                     key={`exp-${experience.id}`}
                     image={experience.image}
                     place={experience.place}
-                    dateFrom={experience.dateFrom}
-                    dateTo={experience.dateTo}
+                    dateFrom={experience.datefrom}
+                    dateTo={experience.dateto}
                     title={experience.role}
                 />
             ))}

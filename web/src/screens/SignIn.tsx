@@ -1,4 +1,4 @@
-import React, {ChangeEvent, MouseEvent, useState} from 'react'
+import React, { ChangeEvent, MouseEvent, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -7,13 +7,12 @@ import { Navbar } from '../components/common/navbar'
 import { Form, Input } from '../components/common/form'
 import { BACKEND_URL } from '../constants'
 import { fetchPost } from '../helpers/fetch'
-import {ISessionReducer, setToken} from '../redux/slices/session'
+import { ISessionReducer, setToken } from '../redux/slices/session'
 
 interface IFormData {
-    jvm_email?: string,
-    jvm_password?: string,
+    jvm_email?: string
+    jvm_password?: string
 }
-
 
 export const SignIn = () => {
     const [formData, setFormData] = useState<IFormData>({})
@@ -37,7 +36,7 @@ export const SignIn = () => {
     }
 
     if (session.token) {
-        return <Redirect to='/dashboard' />
+        return <Redirect to="/dashboard" />
     }
 
     return (
@@ -46,17 +45,35 @@ export const SignIn = () => {
             <Container>
                 <Section first horizontallyCentered verticallyCentered column>
                     <Title small>Sign in</Title>
-                    <Form autoComplete='off'>
-                        <Input name='jvm_email' type='text' placeholder='Email' onChange={handleChange} />
-                        <Input name='jvm_password' type='password' placeholder='Password' onChange={handleChange} />
-                        <Button aria-label='Sign in' to='/' width='full' onClick={onSubmit}>{loading ? 'Loading...' : 'Sign in'}</Button>
+                    <Form autoComplete="off">
+                        <Input
+                            name="jvm_email"
+                            type="text"
+                            placeholder="Email"
+                            onChange={handleChange}
+                        />
+                        <Input
+                            name="jvm_password"
+                            type="password"
+                            placeholder="Password"
+                            onChange={handleChange}
+                        />
+                        <Button
+                            aria-label="Sign in"
+                            to="/"
+                            width="full"
+                            onClick={onSubmit}
+                        >
+                            {loading ? 'Loading...' : 'Sign in'}
+                        </Button>
                     </Form>
-                    <Text small>Want to <Link to='/'>go back?</Link></Text>
+                    <Text small>
+                        Want to <Link to="/">go back?</Link>
+                    </Text>
                 </Section>
             </Container>
         </>
     )
-
 }
 
 export default SignIn

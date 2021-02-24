@@ -1,21 +1,24 @@
-
-import { faSun, faMoon, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import {
+    faSun,
+    faMoon,
+    IconDefinition,
+} from '@fortawesome/free-solid-svg-icons'
 
 export interface ITheme {
-    name: string,
-    icon: IconDefinition,
-    background: string,
-    headerBorder: string,
+    name: string
+    icon: IconDefinition
+    background: string
+    headerBorder: string
     title: {
-        default: string,
-        inverse: string,
-    },
-    text: string,
-    wavyContainer: string,
-    themeSwitcherShadow: string,
-    inputBackground: string,
-    inputForeground: string,
-    colorPrimary: string,
+        default: string
+        inverse: string
+    }
+    text: string
+    wavyContainer: string
+    themeSwitcherShadow: string
+    inputBackground: string
+    inputForeground: string
+    colorPrimary: string
 }
 
 const THEME_LIGHT: ITheme = {
@@ -28,7 +31,8 @@ const THEME_LIGHT: ITheme = {
         inverse: '#FEFEFE',
     },
     text: '#525252',
-    wavyContainer: 'linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)',
+    wavyContainer:
+        'linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)',
     themeSwitcherShadow: '0px 0px 25px 0px rgba(0,0,0,0.15)',
     inputBackground: '#F5F5F5',
     inputForeground: '#212121',
@@ -45,7 +49,8 @@ const THEME_DARK: ITheme = {
         inverse: '#212121',
     },
     text: '#B1B2CC',
-    wavyContainer: 'linear-gradient(135deg, rgba(90,81,250,0.75) 0%, rgba(179,204,210,0.75) 100%)',
+    wavyContainer:
+        'linear-gradient(135deg, rgba(90,81,250,0.75) 0%, rgba(179,204,210,0.75) 100%)',
     themeSwitcherShadow: '0px 0px 25px 0px #b5b7fb47',
     inputBackground: '#2B2B2B',
     inputForeground: '#FEFEFE',
@@ -53,6 +58,6 @@ const THEME_DARK: ITheme = {
 }
 
 export const THEMES = {
-    'THEME_LIGHT': THEME_LIGHT,
-    'THEME_DARK': THEME_DARK,
+    THEME_LIGHT: THEME_LIGHT,
+    THEME_DARK: THEME_DARK,
 }

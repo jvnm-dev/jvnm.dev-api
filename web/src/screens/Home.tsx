@@ -1,9 +1,7 @@
 import React, { useRef, MouseEvent } from 'react'
 
 import computerImage from '../assets/img/computer.jpeg'
-import {
-    WaveClipPath,
-} from '../components/common/svg'
+import { WaveClipPath } from '../components/common/svg'
 import {
     Container,
     WavyContainer,
@@ -29,11 +27,11 @@ export const Home = () => {
     const secondSection = useRef(null)
 
     const handleLearnMoreClick = (e: MouseEvent) => {
-        e.preventDefault();
+        e.preventDefault()
         window.scrollTo({
             top: (secondSection?.current as any)?.offsetTop ?? 0,
             left: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
         })
     }
 
@@ -41,18 +39,22 @@ export const Home = () => {
         <>
             <Navbar contact />
             <Container>
-                <Section
-                    first
-                    horizontallyCentered
-                    verticallyCentered
-                >
+                <Section first horizontallyCentered verticallyCentered>
                     <ColumnsContainer>
                         <Column padding centered>
                             <Title>Software Engineer</Title>
                             <Text margin intro={true}>
-                                Currently working as a consultant for a company specialized in IPTV, media management and secure solutions for the medical sector.
+                                Currently working as a consultant for a company
+                                specialized in IPTV, media management and secure
+                                solutions for the medical sector.
                             </Text>
-                            <Button aria-label='Learn more' to='/' onClick={handleLearnMoreClick}>Learn more</Button>
+                            <Button
+                                aria-label="Learn more"
+                                to="/"
+                                onClick={handleLearnMoreClick}
+                            >
+                                Learn more
+                            </Button>
                             <Availability />
                         </Column>
                         <ImageColumn background={computerImage} />
@@ -69,7 +71,9 @@ export const Home = () => {
                             <Experiences />
                         </Column>
                         <Column>
-                            <Title small marginMobile>Technologies I work with</Title>
+                            <Title small marginMobile>
+                                Technologies I work with
+                            </Title>
                             <Technologies />
                         </Column>
                     </ColumnsContainer>
@@ -77,12 +81,10 @@ export const Home = () => {
             </Container>
             <WaveClipPath />
             <WavyContainer>
-                <Section
-                    column
-                    horizontallyCentered
-                    mobilePadding
-                >
-                    <Title small inverse>Side projects</Title>
+                <Section column horizontallyCentered mobilePadding>
+                    <Title small inverse>
+                        Side projects
+                    </Title>
                     <Projects />
                 </Section>
             </WavyContainer>

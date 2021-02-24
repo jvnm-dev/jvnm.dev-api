@@ -1,6 +1,6 @@
 import * as Colors from 'https://deno.land/std/fmt/colors.ts'
-import {Context} from 'https://deno.land/x/oak/mod.ts'
-import {format} from 'https://deno.land/std@0.88.0/datetime/mod.ts'
+import { Context } from 'https://deno.land/x/oak/mod.ts'
+import { format } from 'https://deno.land/std@0.88.0/datetime/mod.ts'
 
 /**
  * More explicit way to identify a log level
@@ -36,9 +36,9 @@ export class ServerLogger {
      * @param level number will determine the color of the message
      */
     static log(message: string, level: number = logLevels.INFO): void {
-        const datetime: string = format(new Date(), "dd/MM/yyyy HH:mm:ss")
+        const datetime: string = format(new Date(), 'dd/MM/yyyy HH:mm:ss')
 
-        switch(level) {
+        switch (level) {
             case logLevels.MISC:
                 log(message)
                 break
@@ -68,8 +68,7 @@ export class ServerLogger {
     static newRequest() {
         return async (ctx: Context, next: () => Promise<void>) => {
             await next()
-            const rt = ctx.response.headers.get('X-Response-Time')
-            ServerLogger.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`)
+            ServerLogger.log(`${ctx.request.method} ${ctx.request.url}`)
         }
     }
 }

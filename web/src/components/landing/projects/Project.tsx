@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import {IProject} from "../../../redux/slices/projects";
+import { IProject } from '../../../redux/slices/projects'
 
 const ProjectCardOverlay = styled.div`
     opacity: 0;
     visibility: hidden;
     border-radius: 10px;
-    background: #24292E;
+    background: #24292e;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,14 +19,14 @@ const ProjectCardOverlay = styled.div`
     top: 0;
     left: 0;
     font-size: 70px;
-    color: #FFF;
+    color: #fff;
     transition: 0.2s;
 `
 
 const ProjectCard = styled.div`
-    background: ${({ theme }) => theme.background };
+    background: ${({ theme }) => theme.background};
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.20);
+    box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.2);
     padding: 8px;
     margin-right: 16px;
     margin-bottom: 8px;
@@ -38,7 +38,7 @@ const ProjectCard = styled.div`
     justify-content: space-between;
     :hover {
         cursor: pointer;
-        box-shadow: 0px 0px 5px 0px rgba(28, 28, 28, 0.30);
+        box-shadow: 0px 0px 5px 0px rgba(28, 28, 28, 0.3);
         transform: scale(1.025);
     }
     :hover ${ProjectCardOverlay} {
@@ -54,14 +54,14 @@ const ProjectCard = styled.div`
 const CardTitle = styled.h2`
     margin: 0;
     font-size: 20px;
-    color: ${({ theme }) => theme.title?.default };
+    color: ${({ theme }) => theme.title?.default};
     @media only screen and (min-width: 1024px) {
         font-size: 24px;
     }
 `
 
 const CardDescription = styled.p`
-    color: ${({ theme }) => theme.text };
+    color: ${({ theme }) => theme.text};
     font-size: 12px;
     @media only screen and (min-width: 768px) {
         font-size: 14px;
@@ -85,7 +85,7 @@ const CardLanguage = styled.div`
 `
 
 const CardLanguageBall = styled.span<{ bgColor?: () => string }>`
-    background: ${({bgColor}) => bgColor};
+    background: ${({ bgColor }) => bgColor};
     height: 12px;
     width: 12px;
     border-radius: 50%;
@@ -93,7 +93,7 @@ const CardLanguageBall = styled.span<{ bgColor?: () => string }>`
 
 const CardFooterText = styled.span`
     margin-left: 8px;
-    color: ${({ theme }) => theme.text };
+    color: ${({ theme }) => theme.text};
     font-weight: 100;
     font-size: 12px;
     @media only screen and (min-width: 768px) {
@@ -101,7 +101,11 @@ const CardFooterText = styled.span`
     }
 `
 
-export const Project = ({data: { name, description, language, license, url }}: { data: Partial<IProject> }) => {
+export const Project = ({
+    data: { name, description, language, license, url },
+}: {
+    data: Partial<IProject>
+}) => {
     const computeLanguageColor = (language: string) => {
         switch (language) {
             case 'TypeScript':
@@ -118,7 +122,7 @@ export const Project = ({data: { name, description, language, license, url }}: {
     }
 
     const redirect = () => {
-        window.location.href = url ?? '';
+        window.location.href = url ?? ''
     }
 
     return (
@@ -130,10 +134,14 @@ export const Project = ({data: { name, description, language, license, url }}: {
             <CardDescription>{description}</CardDescription>
             <CardFooter>
                 <CardLanguage>
-                    <CardLanguageBall bgColor={() => computeLanguageColor(language ?? '')} />
+                    <CardLanguageBall
+                        bgColor={() => computeLanguageColor(language ?? '')}
+                    />
                     <CardFooterText>{language}</CardFooterText>
                 </CardLanguage>
-                <CardFooterText><FontAwesomeIcon icon={faFileAlt} /> {license?.spdx_id}</CardFooterText>
+                <CardFooterText>
+                    <FontAwesomeIcon icon={faFileAlt} /> {license?.spdx_id}
+                </CardFooterText>
             </CardFooter>
         </ProjectCard>
     )

@@ -1,10 +1,10 @@
-import {createSlice, Slice} from '@reduxjs/toolkit'
+import { createSlice, Slice } from '@reduxjs/toolkit'
 import { AVAILABILITIES } from '../../constants'
 
 export interface IAvailabilityReducer {
     availability: {
-        status: number,
-        statusText: string,
+        status: number
+        statusText: string
     }
 }
 
@@ -15,8 +15,8 @@ const availabilitySlice: Slice = createSlice({
         statusText: 'Maybe available',
     },
     reducers: {
-        setAvailability: (state, action) => state = action.payload
-    }
+        setAvailability: (state, action) => (state = action.payload),
+    },
 })
 
 export const { setAvailability } = availabilitySlice.actions
