@@ -1,5 +1,8 @@
 {
     "devDependencies": {
+        "husky": "=4",
+        "lint-staged": ">=10",
         "prettier": "2.2.1"
-    }
+    },
+    "pre-commit": [ "prettier --write" ]
 }

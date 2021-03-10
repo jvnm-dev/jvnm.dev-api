@@ -122,7 +122,10 @@ export const Project = ({
     }
 
     const redirect = () => {
-        window.location.href = url ?? ''
+        Object.assign(document.createElement('a'), {
+            target: '_blank',
+            href: url,
+        }).click()
     }
 
     return (

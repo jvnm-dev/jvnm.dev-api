@@ -16,9 +16,10 @@ import { ISessionReducer, setToken } from '../../../redux/slices/session'
 interface INavbarProps {
     contact?: boolean
     dashboard?: boolean
+    signin?: boolean
 }
 
-export const Navbar = ({ contact, dashboard }: INavbarProps) => {
+export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
     const history = useHistory()
     const session = useSelector(({ session }: ISessionReducer) => session)
     const dispatch = useDispatch()
@@ -34,6 +35,9 @@ export const Navbar = ({ contact, dashboard }: INavbarProps) => {
         history.push('/')
     }
 
+    const shouldShowContact = !localStorage.getItem("jvnm")
+    const shouldShowSignIn = !shouldShowContact && !signin
+
     return (
         <NavbarContainer>
             <Container flex fullHeight>
@@ -43,24 +47,18 @@ export const Navbar = ({ contact, dashboard }: INavbarProps) => {
                     <span>M</span>
                 </NavbarLogo>
                 <NavbarMenu>
-                    {/*
-            <NavbarMenuItem>
-              <Link to="/">About</Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link to="/">Lab</Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link to="/">Blog</Link>
-            </NavbarMenuItem>
-          */}
+                    {!dashboard && (
+                        <NavbarMenuItem>
+                            <Link to="/tools/">Tools</Link>
+                        </NavbarMenuItem>
+                    )}
                     {dashboard && (
                         <NavbarMenuItem>
                             <Link to="/dashboard/">Landing Data</Link>
                         </NavbarMenuItem>
                     )}
                 </NavbarMenu>
-                {contact && (
+                {contact && shouldShowContact && (
                     <NavbarButton
                         aria-label="Contact"
                         to="/"
@@ -69,11 +67,30 @@ export const Navbar = ({ contact, dashboard }: INavbarProps) => {
                         Contact
                     </NavbarButton>
                 )}
+                {shouldShowSignIn && !session.token && (
+                    <NavbarButton
+                        aria-label="Sign in"
+                        to="/signin"
+                        style={{marginLeft: "8px"}}
+                    >
+                        Sign in
+                    </NavbarButton>
+                )}
+                {shouldShowSignIn && session.token && !dashboard && (
+                    <NavbarButton
+                        aria-label="Dashboard"
+                        to="/dashboard"
+                        style={{marginLeft: "8px"}}
+                    >
+                        Dashboard
+                    </NavbarButton>
+                )}
                 {!contact && session.token && (
                     <NavbarButton
                         aria-label="Sign out"
                         to="/"
                         onClick={handleSignOutButtonClick}
+                        style={{ marginLeft: '8px' }}
                     >
                         Sign out
                     </NavbarButton>

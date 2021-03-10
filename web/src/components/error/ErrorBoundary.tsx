@@ -26,7 +26,7 @@ export class ErrorBoundary extends Component<any, IErrorBoundaryState> {
         this.setState({
             error: error,
             errorInfo: errorInfo,
-            isDebug: window.location.search.indexOf('debug') !== -1,
+            isDebug: window.location.href.indexOf('debug') !== -1,
         })
     }
 

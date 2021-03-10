@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 
 export const Button = styled(Link)<{
     width?: string
+    small?: boolean
 }>`
+    height: fit-content;
     display: inline-block;
     color: #fff !important;
     background: linear-gradient(
@@ -22,6 +24,14 @@ export const Button = styled(Link)<{
     text-align: center;
     width: ${({ width }) =>
         width === 'full' ? 'calc(100% - 50px);' : 'fit-content'};
+
+    &[disabled] {
+        background: linear-gradient(135deg,
+            rgb(167 167 167) 0%, 
+            rgb(222 222 222) 100%
+        )
+    }
+  
     :hover {
         transform: translateY(-1px);
         box-shadow: 0 0 15px 0 rgba(28, 28, 28, 0.3);

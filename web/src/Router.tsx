@@ -1,6 +1,6 @@
 import 'normalize.css'
 import React, { Suspense, lazy } from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import {Switch, Route, Redirect, HashRouter, RouteProps} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
@@ -15,6 +15,7 @@ import { ThemeSwitcher } from './components/themes'
 import { ITheme, THEMES } from './constants/themes'
 import { ISession, ISessionReducer } from './redux/slices/session'
 import { IThemeReducer, IThemes } from './redux/slices/themes'
+import {Tools} from './screens/Tools.tsx'
 
 const Home = lazy(() => import('./screens/Home'))
 const Maintenance = lazy(() => import('./screens/Maintenance'))
@@ -43,33 +44,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const ProtectedRoute = ({
-    component: Component,
-    session,
-    exact,
-    path,
-    ...rest
-}: {
-    component: any
-    session: ISession
-    exact: boolean
-    path: string
-}) => {
-    return (
-        <Route
-            exact={exact}
-            path={path}
-            {...rest}
-            render={(props) => {
-                if (session.token) {
-                    return <Component {...rest} {...props} />
-                } else {
-                    return <Redirect to="/signin" />
-                }
-            }}
-        />
-    )
+const NotAuthenticated = (): JSX.Element => {
+    return <Redirect to='/' />
 }
+
+const AuthenticatedRoute = ({ session, component, ...options }: RouteProps & { session: ISession }): JSX.Element =>
+    <Route {...options} component={ session?.token ? component : NotAuthenticated } />
 
 export const Router = () => {
     const {
@@ -87,16 +67,19 @@ export const Router = () => {
 
     // @ts-ignore
     const selectedTheme = THEMES[theme]
+    const maintenanceMode = import.meta.env.VITE_MAINTENANCE_MODE
 
     return (
         <ErrorBoundary>
             <ThemeProvider theme={selectedTheme}>
                 <GlobalStyle />
-                {process.env.REACT_APP_MAINTENANCE_MODE === 'yes' ? (
-                    <Maintenance />
+                {maintenanceMode === 'yes' ? (
+                    <Suspense fallback={<Loader full />}>
+                        <Maintenance />
+                    </Suspense>
                 ) : (
                     <>
-                        <BrowserRouter>
+                        <HashRouter>
                             <Suspense fallback={<Loader full />}>
                                 <Switch>
                                     <Route
@@ -104,17 +87,24 @@ export const Router = () => {
                                         path="/signin"
                                         component={SignIn}
                                     />
-                                    <ProtectedRoute
+                                    <Route
+                                        exact
+                                        path="/tools"
+                                        component={Tools}
+                                    >
+
+                                    </Route>
+                                    <AuthenticatedRoute
                                         exact
                                         path="/dashboard"
-                                        session={session.session}
+                                        session={session}
                                         component={Dashboard}
                                     />
                                     <Route component={Home} />{' '}
                                     {/* fallback for all others routes */}
                                 </Switch>
                             </Suspense>
-                        </BrowserRouter>
+                        </HashRouter>
                     </>
                 )}
                 <ThemeSwitcher />

@@ -1,11 +1,75 @@
 import { config } from 'https://deno.land/x/dotenv/mod.ts'
 import { Client } from 'https://deno.land/x/postgres/mod.ts'
-import { ServerLogger } from '../utils/ServerLogger.ts'
+import {logLevels, ServerLogger} from '../utils/ServerLogger.ts'
+
+export class Repository {
+    private readonly table: string
+
+    constructor(table: string) {
+        this.table = table
+    }
+
+    async findAll(
+        where?: string,
+        fields = '*'
+        // deno-lint-ignore no-explicit-any
+    ): Promise<any[] | undefined> {
+        let query = `SELECT ${fields} FROM ${this.table}`
+
+        if (where) {
+            query = `${query} WHERE ${where}`
+        }
+
+        query += ';'
+
+        const result = await Database.instance.runQuery(query)
+
+        return result?.rows
+    }
+
+    async findFirst(
+        where?: string,
+        fields = '*'
+        // deno-lint-ignore no-explicit-any
+    ): Promise<any | undefined> {
+        let query = `SELECT ${fields} FROM ${this.table}`
+
+        if (where) {
+            query = `${query} WHERE ${where}`
+        }
+
+        query += ' LIMIT 1;'
+
+        const result = await Database.instance.runQuery(query)
+
+        return result?.rows?.[0]
+    }
+
+    async update(
+        fields: any,
+        where?: string,
+    ): Promise<boolean> {
+        const fieldsQuery = Object.entries(fields).map(([k,v]) => `${k} = '${v}'`)
+            .join(', ')
+
+        let query = `UPDATE ${this.table} SET ${fieldsQuery}`
+
+        if (where) {
+            query = `${query} WHERE ${where}`
+        }
+
+        query += ';'
+
+        const result = await Database.instance.runQuery(query)
+
+        return result?._done ?? false
+    }
+}
 
 class Database {
     private static instanceDatabase?: Database
     private readonly client?: Client
-    private connected: boolean = false
+    private connected = false
 
     constructor() {
         if (!this.connected) {
@@ -48,40 +112,17 @@ class Database {
         throw new Error('Database: no client')
     }
 
-    async findAll(
-        table: string,
-        where: string = '',
-        fields: string = '*'
-    ): Promise<any[] | undefined> {
-        if (!this.client) return
-
-        let query = `SELECT ${fields} FROM ${table};`
-
-        if (where) {
-            query = `${query} ${where}`
-        }
-
-        const result = await this.client.queryObject(query)
-
-        return result?.rows
+    getClient(): Client | undefined {
+        return this.client
     }
 
-    async findFirst(
-        table: string,
-        where: string = '',
-        fields: string = '*'
-    ): Promise<any | undefined> {
-        if (!this.client) return
-
-        let query = `SELECT ${fields} FROM ${table};`
-
-        if (where) {
-            query = `${query} ${where}`
+    async runQuery(query: string): Promise<any> {
+        if (!this.client) {
+            ServerLogger.log('Database client not initialized', logLevels.WARN)
         }
 
-        const result = await this.findAll(table, where, fields)
-
-        return result?.[0]
+        ServerLogger.log(`PSQL: ${query}`, logLevels.DB)
+        return await this.client?.queryObject(query)
     }
 }
 

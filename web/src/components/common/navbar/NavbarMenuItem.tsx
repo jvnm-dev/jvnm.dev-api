@@ -17,9 +17,4 @@ export const NavbarMenuItem = styled.li`
             color: ${({ theme }) => theme.title.default} !important;
         }
     }
-    :hover {
-        a {
-            transform: translateY(-2px);
-        }
-    }
 `

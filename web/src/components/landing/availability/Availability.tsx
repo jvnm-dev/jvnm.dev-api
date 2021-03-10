@@ -32,7 +32,7 @@ export const Availability = () => {
                 throw new Error(`AVAILABILITY ERROR: ${error.message}`)
             }
 
-            const loadedStatus = data?.availability?.status
+            const loadedStatus = parseInt(data?.availability?.status ?? '0')
 
             if (loadedStatus) {
                 dispatch(

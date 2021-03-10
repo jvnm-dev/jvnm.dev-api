@@ -10,6 +10,7 @@ export const logLevels = {
     INFO: 1,
     WARN: 2,
     ERR: 3,
+    DB: 4,
 }
 
 /**
@@ -55,6 +56,9 @@ export class ServerLogger {
                 log(Colors.red(`[jvnm] @ [${datetime}] ${message}`))
                 break
 
+            case logLevels.DB:
+                log(Colors.brightMagenta(`[jvnm] @ [${datetime}] ${message}`))
+                break
             default:
                 throw new Error('Unknown log level')
         }

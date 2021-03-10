@@ -1,7 +1,9 @@
-import { db } from '../config/db.ts'
+import {Repository} from '../config/db.ts'
+
+const experiencesRepository = new Repository('experiences')
 
 export const ExperienceQueries = {
-    experiences: async () => db.instance.findAll('experiences'),
+    experiences: async () => experiencesRepository.findAll(),
 }
 
 export const ExperienceMutations = {}

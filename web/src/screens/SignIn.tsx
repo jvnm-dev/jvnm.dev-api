@@ -1,12 +1,12 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { gql } from 'apollo-boost'
+import { useMutation } from '@apollo/react-hooks'
 
-import { Container, Section, Title, Text, Button } from '../components/common'
+import { Container, Section, Title, Text, Button, Error } from '../components/common'
 import { Navbar } from '../components/common/navbar'
 import { Form, Input } from '../components/common/form'
-import { BACKEND_URL } from '../constants'
-import { fetchPost } from '../helpers/fetch'
 import { ISessionReducer, setToken } from '../redux/slices/session'
 
 interface IFormData {
@@ -14,10 +14,16 @@ interface IFormData {
     jvm_password?: string
 }
 
+export const LOGIN = gql`
+    mutation Login($email: String!, $password: String!) {
+      login(email: $email, password: $password)
+    }
+`
+
 export const SignIn = () => {
     const [formData, setFormData] = useState<IFormData>({})
-    const [loading, setLoading] = useState(false)
     const session = useSelector(({ session }: ISessionReducer) => session)
+    const [login, { loading, data, error }] = useMutation(LOGIN)
     const dispatch = useDispatch()
 
     const handleChange = (e: ChangeEvent) => {
@@ -29,10 +35,14 @@ export const SignIn = () => {
 
     const onSubmit = async (e: MouseEvent) => {
         e.preventDefault()
-        setLoading(true)
-        const { jwt } = await fetchPost(`${BACKEND_URL}/auth/signin`, formData)
-        setLoading(false)
-        dispatch(setToken(jwt))
+        const { data } = await login({ variables: {
+            email: formData.jvm_email,
+            password: formData.jvm_password,
+        }})
+
+        const token = JSON.parse(data.login)
+
+        dispatch(setToken(token))
     }
 
     if (session.token) {
@@ -41,10 +51,13 @@ export const SignIn = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar signin />
             <Container>
                 <Section first horizontallyCentered verticallyCentered column>
                     <Title small>Sign in</Title>
+                    {error?.message && (
+                        <Error>{error.message}</Error>
+                    )}
                     <Form autoComplete="off">
                         <Input
                             name="jvm_email"
@@ -63,6 +76,7 @@ export const SignIn = () => {
                             to="/"
                             width="full"
                             onClick={onSubmit}
+                            disabled={loading}
                         >
                             {loading ? 'Loading...' : 'Sign in'}
                         </Button>

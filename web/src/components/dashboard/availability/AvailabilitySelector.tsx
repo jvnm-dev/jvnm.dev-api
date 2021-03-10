@@ -3,21 +3,30 @@ import { useDispatch } from 'react-redux'
 import { gql } from 'apollo-boost'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 
-import { Loader } from '../../common'
+import {Loader, Section, Title} from '../../common'
 import { setAvailability } from '../../../redux/slices/availability'
 import { AVAILABILITIES, STATUS_TEXTS } from '../../../constants'
 import { LAST_AVAILABILITY } from '../../landing/availability/Availability'
 import { IAvailabilityKeys } from '../../../constants/availabilities'
+import styled from 'styled-components'
 
 const UPDATE_AVAILABILITY = gql`
     mutation UpdateAvailability($id: ID!, $status: Int!) {
-        updateAvailability(input: { id: $id, status: $status }) {
-            availability {
-                id
-                status
-            }
+        updateAvailability(id: $id, status: $status) {
+            id
+            status
         }
     }
+`
+
+const Select = styled.select`
+  height: 40px;
+  padding: 10px 40px 10px 10px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") #eaeaea no-repeat 90% !important; /* !important used for overriding all other customisations */
 `
 
 export const AvailabilitySelector = () => {
@@ -31,7 +40,7 @@ export const AvailabilitySelector = () => {
         await updateAvailability({
             variables: {
                 id: data?.availability?.id,
-                status: newValue,
+                status: parseInt(newValue),
             },
         })
 
@@ -58,15 +67,19 @@ export const AvailabilitySelector = () => {
     }
 
     return (
-        <select value={data.availability.status} onChange={handleChange}>
-            {Object.keys(AVAILABILITIES).map((k, i) => (
-                <option
-                    key={i}
-                    value={AVAILABILITIES[k as keyof IAvailabilityKeys]}
-                >
-                    {k.replace('_', ' ')}
-                </option>
-            ))}
-        </select>
+        <div>
+            <Title small style={{margin: '20px 0 20px 0'}}>Availability</Title>
+
+            <Select value={data.availability.status} onChange={handleChange}>
+                {Object.keys(AVAILABILITIES).map((k, i) => (
+                    <option
+                        key={i}
+                        value={AVAILABILITIES[k as keyof IAvailabilityKeys]}
+                    >
+                        {k.replace('_', ' ')}
+                    </option>
+                ))}
+            </Select>
+        </div>
     )
 }

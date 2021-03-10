@@ -16,7 +16,7 @@ const TechnologyContainer = styled.div`
         margin-top: 48px;
     }
 `
-const TechnologyImage = styled.img`
+export const TechnologyImage = styled.img`
     height: 40px;
     width: 40px;
     @media only screen and (min-width: 768px) {
@@ -31,6 +31,14 @@ const TechnologyImage = styled.img`
         height: 70px;
         width: 70px;
     }
+
+  ${({ dashboard }) => dashboard && `
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    height: 80px !important;
+    width: 80px !important;
+  `}
 `
 
 const TechnologyTooltipContainer = styled.div`

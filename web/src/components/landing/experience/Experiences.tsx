@@ -4,12 +4,13 @@ import { gql } from 'apollo-boost'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Loader } from '../../common'
-import { Experience } from '../'
+import { Experience, ExperienceImage } from '../'
 import {
     IExperienceReducer,
     setExperiences,
 } from '../../../redux/slices/experiences'
 import { IExperience } from './Experience'
+import { Plus } from '../../dashboard/common/Plus.tsx'
 
 export const EXPERIENCES = gql`
     {
@@ -24,7 +25,11 @@ export const EXPERIENCES = gql`
     }
 `
 
-export const Experiences = () => {
+interface IProps {
+    dashboard?: boolean
+}
+
+export const Experiences = ({ dashboard }: IProps) => {
     const dispatch = useDispatch()
     const { loading, error, data } = useQuery(EXPERIENCES)
     const experiences = useSelector(
@@ -50,16 +55,23 @@ export const Experiences = () => {
 
     return (
         <Fragment>
-            {experiences.map((experience: Partial<IExperience>) => (
-                <Experience
-                    key={`exp-${experience.id}`}
-                    image={experience.image}
-                    place={experience.place}
-                    dateFrom={experience.datefrom}
-                    dateTo={experience.dateto}
-                    title={experience.role}
-                />
-            ))}
+            {experiences.map(({ id, image, place, datefrom, dateto, role}: Partial<IExperience>) =>
+                !dashboard ? (
+                    <Experience
+                        key={`exp-${id}`}
+                        image={image}
+                        place={place}
+                        // @ts-ignore
+                        dateFrom={datefrom}
+                        // @ts-ignore
+                        dateTo={dateto}
+                        title={role}
+                    />
+                ) : (
+                    <ExperienceImage key={id} src={image} alt={place} dashboard />
+                )
+            )}
+            {dashboard && <Plus />}
         </Fragment>
     )
 }

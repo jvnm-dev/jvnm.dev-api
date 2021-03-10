@@ -10,6 +10,8 @@ import {
     ITechnology,
     setTechnologies,
 } from '../../../redux/slices/technologies'
+import { TechnologyImage } from './Technology.tsx'
+import { Plus } from '../../dashboard/common/Plus.tsx'
 
 export const TECHNOLOGIES = gql`
     {
@@ -21,7 +23,11 @@ export const TECHNOLOGIES = gql`
     }
 `
 
-export const Technologies = () => {
+interface IProps {
+    dashboard?: boolean
+}
+
+export const Technologies = ({ dashboard }: IProps) => {
     const dispatch = useDispatch()
     const { loading, error, data } = useQuery(TECHNOLOGIES)
     const technologies = useSelector(
@@ -34,7 +40,11 @@ export const Technologies = () => {
                 throw new Error(`TECHNOLOGIES ERROR: ${error.message}`)
             }
 
-            dispatch(setTechnologies(data?.technologies ?? []))
+            const technologies = [...(data?.technologies ?? [])].sort((a: ITechnology, b: ITechnology) => {
+                return parseInt(a.id) - parseInt(b.id)
+            })
+
+            dispatch(setTechnologies(technologies))
         }
     }, [loading, error, data, dispatch])
 
@@ -44,13 +54,20 @@ export const Technologies = () => {
 
     return (
         <TechnologiesContainer>
-            {technologies.map((technology: ITechnology) => (
-                <Technology
-                    key={`tech-${technology.id}`}
-                    image={technology.image}
-                    name={technology.name}
-                />
-            ))}
+            {technologies
+                .map(({ id, image, name }: ITechnology) =>
+                    !dashboard ? (
+                        <Technology
+                            key={`tech-${id}`}
+                            image={image}
+                            name={name}
+                        />
+                    ) : (
+                        <TechnologyImage key={`tech-${id}`} src={image} alt={name} dashboard />
+                    )
+                )
+            }
+            {dashboard && <Plus margin='10px 10px 0 0' />}
         </TechnologiesContainer>
     )
 }
