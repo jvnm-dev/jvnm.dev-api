@@ -1,6 +1,6 @@
 import { config } from 'https://deno.land/x/dotenv/mod.ts'
 import { Client } from 'https://deno.land/x/postgres/mod.ts'
-import {logLevels, ServerLogger} from '../utils/ServerLogger.ts'
+import { logLevels, ServerLogger } from '../utils/ServerLogger.ts'
 
 export class Repository {
     private readonly table: string
@@ -45,11 +45,9 @@ export class Repository {
         return result?.rows?.[0]
     }
 
-    async update(
-        fields: any,
-        where?: string,
-    ): Promise<boolean> {
-        const fieldsQuery = Object.entries(fields).map(([k,v]) => `${k} = '${v}'`)
+    async update(fields: any, where?: string): Promise<boolean> {
+        const fieldsQuery = Object.entries(fields)
+            .map(([k, v]) => `${k} = '${v}'`)
             .join(', ')
 
         let query = `UPDATE ${this.table} SET ${fieldsQuery}`

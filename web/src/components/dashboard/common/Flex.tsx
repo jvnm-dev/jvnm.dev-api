@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const Flex = styled.div`
-  display: flex;
-  
-  ${({ alignItems, justifyContent }) => `
+    display: flex;
+
+    ${({ alignItems, justifyContent }) => `
     justify-content: ${justifyContent}; 
     align-items: ${alignItems}; 
   `}

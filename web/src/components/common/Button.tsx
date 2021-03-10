@@ -26,12 +26,13 @@ export const Button = styled(Link)<{
         width === 'full' ? 'calc(100% - 50px);' : 'fit-content'};
 
     &[disabled] {
-        background: linear-gradient(135deg,
-            rgb(167 167 167) 0%, 
+        background: linear-gradient(
+            135deg,
+            rgb(167 167 167) 0%,
             rgb(222 222 222) 100%
-        )
+        );
     }
-  
+
     :hover {
         transform: translateY(-1px);
         box-shadow: 0 0 15px 0 rgba(28, 28, 28, 0.3);

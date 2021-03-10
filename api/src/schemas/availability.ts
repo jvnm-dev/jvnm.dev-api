@@ -1,8 +1,8 @@
 import { gql } from '../config/deps.ts'
 
 export interface IAvailability {
-    id: number,
-    status: number,
+    id: number
+    status: number
 }
 
 export const availabilitySchema = gql`

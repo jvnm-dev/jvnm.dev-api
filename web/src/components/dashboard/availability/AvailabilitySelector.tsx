@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { gql } from 'apollo-boost'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 
-import {Loader, Section, Title} from '../../common'
+import { Loader, Section, Title } from '../../common'
 import { setAvailability } from '../../../redux/slices/availability'
 import { AVAILABILITIES, STATUS_TEXTS } from '../../../constants'
 import { LAST_AVAILABILITY } from '../../landing/availability/Availability'
@@ -20,13 +20,14 @@ const UPDATE_AVAILABILITY = gql`
 `
 
 const Select = styled.select`
-  height: 40px;
-  padding: 10px 40px 10px 10px;
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") #eaeaea no-repeat 90% !important; /* !important used for overriding all other customisations */
+    height: 40px;
+    padding: 10px 40px 10px 10px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png')
+        #eaeaea no-repeat 90% !important; /* !important used for overriding all other customisations */
 `
 
 export const AvailabilitySelector = () => {
@@ -68,7 +69,9 @@ export const AvailabilitySelector = () => {
 
     return (
         <div>
-            <Title small style={{margin: '20px 0 20px 0'}}>Availability</Title>
+            <Title small style={{ margin: '20px 0 20px 0' }}>
+                Availability
+            </Title>
 
             <Select value={data.availability.status} onChange={handleChange}>
                 {Object.keys(AVAILABILITIES).map((k, i) => (

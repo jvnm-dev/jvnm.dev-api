@@ -1,6 +1,12 @@
 import 'normalize.css'
 import React, { Suspense, lazy } from 'react'
-import {Switch, Route, Redirect, HashRouter, RouteProps} from 'react-router-dom'
+import {
+    Switch,
+    Route,
+    Redirect,
+    HashRouter,
+    RouteProps,
+} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
@@ -15,7 +21,7 @@ import { ThemeSwitcher } from './components/themes'
 import { ITheme, THEMES } from './constants/themes'
 import { ISession, ISessionReducer } from './redux/slices/session'
 import { IThemeReducer, IThemes } from './redux/slices/themes'
-import {Tools} from './screens/Tools.tsx'
+import { Tools } from './screens/Tools.tsx'
 
 const Home = lazy(() => import('./screens/Home'))
 const Maintenance = lazy(() => import('./screens/Maintenance'))
@@ -45,11 +51,19 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const NotAuthenticated = (): JSX.Element => {
-    return <Redirect to='/' />
+    return <Redirect to="/" />
 }
 
-const AuthenticatedRoute = ({ session, component, ...options }: RouteProps & { session: ISession }): JSX.Element =>
-    <Route {...options} component={ session?.token ? component : NotAuthenticated } />
+const AuthenticatedRoute = ({
+    session,
+    component,
+    ...options
+}: RouteProps & { session: ISession }): JSX.Element => (
+    <Route
+        {...options}
+        component={session?.token ? component : NotAuthenticated}
+    />
+)
 
 export const Router = () => {
     const {
@@ -91,9 +105,7 @@ export const Router = () => {
                                         exact
                                         path="/tools"
                                         component={Tools}
-                                    >
-
-                                    </Route>
+                                    ></Route>
                                     <AuthenticatedRoute
                                         exact
                                         path="/dashboard"

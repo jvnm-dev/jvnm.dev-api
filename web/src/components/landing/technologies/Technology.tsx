@@ -32,7 +32,9 @@ export const TechnologyImage = styled.img`
         width: 70px;
     }
 
-  ${({ dashboard }) => dashboard && `
+    ${({ dashboard }) =>
+        dashboard &&
+        `
     margin-right: 10px;
     margin-top: 10px;
     cursor: pointer;

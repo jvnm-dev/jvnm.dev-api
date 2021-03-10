@@ -13,5 +13,5 @@ export const resolvers = {
     Mutation: {
         ...UserMutations,
         ...AvailabilityMutations,
-    }
+    },
 }

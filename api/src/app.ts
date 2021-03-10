@@ -1,8 +1,8 @@
 import { Application, applyGraphQL, oakCors, Router } from './config/deps.ts'
-import { db } from './config/db.ts';
-import { schemas } from './schemas/index.ts';
-import { resolvers } from './resolvers/index.ts';
-import { logLevels, ServerLogger } from './utils/ServerLogger.ts';
+import { db } from './config/db.ts'
+import { schemas } from './schemas/index.ts'
+import { resolvers } from './resolvers/index.ts'
+import { logLevels, ServerLogger } from './utils/ServerLogger.ts'
 
 export class App {
     public app: Application

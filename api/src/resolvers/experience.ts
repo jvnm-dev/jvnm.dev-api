@@ -1,4 +1,4 @@
-import {Repository} from '../config/db.ts'
+import { Repository } from '../config/db.ts'
 
 const experiencesRepository = new Repository('experiences')
 

@@ -4,7 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { gql } from 'apollo-boost'
 import { useMutation } from '@apollo/react-hooks'
 
-import { Container, Section, Title, Text, Button, Error } from '../components/common'
+import {
+    Container,
+    Section,
+    Title,
+    Text,
+    Button,
+    Error,
+} from '../components/common'
 import { Navbar } from '../components/common/navbar'
 import { Form, Input } from '../components/common/form'
 import { ISessionReducer, setToken } from '../redux/slices/session'
@@ -16,7 +23,7 @@ interface IFormData {
 
 export const LOGIN = gql`
     mutation Login($email: String!, $password: String!) {
-      login(email: $email, password: $password)
+        login(email: $email, password: $password)
     }
 `
 
@@ -35,10 +42,12 @@ export const SignIn = () => {
 
     const onSubmit = async (e: MouseEvent) => {
         e.preventDefault()
-        const { data } = await login({ variables: {
-            email: formData.jvm_email,
-            password: formData.jvm_password,
-        }})
+        const { data } = await login({
+            variables: {
+                email: formData.jvm_email,
+                password: formData.jvm_password,
+            },
+        })
 
         const token = JSON.parse(data.login)
 
@@ -55,9 +64,7 @@ export const SignIn = () => {
             <Container>
                 <Section first horizontallyCentered verticallyCentered column>
                     <Title small>Sign in</Title>
-                    {error?.message && (
-                        <Error>{error.message}</Error>
-                    )}
+                    {error?.message && <Error>{error.message}</Error>}
                     <Form autoComplete="off">
                         <Input
                             name="jvm_email"

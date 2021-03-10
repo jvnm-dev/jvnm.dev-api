@@ -1,13 +1,13 @@
-import React, {ChangeEvent, useRef, useState} from 'react'
+import React, { ChangeEvent, useRef, useState } from 'react'
 import styled from 'styled-components'
-import {Button, Text} from '../../common'
-import {ToolHeader} from '../../../screens/Tools.tsx'
+import { Button, Text } from '../../common'
+import { ToolHeader } from '../../../screens/Tools.tsx'
 
 const Column = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Container = styled.div`
 `
 
 const Image = styled.img`
-  width: 100%;
+    width: 100%;
 `
 
 export const Base64ToImage = () => {
@@ -33,14 +33,14 @@ export const Base64ToImage = () => {
     return (
         <>
             <ToolHeader>
-                <Button small='true' to='b64' onClick={fillImage}>
+                <Button small="true" to="b64" onClick={fillImage}>
                     Load image from clipboard
                 </Button>
             </ToolHeader>
 
             <Container>
                 <Column>
-                    <Image src={b64} alt='' />
+                    <Image src={b64} alt="" />
                 </Column>
             </Container>
         </>

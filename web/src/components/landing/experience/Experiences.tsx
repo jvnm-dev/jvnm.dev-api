@@ -55,21 +55,34 @@ export const Experiences = ({ dashboard }: IProps) => {
 
     return (
         <Fragment>
-            {experiences.map(({ id, image, place, datefrom, dateto, role}: Partial<IExperience>) =>
-                !dashboard ? (
-                    <Experience
-                        key={`exp-${id}`}
-                        image={image}
-                        place={place}
-                        // @ts-ignore
-                        dateFrom={datefrom}
-                        // @ts-ignore
-                        dateTo={dateto}
-                        title={role}
-                    />
-                ) : (
-                    <ExperienceImage key={id} src={image} alt={place} dashboard />
-                )
+            {experiences.map(
+                ({
+                    id,
+                    image,
+                    place,
+                    datefrom,
+                    dateto,
+                    role,
+                }: Partial<IExperience>) =>
+                    !dashboard ? (
+                        <Experience
+                            key={`exp-${id}`}
+                            image={image}
+                            place={place}
+                            // @ts-ignore
+                            dateFrom={datefrom}
+                            // @ts-ignore
+                            dateTo={dateto}
+                            title={role}
+                        />
+                    ) : (
+                        <ExperienceImage
+                            key={id}
+                            src={image}
+                            alt={place}
+                            dashboard
+                        />
+                    )
             )}
             {dashboard && <Plus />}
         </Fragment>

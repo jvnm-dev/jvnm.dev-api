@@ -40,9 +40,11 @@ export const Technologies = ({ dashboard }: IProps) => {
                 throw new Error(`TECHNOLOGIES ERROR: ${error.message}`)
             }
 
-            const technologies = [...(data?.technologies ?? [])].sort((a: ITechnology, b: ITechnology) => {
-                return parseInt(a.id) - parseInt(b.id)
-            })
+            const technologies = [...(data?.technologies ?? [])].sort(
+                (a: ITechnology, b: ITechnology) => {
+                    return parseInt(a.id) - parseInt(b.id)
+                }
+            )
 
             dispatch(setTechnologies(technologies))
         }
@@ -54,20 +56,19 @@ export const Technologies = ({ dashboard }: IProps) => {
 
     return (
         <TechnologiesContainer>
-            {technologies
-                .map(({ id, image, name }: ITechnology) =>
-                    !dashboard ? (
-                        <Technology
-                            key={`tech-${id}`}
-                            image={image}
-                            name={name}
-                        />
-                    ) : (
-                        <TechnologyImage key={`tech-${id}`} src={image} alt={name} dashboard />
-                    )
+            {technologies.map(({ id, image, name }: ITechnology) =>
+                !dashboard ? (
+                    <Technology key={`tech-${id}`} image={image} name={name} />
+                ) : (
+                    <TechnologyImage
+                        key={`tech-${id}`}
+                        src={image}
+                        alt={name}
+                        dashboard
+                    />
                 )
-            }
-            {dashboard && <Plus margin='10px 10px 0 0' />}
+            )}
+            {dashboard && <Plus margin="10px 10px 0 0" />}
         </TechnologiesContainer>
     )
 }

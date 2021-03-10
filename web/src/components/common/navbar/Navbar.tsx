@@ -35,7 +35,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
         history.push('/')
     }
 
-    const shouldShowContact = !localStorage.getItem("jvnm")
+    const shouldShowContact = !localStorage.getItem('jvnm')
     const shouldShowSignIn = !shouldShowContact && !signin
 
     return (
@@ -71,7 +71,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                     <NavbarButton
                         aria-label="Sign in"
                         to="/signin"
-                        style={{marginLeft: "8px"}}
+                        style={{ marginLeft: '8px' }}
                     >
                         Sign in
                     </NavbarButton>
@@ -80,7 +80,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                     <NavbarButton
                         aria-label="Dashboard"
                         to="/dashboard"
-                        style={{marginLeft: "8px"}}
+                        style={{ marginLeft: '8px' }}
                     >
                         Dashboard
                     </NavbarButton>
