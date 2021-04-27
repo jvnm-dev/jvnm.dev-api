@@ -1,19 +1,21 @@
 import React, { ChangeEvent, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { gql } from 'apollo-boost'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 
-import { Loader, Section, Title } from '../../common'
-import { setAvailability } from '../../../redux/slices/availability'
+import { Loader, Title } from '../../common'
+import {
+    IAvailabilityReducer,
+    setAvailability,
+} from '../../../redux/slices/availability'
 import { AVAILABILITIES, STATUS_TEXTS } from '../../../constants'
-import { LAST_AVAILABILITY } from '../../landing/availability/Availability'
+import { AVAILABILITY } from '../../landing/availability/Availability'
 import { IAvailabilityKeys } from '../../../constants/availabilities'
 import styled from 'styled-components'
 
 const UPDATE_AVAILABILITY = gql`
-    mutation UpdateAvailability($id: ID!, $status: Int!) {
-        updateAvailability(id: $id, status: $status) {
-            id
+    mutation UpdateAvailability($status: Float!) {
+        updateAvailability(status: $status) {
             status
         }
     }
@@ -32,25 +34,30 @@ const Select = styled.select`
 
 export const AvailabilitySelector = () => {
     const dispatch = useDispatch()
-    const { loading, error, data } = useQuery(LAST_AVAILABILITY)
+    const availability = useSelector(
+        ({ availability }: IAvailabilityReducer) => availability
+    )
+
+    const { loading, error, data } = useQuery(AVAILABILITY)
     const [updateAvailability] = useMutation(UPDATE_AVAILABILITY)
-
-    const handleChange = async (e: ChangeEvent) => {
-        const newValue = (e.target as HTMLInputElement)?.value
-
-        await updateAvailability({
-            variables: {
-                id: data?.availability?.id,
-                status: parseInt(newValue),
-            },
-        })
-
+    const updateAvailabilityInStore = (newValue: number) =>
         dispatch(
             setAvailability({
                 status: newValue,
-                statusText: STATUS_TEXTS[newValue as any],
+                statusText: STATUS_TEXTS[newValue],
             })
         )
+
+    const handleChange = async (e: ChangeEvent) => {
+        const newValue = parseInt((e.target as HTMLInputElement)?.value)
+
+        await updateAvailability({
+            variables: {
+                status: newValue,
+            },
+        })
+
+        updateAvailabilityInStore(newValue)
     }
 
     useEffect(() => {
@@ -60,8 +67,13 @@ export const AvailabilitySelector = () => {
                     'AvailabilitySelector: failed loading availabilities'
                 )
             }
+
+            if (data) {
+                // If availability loaded, update it in redux
+                updateAvailabilityInStore(data?.availability?.status ?? 0)
+            }
         }
-    }, [error, loading])
+    }, [error, loading, data])
 
     if (loading) {
         return <Loader />
@@ -73,7 +85,7 @@ export const AvailabilitySelector = () => {
                 Availability
             </Title>
 
-            <Select value={data.availability.status} onChange={handleChange}>
+            <Select value={availability.status} onChange={handleChange}>
                 {Object.keys(AVAILABILITIES).map((k, i) => (
                     <option
                         key={i}

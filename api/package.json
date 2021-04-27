@@ -1,10 +1,68 @@
 {
+    "name": "JVNM-Hub-API",
+    "version": "2.0.0",
+    "description": "An API for jvnm.dev",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "start:watch": "nodemon",
+        "prestart:prod": "tsc",
+        "start:prod": "node dist/main.js",
+        "test": "jest --config=jest.json",
+        "test:watch": "jest --watch --config=jest.json",
+        "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jvnm-dev/jvnm.git"
+    },
+    "author": "jasonvanmalder@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "@nestjs/common": "^7.0.5",
+        "@nestjs/core": "^7.0.5",
+        "@nestjs/graphql": "^7.10.3",
+        "@nestjs/microservices": "^7.0.5",
+        "@nestjs/platform-express": "^7.0.5",
+        "@nestjs/swagger": "^4.4.0",
+        "@nestjs/testing": "^7.0.5",
+        "@nestjs/typeorm": "^7.0.0",
+        "@nestjs/websockets": "^7.0.5",
+        "apollo-server-express": "^2.23.0",
+        "argon2": "^0.26.2",
+        "bcrypt": "^5.0.1",
+        "class-transformer": "^0.2.3",
+        "class-validator": "^0.11.1",
+        "crypto": "^1.0.1",
+        "crypto-js": "^4.0.0",
+        "graphql": "^15.5.0",
+        "graphql-tools": "^7.0.4",
+        "jsonwebtoken": "^8.5.1",
+        "mysql": "^2.18.1",
+        "node-mailjet": "^3.3.1",
+        "passport-jwt": "^4.0.0",
+        "pg": "^8.6.0",
+        "prettier": "^2.2.1",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^6.5.5",
+        "slug": "^1.1.0",
+        "swagger-ui-express": "^4.1.4",
+        "typeorm": "^0.2.24",
+        "typescript": "^3.8.3"
+    },
     "devDependencies": {
-        "husky": "=4",
-        "lint-staged": ">=10",
-        "prettier": "2.2.1"
+        "@types/jest": "^25.2.1",
+        "@types/node": "^13.13.4",
+        "atob": ">=2.1.0",
+        "deep-extend": ">=0.5.1",
+        "extend": ">=3.0.2",
+        "jest": "^25.5.3",
+        "nodemon": "^1.19.4",
+        "supertest": "^3.4.2",
+        "ts-jest": "^25.4.0",
+        "ts-node": "^8.9.1"
     },
     "pre-commit": [
-        "prettier --write"
+        "prettier --write ."
     ]
 }

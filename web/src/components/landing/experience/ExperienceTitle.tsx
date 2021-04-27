@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import {IThemeContainer} from '../../../constants/themes'
 
 export const ExperienceTitle = styled.h2`
     margin: 0;
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }: IThemeContainer) => theme.text};
     font-weight: normal;
     font-size: 13px;
     @media only screen and (min-width: 768px) {

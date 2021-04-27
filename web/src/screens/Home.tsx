@@ -44,9 +44,10 @@ export const Home = () => {
                         <Column padding centered>
                             <Title>Software Engineer</Title>
                             <Text margin intro={true}>
-                                Currently working as a consultant for a company
-                                specialized in IPTV, media management and secure
-                                solutions for the medical sector.
+                                Currently on assignment at{' '}
+                                <strong>TAKTIK</strong>, a company specialized
+                                in IPTV, media management and secure solutions
+                                for the medical sector.
                             </Text>
                             <Button
                                 aria-label="Learn more"

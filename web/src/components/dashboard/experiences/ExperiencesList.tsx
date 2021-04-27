@@ -1,7 +1,7 @@
 import { Title } from '../../common'
 import { Experiences } from '../../landing'
 import React from 'react'
-import { Flex } from '../common/Flex.tsx'
+import { Flex } from '../common/Flex'
 
 export const ExperiencesList = (): JSX.Element => (
     <>

@@ -4,6 +4,10 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons'
 
+export interface IThemeContainer {
+    theme: ITheme
+}
+
 export interface ITheme {
     name: string
     icon: IconDefinition

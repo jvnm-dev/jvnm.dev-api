@@ -1,12 +1,13 @@
 import styled from 'styled-components'
+import {IThemeContainer} from '../../../constants/themes'
 
 export const AvailabilityText = styled.p`
     font-weight: 600;
     font-size: 12px;
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }: IThemeContainer) => theme.text};
     margin: 0 0 0 16px;
     span {
-        color: ${({ theme }) => theme.title?.default};
+        color: ${({ theme }: IThemeContainer) => theme.title?.default};
     }
     @media only screen and (min-width: 1024px) {
         font-size: 13px;

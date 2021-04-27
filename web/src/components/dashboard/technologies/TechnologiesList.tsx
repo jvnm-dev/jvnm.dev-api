@@ -1,7 +1,7 @@
 import { Section, Title } from '../../common'
 import { Technologies } from '../../landing'
 import React from 'react'
-import { Flex } from '../common/Flex.tsx'
+import { Flex } from '../common/Flex'
 
 export const TechnologiesList = (): JSX.Element => (
     <>

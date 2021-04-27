@@ -1,15 +1,18 @@
 import styled from 'styled-components'
 
 import { Container } from '../'
+import { device } from '../../../constants/responsive.ts'
+import {IThemeContainer} from '../../../constants/themes'
 
 export const NavbarContainer = styled.nav`
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid ${({ theme }) => theme.headerBorder};
+    border-bottom: 1px solid ${({ theme }: IThemeContainer) => theme.headerBorder};
     padding: 0 24px;
     transition: border 0.2s;
+
     ${Container} {
         @media only screen and (min-width: 768px) {
             max-width: 740px;

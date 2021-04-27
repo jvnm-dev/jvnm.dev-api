@@ -10,7 +10,7 @@ import {
     setExperiences,
 } from '../../../redux/slices/experiences'
 import { IExperience } from './Experience'
-import { Plus } from '../../dashboard/common/Plus.tsx'
+import { Plus } from '../../dashboard/common/Plus'
 
 export const EXPERIENCES = gql`
     {
@@ -18,8 +18,8 @@ export const EXPERIENCES = gql`
             id
             image
             place
-            datefrom
-            dateto
+            dateFrom
+            dateTo
             role
         }
     }
@@ -60,8 +60,8 @@ export const Experiences = ({ dashboard }: IProps) => {
                     id,
                     image,
                     place,
-                    datefrom,
-                    dateto,
+                    dateFrom,
+                    dateTo,
                     role,
                 }: Partial<IExperience>) =>
                     !dashboard ? (
@@ -70,9 +70,9 @@ export const Experiences = ({ dashboard }: IProps) => {
                             image={image}
                             place={place}
                             // @ts-ignore
-                            dateFrom={datefrom}
+                            dateFrom={dateFrom}
                             // @ts-ignore
-                            dateTo={dateto}
+                            dateTo={dateTo}
                             title={role}
                         />
                     ) : (

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React from 'react'
 
-export const Plus = ({ margin }: { margin: string }): JSX.Element => {
+export const Plus = ({ margin }: { margin?: string }): JSX.Element => {
     const Box = styled.div`
         margin: ${margin};
         height: 80px;

@@ -1,11 +1,11 @@
 import styled from 'styled-components'
+import {IThemeContainer} from '../../constants/themes'
 
 export const Container = styled.div<{
     flex?: boolean
-    fullHeight?: boolean
+    fullheight?: boolean
 }>`
     display: block;
-    font-family: 'Montserrat', sans-serif;
     ${(props) =>
         props.flex &&
         `
@@ -16,13 +16,13 @@ export const Container = styled.div<{
     flex-wrap: wrap;
   `}
     ${(props) =>
-        props.fullHeight &&
+        props.fullheight &&
         `
     height: 100%;
   `}
 `
 
 export const WavyContainer = styled(Container)`
-    background: ${({ theme }) => theme.wavyContainer};
+    background: ${({ theme }: IThemeContainer) => theme.wavyContainer};
     clip-path: url(#wave);
 `

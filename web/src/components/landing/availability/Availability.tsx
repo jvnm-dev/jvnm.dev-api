@@ -10,7 +10,7 @@ import {
     setAvailability,
 } from '../../../redux/slices/availability'
 
-export const LAST_AVAILABILITY = gql`
+export const AVAILABILITY = gql`
     {
         availability {
             id
@@ -21,7 +21,7 @@ export const LAST_AVAILABILITY = gql`
 
 export const Availability = () => {
     const dispatch = useDispatch()
-    const { loading, error, data } = useQuery(LAST_AVAILABILITY)
+    const { loading, error, data } = useQuery(AVAILABILITY)
     const availability = useSelector(
         ({ availability }: IAvailabilityReducer) => availability
     )

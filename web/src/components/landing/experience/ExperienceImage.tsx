@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-export const ExperienceImage = styled.img<{
+export const ExperienceImage = styled.img.attrs(() => ({
+    loading: 'lazy',
+    decoding: 'async',
+}))<{
     dashboard?: boolean
 }>`
     height: ${({ dashboard }) => (!dashboard ? '50px' : '80px')};

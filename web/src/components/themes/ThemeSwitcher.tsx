@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { THEMES } from '../../constants'
 import { IThemeReducer, setTheme } from '../../redux/slices/themes'
+import {IThemeContainer} from '../../constants/themes'
 
 const ThemeSwitcherButton = styled.button`
     position: fixed;
@@ -12,11 +13,11 @@ const ThemeSwitcherButton = styled.button`
     right: 30px;
     padding: 18px;
     font-size: 20px;
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.title?.default};
+    background-color: ${({ theme }: IThemeContainer) => theme.background};
+    color: ${({ theme }: IThemeContainer) => theme.title?.default};
     border: none;
     border-radius: 50%;
-    box-shadow: ${({ theme }) => theme.themeSwitcherShadow};
+    box-shadow: ${({ theme }: IThemeContainer) => theme.themeSwitcherShadow};
     cursor: pointer;
     outline: 0 !important;
     transition: 0.2s;

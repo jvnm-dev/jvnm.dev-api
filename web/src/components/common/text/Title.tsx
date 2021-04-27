@@ -20,6 +20,6 @@ export const Title = styled.h1<{
         font-size: ${({ small }) => (small ? '32px' : '80px')};
     }
     @media only screen and (min-width: 1440px) {
-        font-size: ${({ small }) => (small ? '40px' : '100px')};
+        font-size: ${({ small }) => (small ? '40px' : '115px')};
     }
 `

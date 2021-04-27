@@ -1,3 +1,3 @@
-export const BACKEND_URL = 'http://localhost:5000'
-// http://localhost:5000
+export const BACKEND_URL = 'https://jvnmhub.xyz'
+// http://localhost:8080
 // https://jvnmhub.xyz

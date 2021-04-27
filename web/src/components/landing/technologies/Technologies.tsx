@@ -10,8 +10,8 @@ import {
     ITechnology,
     setTechnologies,
 } from '../../../redux/slices/technologies'
-import { TechnologyImage } from './Technology.tsx'
-import { Plus } from '../../dashboard/common/Plus.tsx'
+import { TechnologyImage } from './Technology'
+import { Plus } from '../../dashboard/common/Plus'
 
 export const TECHNOLOGIES = gql`
     {

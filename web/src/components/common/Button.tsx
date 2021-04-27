@@ -1,8 +1,10 @@
 import styled from 'styled-components'
-
 import { Link } from 'react-router-dom'
+import { Button as MuiButton } from '@material-ui/core'
 
-export const Button = styled(Link)<{
+export const Button = styled(MuiButton).attrs({
+    component: Link,
+})<{
     width?: string
     small?: boolean
 }>`
@@ -18,6 +20,7 @@ export const Button = styled(Link)<{
     box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.25);
     font-weight: bold;
     padding: 10px 25px 10px 25px;
+    text-transform: initial;
     border-radius: 5px;
     text-decoration: none;
     transition: 0.2s;
@@ -37,14 +40,14 @@ export const Button = styled(Link)<{
         transform: translateY(-1px);
         box-shadow: 0 0 15px 0 rgba(28, 28, 28, 0.3);
     }
+
     @media only screen and (min-width: 1024px) {
-        padding: 12.5px 30px 12.5px 30px;
-        width: ${({ width }) =>
-            width === 'full' ? 'calc(100% - 60px);' : 'fit-content'};
+        padding: 8px 20px 8px 20px;
+        width: ${({ width }) => (width === 'full' ? '100%' : 'fit-content')};
     }
+
     @media only screen and (min-width: 1440px) {
-        padding: 15px 40px 15px 40px;
-        width: ${({ width }) =>
-            width === 'full' ? 'calc(100% - 80px);' : 'fit-content'};
+        padding: 10px 25px 10px 25px;
+        width: ${({ width }) => (width === 'full' ? '100%' : 'fit-content')};
     }
 `

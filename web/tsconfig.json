@@ -16,5 +16,5 @@
         "noEmit": true,
         "jsx": "react"
     },
-    "include": ["./src", "./node_modules/redux-persist/types"]
+    "include": ["./src", "./node_modules/**/*"]
 }

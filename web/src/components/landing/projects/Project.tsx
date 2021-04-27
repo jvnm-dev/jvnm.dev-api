@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { IProject } from '../../../redux/slices/projects'
+import {IThemeContainer} from '../../../constants/themes'
 
 const ProjectCardOverlay = styled.div`
     opacity: 0;
@@ -24,7 +25,7 @@ const ProjectCardOverlay = styled.div`
 `
 
 const ProjectCard = styled.div`
-    background: ${({ theme }) => theme.background};
+    background: ${({ theme }: IThemeContainer) => theme.background};
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.2);
     padding: 8px;
@@ -54,14 +55,14 @@ const ProjectCard = styled.div`
 const CardTitle = styled.h2`
     margin: 0;
     font-size: 20px;
-    color: ${({ theme }) => theme.title?.default};
+    color: ${({ theme }: IThemeContainer) => theme.title?.default};
     @media only screen and (min-width: 1024px) {
         font-size: 24px;
     }
 `
 
 const CardDescription = styled.p`
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }: IThemeContainer) => theme.text};
     font-size: 12px;
     @media only screen and (min-width: 768px) {
         font-size: 14px;
@@ -93,7 +94,7 @@ const CardLanguageBall = styled.span<{ bgColor?: () => string }>`
 
 const CardFooterText = styled.span`
     margin-left: 8px;
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }: IThemeContainer) => theme.text};
     font-weight: 100;
     font-size: 12px;
     @media only screen and (min-width: 768px) {

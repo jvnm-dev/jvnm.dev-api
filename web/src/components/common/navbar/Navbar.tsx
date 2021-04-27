@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
 
@@ -8,6 +8,7 @@ import {
     NavbarMenuItem,
     NavbarLogo,
     NavbarButton,
+    NavbarMenuIconMobile,
 } from './'
 
 import { Container } from '../'
@@ -23,6 +24,8 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
     const history = useHistory()
     const session = useSelector(({ session }: ISessionReducer) => session)
     const dispatch = useDispatch()
+    const navbarMenu = useRef(null)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const handleContactButtonClick = (e: MouseEvent) => {
         e.preventDefault()
@@ -35,22 +38,46 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
         history.push('/')
     }
 
+    const toggleMobileMenu = () => {
+        setIsMenuOpen((currentIsMenuOpen: boolean) => {
+            const menu = navbarMenu.current as HTMLElement | null
+
+            if (!currentIsMenuOpen) {
+                menu?.classList?.add('show')
+                document.body.classList.add('stop-scrolling')
+            } else {
+                menu?.classList?.remove('show')
+                document.body.classList.remove('stop-scrolling')
+            }
+
+            return !currentIsMenuOpen
+        })
+    }
+
     const shouldShowContact = !localStorage.getItem('jvnm')
     const shouldShowSignIn = !shouldShowContact && !signin
 
     return (
         <NavbarContainer>
-            <Container flex fullHeight>
+            <Container fullheight flex>
                 <NavbarLogo to="/">
                     <span>J</span>
                     <span>V</span>
                     <span>M</span>
                 </NavbarLogo>
-                <NavbarMenu>
+                <NavbarMenu ref={navbarMenu}>
                     {!dashboard && (
-                        <NavbarMenuItem>
-                            <Link to="/tools/">Tools</Link>
-                        </NavbarMenuItem>
+                        <>
+                            <NavbarMenuItem mobileOnly>
+                                <Link
+                                    aria-label="Contact"
+                                    to="/"
+                                    onClick={handleContactButtonClick}
+                                >
+                                    Contact
+                                </Link>
+                            </NavbarMenuItem>
+                        </>
                     )}
                     {dashboard && (
                         <NavbarMenuItem>
@@ -58,6 +85,12 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                         </NavbarMenuItem>
                     )}
                 </NavbarMenu>
+
+                <NavbarMenuIconMobile
+                    isOpen={isMenuOpen}
+                    toggleMobileMenu={toggleMobileMenu}
+                />
+
                 {contact && shouldShowContact && (
                     <NavbarButton
                         aria-label="Contact"
@@ -67,6 +100,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                         Contact
                     </NavbarButton>
                 )}
+
                 {shouldShowSignIn && !session.token && (
                     <NavbarButton
                         aria-label="Sign in"
@@ -76,6 +110,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                         Sign in
                     </NavbarButton>
                 )}
+
                 {shouldShowSignIn && session.token && !dashboard && (
                     <NavbarButton
                         aria-label="Dashboard"
@@ -85,6 +120,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                         Dashboard
                     </NavbarButton>
                 )}
+
                 {!contact && session.token && (
                     <NavbarButton
                         aria-label="Sign out"

@@ -15,7 +15,10 @@ const LoaderContainer = styled.div<ILoaderProps>`
   `}
 `
 
-const LoaderImage = styled.img`
+const LoaderImage = styled.img.attrs(() => ({
+    loading: 'lazy',
+    decoding: 'async',
+}))`
     height: 64px;
     width: 64px;
 `

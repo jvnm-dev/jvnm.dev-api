@@ -39,6 +39,6 @@ export const Text = styled.p<{
     `}
     }
     @media only screen and (min-width: 1440px) {
-        font-size: ${({ small }) => (small ? '16px' : '24px')};
+        font-size: ${({ small }) => (small ? '16px' : '22px')};
     }
 `
