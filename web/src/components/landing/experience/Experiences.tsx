@@ -11,6 +11,7 @@ import {
 } from '../../../redux/slices/experiences'
 import { IExperience } from './Experience'
 import { Plus } from '../../dashboard/common/Plus'
+import {useHistory} from 'react-router-dom'
 
 export const EXPERIENCES = gql`
     {
@@ -21,6 +22,9 @@ export const EXPERIENCES = gql`
             dateFrom
             dateTo
             role
+            journey {
+                id
+            }
         }
     }
 `
@@ -31,10 +35,15 @@ interface IProps {
 
 export const Experiences = ({ dashboard }: IProps) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { loading, error, data } = useQuery(EXPERIENCES)
     const experiences = useSelector(
         ({ experiences }: IExperienceReducer) => experiences
     )
+
+    const onExperienceClick = (journeyId: number) => {
+        history.push(`/journey/${journeyId}`)
+    }
 
     useEffect(() => {
         if (!loading) {
@@ -63,6 +72,7 @@ export const Experiences = ({ dashboard }: IProps) => {
                     dateFrom,
                     dateTo,
                     role,
+                    journey
                 }: Partial<IExperience>) =>
                     !dashboard ? (
                         <Experience
@@ -74,13 +84,14 @@ export const Experiences = ({ dashboard }: IProps) => {
                             // @ts-ignore
                             dateTo={dateTo}
                             title={role}
+                            // @ts-ignore
+                            //onClick={() => onExperienceClick(journey.id)}
                         />
                     ) : (
                         <ExperienceImage
                             key={id}
                             src={image}
                             alt={place}
-                            dashboard
                         />
                     )
             )}

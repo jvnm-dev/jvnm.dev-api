@@ -10,31 +10,30 @@ import {
 import {useDispatch, useSelector} from 'react-redux'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-import robotoRegular from './assets/fonts/Roboto-Regular.ttf'
-import robotoMedium from './assets/fonts/Roboto-Medium.ttf'
-
 import { Loader } from './components/common'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
 import {ITheme, IThemeContainer, THEMES} from './constants/themes'
 import {ISession, ISessionReducer, setToken} from './redux/slices/session'
-import { IThemeReducer, IThemes } from './redux/slices/themes'
+import { IThemeReducer } from './redux/slices/themes'
+import JourneyScreen from './screens/Journey'
 
 const Home = lazy(() => import('./screens/Home'))
 const Maintenance = lazy(() => import('./screens/Maintenance'))
 const SignIn = lazy(() => import('./screens/SignIn'))
 const Dashboard = lazy(() => import('./screens/Dashboard'))
+const NotFound = lazy(() => import('./screens/NotFound'))
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Roboto';
-    src: url(${robotoRegular}) format('truetype');
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
   }
   
   @font-face {
       font-family: 'Roboto';
-      src: url(${robotoMedium}) format('truetype');
+      src: url('/fonts/Roboto-Medium.ttf') format('truetype');
       font-weight: bold;
   }
 
@@ -121,10 +120,15 @@ export const Router = () => {
                         <Maintenance />
                     </Suspense>
                 ) : (
-                    <>
+                    <Suspense fallback={<Loader full />}>
                         <HashRouter>
                             <Suspense fallback={<Loader full />}>
                                 <Switch>
+                                    <Route
+                                      exact
+                                      path="/journey/:id"
+                                      component={JourneyScreen}
+                                    />
                                     <Route
                                         exact
                                         path="/signin"
@@ -141,12 +145,19 @@ export const Router = () => {
                                         path="/authenticate/:token"
                                         component={Authenticator}
                                     />
-                                    <Route component={Home} />{' '}
+                                    <Route
+                                      exact
+                                      path="/"
+                                      component={Home}
+                                    />
+                                    <Route
+                                      component={NotFound}
+                                    />
                                     {/* fallback for all others routes */}
                                 </Switch>
                             </Suspense>
                         </HashRouter>
-                    </>
+                    </Suspense>
                 )}
                 <ThemeSwitcher />
             </ThemeProvider>

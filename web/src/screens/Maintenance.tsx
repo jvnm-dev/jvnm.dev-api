@@ -9,7 +9,7 @@ export const Maintenance = () => (
     <Container>
         <Section column horizontallyCentered verticallyCentered mobilePadding>
             <ErrorImage src={maintenanceImage} alt="Maintenance" />
-            <Title>Sorry</Title>
+            <Title small style={{ marginTop: '48px' }}>Sorry</Title>
             <Text margin centered>
                 The website is under maintenance, please come back later.
             </Text>

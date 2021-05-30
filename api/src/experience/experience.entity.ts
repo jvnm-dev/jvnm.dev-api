@@ -36,6 +36,7 @@ export class ExperienceEntity {
     role: string
 
     @OneToOne(() => JourneyEntity, (journey) => journey.experience)
-    @Field((type) => Int, { nullable: true })
+    @JoinColumn()
+    @Field((type) => JourneyEntity, { nullable: true })
     journey: JourneyEntity
 }

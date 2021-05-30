@@ -1,25 +1,31 @@
 import mailjet from 'node-mailjet'
 
-import {MAILJET} from '../config'
-import {getTemplate, IEmailTemplate, IEmailTemplateCoordinates} from '../emailTemplates'
+import { MAILJET } from '../config'
+import {
+  getTemplate,
+  IEmailTemplate,
+  IEmailTemplateCoordinates,
+} from '../emailTemplates'
 
 type EmailTemplateVariable = { [key: string]: string }
 
 export class EmailService {
-
   private mailjetUtility
 
   constructor() {
     this.mailjetUtility = mailjet.connect(...(MAILJET ?? []))
   }
 
-  async send(templateName: string, to: IEmailTemplateCoordinates, variables?: EmailTemplateVariable) {
-    const template: IEmailTemplate = getTemplate(templateName)
+  async send(
+    templateName: string,
+    to: IEmailTemplateCoordinates,
+    variables?: EmailTemplateVariable
+  ) {
+    const template: IEmailTemplate = { ...getTemplate(templateName) }
 
-    const bodyVariables = template.HTMLPart
-      .match(/{{[a-zA-Z]+?}}/g)
+    const bodyVariables = template.HTMLPart.match(/{{[a-zA-Z]+?}}/g)
 
-    ;(bodyVariables ?? []).forEach(bodyVariable => {
+    ;(bodyVariables ?? []).forEach((bodyVariable) => {
       const variableName = bodyVariable
         .replace(/{/gi, ' ')
         .replace(/}/gi, ' ')
@@ -28,33 +34,35 @@ export class EmailService {
       const value = variables[variableName]
 
       if (value) {
-        template.HTMLPart = template.HTMLPart.replace(new RegExp(bodyVariable, 'gi'), value)
+        template.HTMLPart = template.HTMLPart.replace(
+          new RegExp(bodyVariable, 'gi'),
+          value
+        )
       }
     })
 
     const completeTemplate = {
-      "Messages":[
+      Messages: [
         {
-          "From": {
-            "Email": template.from.email,
-            "Name": template.from.name || 'User',
+          From: {
+            Email: template.from.email,
+            Name: template.from.name || 'User',
           },
-          "To": [
+          To: [
             {
-              "Email": to.email,
-              "Name": to.name || 'User',
-            }
+              Email: to.email,
+              Name: to.name || 'User',
+            },
           ],
-          "Subject": template.subject,
-          "HTMLPart": template.HTMLPart,
-          "CustomID": template.customID
-        }
-      ]
+          Subject: template.subject,
+          HTMLPart: template.HTMLPart,
+          CustomID: template.customID,
+        },
+      ],
     }
 
     await this.mailjetUtility
-      .post('send', { 'version': 'v3.1' })
+      .post('send', { version: 'v3.1' })
       .request(completeTemplate)
   }
-
 }

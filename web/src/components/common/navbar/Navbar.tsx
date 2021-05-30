@@ -61,9 +61,8 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
         <NavbarContainer>
             <Container fullheight flex>
                 <NavbarLogo to="/">
-                    <span>J</span>
-                    <span>V</span>
-                    <span>M</span>
+                    <span>Jason</span>
+                    <span>&nbsp;Van Malder</span>
                 </NavbarLogo>
                 <NavbarMenu ref={navbarMenu}>
                     {!dashboard && (

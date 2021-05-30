@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import { Container } from '../'
-import { device } from '../../../constants/responsive.ts'
 import {IThemeContainer} from '../../../constants/themes'
 
 export const NavbarContainer = styled.nav`
@@ -14,6 +13,8 @@ export const NavbarContainer = styled.nav`
     transition: border 0.2s;
 
     ${Container} {
+        justify-content: space-between;
+        
         @media only screen and (min-width: 768px) {
             max-width: 740px;
             padding: 0;

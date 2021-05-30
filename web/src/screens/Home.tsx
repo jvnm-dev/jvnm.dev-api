@@ -1,6 +1,6 @@
 import React, { useRef, MouseEvent } from 'react'
 
-import computerImage from '../assets/img/computer.jpeg'
+import computerImage from '../assets/img/developer2.svg'
 import { WaveClipPath } from '../components/common/svg'
 import {
     Container,

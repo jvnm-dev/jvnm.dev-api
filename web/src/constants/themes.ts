@@ -12,6 +12,7 @@ export interface ITheme {
     name: string
     icon: IconDefinition
     background: string
+    constrastedBackground: string,
     headerBorder: string
     title: {
         default: string
@@ -29,6 +30,7 @@ const THEME_LIGHT: ITheme = {
     name: 'THEME_LIGHT',
     icon: faSun,
     background: '#FEFEFE',
+    constrastedBackground: '#F1F1F1',
     headerBorder: '#EEE',
     title: {
         default: '#24292E',
@@ -47,6 +49,7 @@ const THEME_DARK: ITheme = {
     name: 'THEME_DARK',
     icon: faMoon,
     background: '#212121',
+    constrastedBackground: '#2F2F2F',
     headerBorder: '#2f2f2f',
     title: {
         default: '#B5B7FB',

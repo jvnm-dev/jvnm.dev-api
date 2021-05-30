@@ -9,6 +9,6 @@ export class ExperienceService {
     ) {}
 
     async findAll(): Promise<ExperienceEntity[]> {
-        return this.experienceRepository.find()
+        return this.experienceRepository.find({ relations: ['journey'] })
     }
 }

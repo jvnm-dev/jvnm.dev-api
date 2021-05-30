@@ -20,7 +20,7 @@ type ExperienceEntity {
   dateFrom: String
   dateTo: String
   role: String
-  journey: Int
+  journey: JourneyEntity
 }
 
 type TechnologyEntity {

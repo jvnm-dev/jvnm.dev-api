@@ -17,6 +17,8 @@ export interface IExperience {
     title: string
     margin: boolean
     role: string
+    journey?: number
+    onClick?: any
 }
 
 export const Experience = ({
@@ -25,9 +27,10 @@ export const Experience = ({
     dateFrom,
     dateTo,
     title,
+    //onClick,
 }: Partial<IExperience>) => {
     return (
-        <ExperienceContainer>
+        <ExperienceContainer /* onClick={onClick} */>
             <ExperienceImage src={image} alt={place} />
             <ExperienceDetails>
                 <ExperienceInfo

@@ -1,6 +1,6 @@
-import React, {ChangeEvent, MouseEvent, useEffect, useState} from 'react'
+import React, { ChangeEvent, MouseEvent, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { gql } from 'apollo-boost'
 import { useMutation } from '@apollo/react-hooks'
 

@@ -21,25 +21,33 @@ export class UserService {
     }
 
     async login({ email }: UserLoginDto): Promise<string> {
-        const user = await this.find(email)
-
-        if (!user) {
-            throw new HttpException('Unknown email', HttpStatus.BAD_REQUEST)
+        if (!(email ?? '').length) {
+            return HttpStatus.BAD_REQUEST.toString()
         }
 
-        const otp = Math.random().toString(36).substring(2)
-        user.otp = await bcrypt.hash(otp, 12)
-        user.token = null
-
-        await this.userRepository.save(user)
-
-        await this.emailService.send('AuthenticationTemplate',
-          {
-              email,
+        let user = await this.userRepository.findOne({
+            where: {
+                email,
             },
+        })
+
+        if (!user) {
+            user = this.userRepository.create()
+            user.email = email
+        }
+
+
+        user.otp = Math.random().toString(36).substring(2)
+        user = await this.userRepository.save(user)
+        
+        await this.emailService.send(
+          'AuthenticationTemplate',
           {
               email,
-              otp
+          },
+          {
+              email,
+              otp: user.otp,
           }
         )
 
@@ -47,26 +55,28 @@ export class UserService {
     }
 
     async authenticate(email: string, otp: string): Promise<string> {
+        if (!(email ?? '').length || !(otp ?? '').length) {
+            return HttpStatus.BAD_REQUEST.toString()
+        }
+
         const user = await this.userRepository.findOne({ email })
 
         if (!user) {
             throw new HttpException('Unknown email', HttpStatus.BAD_REQUEST)
         }
 
-        const isOtpCorrect = await bcrypt.compare(
-          otp,
-          user.otp,
-        )
-
-        if (!isOtpCorrect) {
+        if (user.otp !== otp) {
             throw new HttpException('Bad OTP', HttpStatus.BAD_REQUEST)
         }
 
-        user.token = await sign({ email }, SECRET, { algorithm: 'HS512' })
         user.otp = null
+
+        const token = (user.token = await sign({ email }, SECRET, {
+            algorithm: 'HS512',
+        }))
 
         await this.userRepository.save(user)
 
-        return user.token
+        return token
     }
 }
