@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components'
 import me from '../../../assets/img/me.jpg'
 import { AVAILABILITIES } from '../../../constants'
 import { Avatar, Badge, createStyles, withStyles } from '@material-ui/core'
-import {IThemeContainer} from '../../../constants/themes'
+import { IThemeContainer } from '../../../constants/themes'
 
 interface IAvailabilityImage {
     status: number

@@ -27,10 +27,10 @@ export const Experience = ({
     dateFrom,
     dateTo,
     title,
-    //onClick,
+    onClick,
 }: Partial<IExperience>) => {
     return (
-        <ExperienceContainer /* onClick={onClick} */>
+        <ExperienceContainer onClick={onClick}>
             <ExperienceImage src={image} alt={place} />
             <ExperienceDetails>
                 <ExperienceInfo

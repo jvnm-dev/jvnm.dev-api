@@ -19,4 +19,10 @@ export class UserResolver {
     async login(@Args('userData') userData: UserLoginDto) {
         return this.userService.login(userData)
     }
+
+    @Query((returns) => [UserEntity])
+    @UseGuards(new AuthGuard())
+    users() {
+        return this.userService.findAll()
+    }
 }

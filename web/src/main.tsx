@@ -13,12 +13,19 @@ import { render } from 'react-dom'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { Helmet } from 'react-helmet'
 import { StylesProvider } from '@material-ui/core/styles'
+import WebFont from 'webfontloader'
 
 import { BACKEND_URL } from './constants'
 import { Router } from './Router'
 import { persistor } from './redux/store'
 import { Loader } from './components/common'
 import { ISessionReducer } from './redux/slices/session'
+
+WebFont.load({
+    google: {
+        families: ['Ubuntu:200,400', 'sans-serif'],
+    },
+})
 
 const defaultApolloClient = new ApolloClient({
     uri: `${BACKEND_URL}/graphql`,

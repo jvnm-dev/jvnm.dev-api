@@ -12,7 +12,7 @@ export interface ITheme {
     name: string
     icon: IconDefinition
     background: string
-    constrastedBackground: string,
+    constrastedBackground: string
     headerBorder: string
     title: {
         default: string
@@ -24,25 +24,26 @@ export interface ITheme {
     inputBackground: string
     inputForeground: string
     colorPrimary: string
+    colorSecondary: string
 }
 
 const THEME_LIGHT: ITheme = {
     name: 'THEME_LIGHT',
     icon: faSun,
-    background: '#FEFEFE',
-    constrastedBackground: '#F1F1F1',
+    background: '#f4f4ff',
+    constrastedBackground: '#e9e9ff',
     headerBorder: '#EEE',
     title: {
         default: '#24292E',
-        inverse: '#FEFEFE',
+        inverse: '#f4f4ff',
     },
     text: '#525252',
-    wavyContainer:
-        'linear-gradient(135deg, rgba(90,81,250,0.5) 0%, rgba(179,204,210,0.5) 100%)',
+    wavyContainer: 'linear-gradient(135deg, #8c85ff85 0%, #5a51fa3b 100%)',
     themeSwitcherShadow: '0px 0px 25px 0px rgba(0,0,0,0.15)',
-    inputBackground: '#F5F5F5',
+    inputBackground: '#e9e9ff',
     inputForeground: '#212121',
-    colorPrimary: '#6961FB',
+    colorPrimary: '#5a51fa',
+    colorSecondary: '#8c85ff',
 }
 
 const THEME_DARK: ITheme = {
@@ -52,7 +53,7 @@ const THEME_DARK: ITheme = {
     constrastedBackground: '#2F2F2F',
     headerBorder: '#2f2f2f',
     title: {
-        default: '#B5B7FB',
+        default: '#8c85ff',
         inverse: '#212121',
     },
     text: '#B1B2CC',
@@ -62,9 +63,14 @@ const THEME_DARK: ITheme = {
     inputBackground: '#2B2B2B',
     inputForeground: '#FEFEFE',
     colorPrimary: '#B5B7FB',
+    colorSecondary: '#8c85ff',
 }
 
-export const THEMES = {
+export interface IThemeList {
+    [key: string]: ITheme
+}
+
+export const THEMES: IThemeList = {
     THEME_LIGHT: THEME_LIGHT,
     THEME_DARK: THEME_DARK,
 }

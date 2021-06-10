@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { device } from '../../../constants/responsive.ts'
-import {IThemeContainer} from '../../../constants/themes'
+import { device } from '../../../constants/responsive'
+import { IThemeContainer } from '../../../constants/themes'
 
 export const NavbarMenuItem = styled.li<{
     mobileOnly?: boolean
@@ -12,13 +12,14 @@ export const NavbarMenuItem = styled.li<{
         display: flex;
         justify-content: center;
         align-items: center;
-        color: $${({ theme }: IThemeContainer) => theme.title.default};
+        color: $ ${({ theme }: IThemeContainer) => theme.title.default};
         text-decoration: none;
         font-weight: 600;
         transition: 0.2s;
         height: 100%;
         :visited {
-            color: ${({ theme }: IThemeContainer) => theme.title.default} !important;
+            color: ${({ theme }: IThemeContainer) =>
+                theme.title.default} !important;
         }
     }
 

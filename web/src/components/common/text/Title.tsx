@@ -8,9 +8,6 @@ export const Title = styled.h1<{
     font-size: ${({ small }) => (small ? '26px' : '60px')};
     color: ${({ inverse, theme }) =>
         inverse ? theme.title?.inverse : theme.title?.default};
-    text-shadow: -1px 1px 1px
-        ${({ inverse, theme }) =>
-            inverse ? theme.title?.inverse : theme.title?.default};
     font-weight: 600;
     margin: ${({ marginMobile }) => (marginMobile ? '36px 0 0 0' : '0')};
     @media only screen and (min-width: 768px) {

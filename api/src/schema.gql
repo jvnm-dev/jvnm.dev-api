@@ -3,52 +3,53 @@
 # ------------------------------------------------------
 
 type AvailabilityEntity {
-  id: Int!
-  status: Int!
+    id: Int!
+    status: Int!
 }
 
 type JourneyEntity {
-  id: Int!
-  experience: ExperienceEntity
-  description: String
+    id: Int!
+    experience: ExperienceEntity
+    description: String
 }
 
 type ExperienceEntity {
-  id: Int!
-  image: String
-  place: String
-  dateFrom: String
-  dateTo: String
-  role: String
-  journey: JourneyEntity
+    id: Int!
+    image: String
+    place: String
+    dateFrom: String
+    dateTo: String
+    role: String
+    journey: JourneyEntity
 }
 
 type TechnologyEntity {
-  id: Int!
-  image: String
-  name: String
+    id: Int!
+    image: String
+    name: String
 }
 
 type UserEntity {
-  id: Int!
-  email: String
-  otp: String
-  token: String
+    id: Int!
+    email: String
+    otp: String
+    token: String
 }
 
 type Query {
-  availability: AvailabilityEntity!
-  experiences: [ExperienceEntity!]!
-  technologies: [TechnologyEntity!]!
-  me: UserEntity!
-  journey(id: Int!): JourneyEntity!
+    availability: AvailabilityEntity!
+    experiences: [ExperienceEntity!]!
+    technologies: [TechnologyEntity!]!
+    me: UserEntity!
+    users: [UserEntity!]!
+    journey(id: Int!): JourneyEntity!
 }
 
 type Mutation {
-  updateAvailability(status: Float!): AvailabilityEntity!
-  login(userData: UserLoginDto!): String!
+    updateAvailability(status: Float!): AvailabilityEntity!
+    login(userData: UserLoginDto!): String!
 }
 
 input UserLoginDto {
-  email: String!
+    email: String!
 }

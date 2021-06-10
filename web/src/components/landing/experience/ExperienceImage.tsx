@@ -4,14 +4,14 @@ export const ExperienceImage = styled.img.attrs(() => ({
     loading: 'lazy',
     decoding: 'async',
 }))`
-    height: ${({ dashboard }) => (!dashboard ? '50px' : '80px')};
-    width: ${({ dashboard }) => (!dashboard ? '50px' : '80px')};
+    height: 50px;
+    width: 50px;
 
     @media only screen and (min-width: 1024px) {
-        height: ${({ dashboard }) => (!dashboard ? '46px' : '80px')};
-        width: ${({ dashboard }) => (!dashboard ? '46px' : '80px')};
+        height: 46px;
+        width: 46px;
     }
 
-    margin-right: ${({ dashboard }) => (dashboard ? '10px' : '0')};
     cursor: pointer;
+    border-radius: 5px;
 `

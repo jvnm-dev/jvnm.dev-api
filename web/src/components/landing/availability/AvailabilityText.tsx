@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {IThemeContainer} from '../../../constants/themes'
+import { IThemeContainer } from '../../../constants/themes'
 
 export const AvailabilityText = styled.p`
     font-weight: 600;

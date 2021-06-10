@@ -7,34 +7,35 @@ import {
     HashRouter,
     RouteProps,
 } from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 import { Loader } from './components/common'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
-import {ITheme, IThemeContainer, THEMES} from './constants/themes'
-import {ISession, ISessionReducer, setToken} from './redux/slices/session'
-import { IThemeReducer } from './redux/slices/themes'
-import JourneyScreen from './screens/Journey'
+import { ITheme, IThemeContainer, THEMES } from './constants/themes'
+import { ISession, setToken } from './redux/slices/session'
 
-const Home = lazy(() => import('./screens/Home'))
-const Maintenance = lazy(() => import('./screens/Maintenance'))
-const SignIn = lazy(() => import('./screens/SignIn'))
-const Dashboard = lazy(() => import('./screens/Dashboard'))
-const NotFound = lazy(() => import('./screens/NotFound'))
+const Home = lazy(() => import('./screens/landing/Home'))
+const Journey = lazy(() => import('./screens/landing/Journey'))
+
+const Maintenance = lazy(() => import('./screens/common/Maintenance'))
+const SignIn = lazy(() => import('./screens/common/SignIn'))
+const NotFound = lazy(() => import('./screens/common/NotFound'))
+
+const DashboardHpme = lazy(() => import('./screens/dashboard/DashboardHome'))
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'Roboto';
-    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-display: block;
+    font-family: 'Ubuntu';
     font-weight: normal;
   }
   
   @font-face {
-      font-family: 'Roboto';
-      src: url('/fonts/Roboto-Medium.ttf') format('truetype');
-      font-weight: bold;
+    font-display: block;
+    font-family: 'Ubuntu';
+    font-weight: bold;
   }
 
   html {
@@ -47,7 +48,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }: { theme: ITheme }) => theme.background};
     transition: background 0.2s;
     font-family: sans-serif; // fix font stress on page loading
-    font-family: 'Roboto';
+    font-family: 'Ubuntu';
   }
   
   a, a:visited {
@@ -90,24 +91,17 @@ const Authenticator = (props: any) => {
         dispatch(setToken(token))
     }
 
-    return <Redirect to='/' />
+    return <Redirect to="/" />
 }
 
 export const Router = () => {
-    const {
-        theme,
-        session,
-    } = useSelector(
-        ({
+    const { theme, session } = useSelector(
+        ({ theme, session }: { theme: string; session: ISession }) => ({
             theme,
             session,
-        }: {
-            theme: IThemeReducer
-            session: ISessionReducer
-        }) => ({ theme, session })
+        })
     )
 
-    // @ts-ignore
     const selectedTheme = THEMES[theme]
     const maintenanceMode = import.meta.env.VITE_MAINTENANCE_MODE
 
@@ -122,40 +116,31 @@ export const Router = () => {
                 ) : (
                     <Suspense fallback={<Loader full />}>
                         <HashRouter>
-                            <Suspense fallback={<Loader full />}>
-                                <Switch>
-                                    <Route
-                                      exact
-                                      path="/journey/:id"
-                                      component={JourneyScreen}
-                                    />
-                                    <Route
-                                        exact
-                                        path="/signin"
-                                        component={SignIn}
-                                    />
-                                    <AuthenticatedRoute
-                                        exact
-                                        path="/dashboard"
-                                        session={session}
-                                        component={Dashboard}
-                                    />
-                                    <Route
-                                        exact
-                                        path="/authenticate/:token"
-                                        component={Authenticator}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/"
-                                      component={Home}
-                                    />
-                                    <Route
-                                      component={NotFound}
-                                    />
-                                    {/* fallback for all others routes */}
-                                </Switch>
-                            </Suspense>
+                            <Switch>
+                                <Route
+                                    exact
+                                    path="/journey/:id"
+                                    component={Journey}
+                                />
+                                <Route
+                                    exact
+                                    path="/signin"
+                                    component={SignIn}
+                                />
+                                <AuthenticatedRoute
+                                    path="/dashboard"
+                                    session={session}
+                                    component={DashboardHpme}
+                                />
+                                <Route
+                                    exact
+                                    path="/authenticate/:token"
+                                    component={Authenticator}
+                                />
+                                <Route exact path="/" component={Home} />
+                                <Route component={NotFound} />
+                                {/* fallback for all others routes */}
+                            </Switch>
                         </HashRouter>
                     </Suspense>
                 )}

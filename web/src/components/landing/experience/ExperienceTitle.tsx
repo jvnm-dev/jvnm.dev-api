@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {IThemeContainer} from '../../../constants/themes'
+import { IThemeContainer } from '../../../constants/themes'
 
 export const ExperienceTitle = styled.h2`
     margin: 0;

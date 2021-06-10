@@ -76,9 +76,7 @@ export const Projects = () => {
                     <Project
                         key={p.id}
                         data={{
-                            name:
-                                p.name.charAt(0).toUpperCase() +
-                                p.name.slice(1),
+                            name: p.name,
                             description: p.description,
                             language: p.language,
                             license: p?.license,

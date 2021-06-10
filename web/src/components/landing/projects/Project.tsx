@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { IProject } from '../../../redux/slices/projects'
-import {IThemeContainer} from '../../../constants/themes'
+import { IThemeContainer } from '../../../constants/themes'
 
 const ProjectCardOverlay = styled.div`
     opacity: 0;
@@ -27,35 +27,43 @@ const ProjectCardOverlay = styled.div`
 const ProjectCard = styled.div`
     background: ${({ theme }: IThemeContainer) => theme.background};
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.2);
-    padding: 8px;
+    box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.2);
     margin-right: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     position: relative;
     box-sizing: border-box;
     transition: 0.2s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     :hover {
         cursor: pointer;
-        box-shadow: 0px 0px 5px 0px rgba(28, 28, 28, 0.3);
+        box-shadow: 0 0 5px 0 rgba(28, 28, 28, 0.3);
         transform: scale(1.025);
     }
+
     :hover ${ProjectCardOverlay} {
         opacity: 1;
         visibility: visible;
     }
+
     @media only screen and (min-width: 768px) {
-        padding: 16px;
         width: calc(33% - 16px);
     }
 `
 
 const CardTitle = styled.h2`
+    display: flex;
+    justify-content: space-between;
     margin: 0;
     font-size: 20px;
-    color: ${({ theme }: IThemeContainer) => theme.title?.default};
+    background: linear-gradient(135deg, #24292e 0%, #30363c);
+    color: ${({ theme }: IThemeContainer) => theme.title?.inverse};
+    padding: 8px 16px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
     @media only screen and (min-width: 1024px) {
         font-size: 24px;
     }
@@ -64,6 +72,11 @@ const CardTitle = styled.h2`
 const CardDescription = styled.p`
     color: ${({ theme }: IThemeContainer) => theme.text};
     font-size: 12px;
+    padding: 0 8px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 0 16px;
+    }
     @media only screen and (min-width: 768px) {
         font-size: 14px;
     }
@@ -78,6 +91,11 @@ const CardDescription = styled.p`
 const CardFooter = styled.div`
     display: flex;
     justify-content: space-between;
+    padding: 0 8px 8px 8px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 0 16px 16px 16px;
+    }
 `
 
 const CardLanguage = styled.div`
@@ -134,7 +152,12 @@ export const Project = ({
             <ProjectCardOverlay>
                 <FontAwesomeIcon icon={faGithub} />
             </ProjectCardOverlay>
-            <CardTitle>{name}</CardTitle>
+            <CardTitle>
+                <span>{name}</span>
+                <span>
+                    <FontAwesomeIcon icon={faGithub} />
+                </span>
+            </CardTitle>
             <CardDescription>{description}</CardDescription>
             <CardFooter>
                 <CardLanguage>
@@ -143,6 +166,7 @@ export const Project = ({
                     />
                     <CardFooterText>{language}</CardFooterText>
                 </CardLanguage>
+
                 <CardFooterText>
                     <FontAwesomeIcon icon={faFileAlt} /> {license?.spdx_id}
                 </CardFooterText>

@@ -6,18 +6,22 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { UserEntity } from './user.entity'
 import { UserLoginDto } from './dto/user-login.dto'
 import { SECRET } from '../config'
-import {EmailService} from '../email/email.service'
-import {HttpException, HttpStatus} from '@nestjs/common'
+import { EmailService } from '../email/email.service'
+import { HttpException, HttpStatus } from '@nestjs/common'
 
 export class UserService {
     constructor(
         @InjectRepository(UserEntity)
         private readonly userRepository: Repository<UserEntity>,
-        private emailService: EmailService,
+        private emailService: EmailService
     ) {}
 
     async find(email: string): Promise<UserEntity> {
         return this.userRepository.findOne({ email })
+    }
+
+    async findAll(): Promise<UserEntity[]> {
+        return this.userRepository.find()
     }
 
     async login({ email }: UserLoginDto): Promise<string> {
@@ -36,19 +40,18 @@ export class UserService {
             user.email = email
         }
 
-
         user.otp = Math.random().toString(36).substring(2)
         user = await this.userRepository.save(user)
-        
+
         await this.emailService.send(
-          'AuthenticationTemplate',
-          {
-              email,
-          },
-          {
-              email,
-              otp: user.otp,
-          }
+            'AuthenticationTemplate',
+            {
+                email,
+            },
+            {
+                email,
+                otp: user.otp,
+            }
         )
 
         return HttpStatus.OK.toString()

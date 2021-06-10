@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {IThemeContainer} from '../../constants/themes'
+import { IThemeContainer } from '../../constants/themes'
 
 export const Container = styled.div<{
     flex?: boolean

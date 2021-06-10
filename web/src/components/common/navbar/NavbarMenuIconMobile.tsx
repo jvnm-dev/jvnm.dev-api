@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { device } from '../../../constants/responsive.ts'
-import {IThemeContainer} from '../../../constants/themes'
+import { device } from '../../../constants/responsive'
+import { IThemeContainer } from '../../../constants/themes'
 
-export const NavbarMenuIconMobileContainer = styled.span`
+export const NavbarMenuIconMobileContainer = styled.span<{
+    onClick: any
+}>`
     display: none;
     position: absolute;
     right: 24px;
@@ -48,9 +50,13 @@ export const NavbarMenuIconMobile = ({ toggleMobileMenu, isOpen }: IProps) => {
 
     useEffect(() => {
         if (isOpen) {
-            menuIconRef.current.classList.add('close')
+            ;(menuIconRef.current as HTMLElement | null)?.classList?.add(
+                'close'
+            )
         } else {
-            menuIconRef.current.classList.remove('close')
+            ;(menuIconRef.current as HTMLElement | null)?.classList.remove(
+                'close'
+            )
         }
     }, [isOpen])
 

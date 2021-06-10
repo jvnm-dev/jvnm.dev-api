@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { Loader } from '../../common'
 import { Experience, ExperienceImage } from '../'
@@ -10,8 +11,6 @@ import {
     setExperiences,
 } from '../../../redux/slices/experiences'
 import { IExperience } from './Experience'
-import { Plus } from '../../dashboard/common/Plus'
-import {useHistory} from 'react-router-dom'
 
 export const EXPERIENCES = gql`
     {
@@ -72,7 +71,7 @@ export const Experiences = ({ dashboard }: IProps) => {
                     dateFrom,
                     dateTo,
                     role,
-                    journey
+                    journey,
                 }: Partial<IExperience>) =>
                     !dashboard ? (
                         <Experience
@@ -88,14 +87,9 @@ export const Experiences = ({ dashboard }: IProps) => {
                             //onClick={() => onExperienceClick(journey.id)}
                         />
                     ) : (
-                        <ExperienceImage
-                            key={id}
-                            src={image}
-                            alt={place}
-                        />
+                        <ExperienceImage key={id} src={image} alt={place} />
                     )
             )}
-            {dashboard && <Plus />}
         </Fragment>
     )
 }

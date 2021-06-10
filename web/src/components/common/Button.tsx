@@ -1,21 +1,23 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Button as MuiButton } from '@material-ui/core'
+import { IThemeContainer } from '../../constants/themes'
 
 export const Button = styled(MuiButton).attrs({
     component: Link,
+    variant: 'contained',
 })<{
     width?: string
     small?: boolean
+    to?: string
 }>`
     height: fit-content;
     display: inline-block;
     color: #fff !important;
     background: linear-gradient(
         135deg,
-        rgba(90, 81, 250, 1) 0%,
-        rgba(179, 204, 210, 1) 100%,
-        rgba(0, 212, 255, 1) 100%
+        ${({ theme }: IThemeContainer) => theme.colorPrimary} 0%,
+        ${({ theme }: IThemeContainer) => theme.colorSecondary}
     );
     box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.25);
     font-weight: bold;

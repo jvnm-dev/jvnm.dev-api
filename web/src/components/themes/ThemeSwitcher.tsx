@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { THEMES } from '../../constants'
 import { IThemeReducer, setTheme } from '../../redux/slices/themes'
-import {IThemeContainer} from '../../constants/themes'
+import { IThemeContainer } from '../../constants/themes'
 
 const ThemeSwitcherButton = styled.button`
     position: fixed;

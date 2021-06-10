@@ -11,7 +11,6 @@ import {
     setTechnologies,
 } from '../../../redux/slices/technologies'
 import { TechnologyImage } from './Technology'
-import { Plus } from '../../dashboard/common/Plus'
 
 export const TECHNOLOGIES = gql`
     {
@@ -56,19 +55,9 @@ export const Technologies = ({ dashboard }: IProps) => {
 
     return (
         <TechnologiesContainer>
-            {technologies.map(({ id, image, name }: ITechnology) =>
-                !dashboard ? (
-                    <Technology key={`tech-${id}`} image={image} name={name} />
-                ) : (
-                    <TechnologyImage
-                        key={`tech-${id}`}
-                        src={image}
-                        alt={name}
-                        dashboard
-                    />
-                )
-            )}
-            {dashboard && <Plus margin="10px 10px 0 0" />}
+            {technologies.map(({ id, image, name }: ITechnology) => (
+                <Technology key={`tech-${id}`} image={image} name={name} />
+            ))}
         </TechnologiesContainer>
     )
 }

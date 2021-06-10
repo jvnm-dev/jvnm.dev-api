@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { Text } from '../../common'
 import { ExperiencePlace } from '../'
 import { IExperience } from './Experience'
-import {useSelector} from 'react-redux'
-import {IThemeReducer} from '../../../redux/slices/themes'
-import {THEMES} from '../../../constants'
+import { useSelector } from 'react-redux'
+import { IThemeReducer } from '../../../redux/slices/themes'
+import { THEMES } from '../../../constants'
 
 const ExperienceInfoContainer = styled.div`
     display: flex;
@@ -36,7 +36,12 @@ export const ExperienceInfo = ({
             <Text small>
                 <ExperiencePlace>{place}</ExperiencePlace>
             </Text>
-            <Text small bold color="#E1E1E1" mobileInvisible>
+            <Text
+                small
+                bold
+                color={selectedTheme.colorSecondary}
+                mobileInvisible
+            >
                 &nbsp;/&nbsp;
             </Text>
             <DatesContainer>
@@ -45,10 +50,10 @@ export const ExperienceInfo = ({
                 </Text>
                 {dateTo && (
                     <Fragment>
-                        <Text small bold color="#D1D1D1">
+                        <Text small bold color={selectedTheme.colorSecondary}>
                             &nbsp;-&nbsp;
                         </Text>
-                        <Text small bold color="#6057F9">
+                        <Text small bold color={selectedTheme.colorPrimary}>
                             {dateTo}
                         </Text>
                     </Fragment>

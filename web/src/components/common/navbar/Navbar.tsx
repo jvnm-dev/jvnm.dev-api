@@ -2,23 +2,29 @@ import React, { MouseEvent, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
 
-import {
-    NavbarContainer,
-    NavbarMenu,
-    NavbarMenuItem,
-    NavbarLogo,
-    NavbarButton,
-    NavbarMenuIconMobile,
-} from './'
+import { NavbarButton, NavbarContainer, NavbarLogo } from './'
 
-import { Container } from '../'
 import { ISessionReducer, setToken } from '../../../redux/slices/session'
+import { AppBar, Button, Toolbar, Typography } from '@material-ui/core'
+import styled from 'styled-components'
+import { NavbarButtons } from './NavbarButton'
 
 interface INavbarProps {
     contact?: boolean
     dashboard?: boolean
     signin?: boolean
 }
+
+const NavbarAppBar = styled(AppBar)`
+    background-color: transparent;
+    box-shadow: none;
+`
+
+const NavbarToolbar = styled(Toolbar)`
+    justify-content: space-between;
+    padding: 0;
+    height: 80px;
+`
 
 export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
     const history = useHistory()
@@ -57,80 +63,74 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
     const shouldShowContact = !localStorage.getItem('jvnm')
     const shouldShowSignIn = !shouldShowContact && !signin
 
-    return (
-        <NavbarContainer>
-            <Container fullheight flex>
-                <NavbarLogo to="/">
+    const getLogo = () => {
+        if (!dashboard) {
+            return (
+                <>
                     <span>Jason</span>
                     <span>&nbsp;Van Malder</span>
-                </NavbarLogo>
-                <NavbarMenu ref={navbarMenu}>
-                    {!dashboard && (
-                        <>
-                            <NavbarMenuItem mobileOnly>
-                                <Link
-                                    aria-label="Contact"
-                                    to="/"
-                                    onClick={handleContactButtonClick}
-                                >
-                                    Contact
-                                </Link>
-                            </NavbarMenuItem>
-                        </>
-                    )}
-                    {dashboard && (
-                        <NavbarMenuItem>
-                            <Link to="/dashboard/">Landing Data</Link>
-                        </NavbarMenuItem>
-                    )}
-                </NavbarMenu>
+                </>
+            )
+        }
 
-                <NavbarMenuIconMobile
-                    isOpen={isMenuOpen}
-                    toggleMobileMenu={toggleMobileMenu}
-                />
+        const path = history.location.pathname.split('/')
+        const name = path[path.length - 1]
+        const firstPart =
+            name.slice(0, 1).toUpperCase() + name.slice(1, name.length / 2)
+        const secondPart = name.slice(name.length / 2, name.length)
 
-                {contact && shouldShowContact && (
-                    <NavbarButton
-                        aria-label="Contact"
-                        to="/"
-                        onClick={handleContactButtonClick}
-                    >
-                        Contact
-                    </NavbarButton>
-                )}
+        return (
+            <>
+                <span>{firstPart}</span>
+                <span>{secondPart}</span>
+            </>
+        )
+    }
 
-                {shouldShowSignIn && !session.token && (
-                    <NavbarButton
-                        aria-label="Sign in"
-                        to="/signin"
-                        style={{ marginLeft: '8px' }}
-                    >
-                        Sign in
-                    </NavbarButton>
-                )}
+    return (
+        <NavbarContainer>
+            <NavbarAppBar position="static">
+                <NavbarToolbar>
+                    <NavbarLogo to="/">{getLogo()}</NavbarLogo>
 
-                {shouldShowSignIn && session.token && !dashboard && (
-                    <NavbarButton
-                        aria-label="Dashboard"
-                        to="/dashboard"
-                        style={{ marginLeft: '8px' }}
-                    >
-                        Dashboard
-                    </NavbarButton>
-                )}
+                    <NavbarButtons>
+                        {contact && shouldShowContact && (
+                            <NavbarButton
+                                aria-label="Contact"
+                                to="/"
+                                onClick={handleContactButtonClick}
+                            >
+                                Contact
+                            </NavbarButton>
+                        )}
 
-                {!contact && session.token && (
-                    <NavbarButton
-                        aria-label="Sign out"
-                        to="/"
-                        onClick={handleSignOutButtonClick}
-                        style={{ marginLeft: '8px' }}
-                    >
-                        Sign out
-                    </NavbarButton>
-                )}
-            </Container>
+                        {shouldShowSignIn && !session.token && (
+                            <NavbarButton aria-label="Sign in" to="/signin">
+                                Sign in
+                            </NavbarButton>
+                        )}
+
+                        {shouldShowSignIn && session.token && !dashboard && (
+                            <NavbarButton
+                                aria-label="dashboard"
+                                to="/dashboard"
+                            >
+                                Dashboard
+                            </NavbarButton>
+                        )}
+
+                        {!contact && session.token && (
+                            <NavbarButton
+                                aria-label="Sign out"
+                                to="/"
+                                onClick={handleSignOutButtonClick}
+                            >
+                                Sign out
+                            </NavbarButton>
+                        )}
+                    </NavbarButtons>
+                </NavbarToolbar>
+            </NavbarAppBar>
         </NavbarContainer>
     )
 }

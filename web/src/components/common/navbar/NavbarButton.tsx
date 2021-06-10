@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { Button } from '../Button'
 import { device } from '../../../constants/responsive'
 
-export const NavbarButton = styled(Button)`
+export const NavbarButton = styled(Button)<{
+    to: string
+}>`
     padding: 8px 12px 8px 12px;
 
     @media ${device.laptopL} {
@@ -16,5 +18,11 @@ export const NavbarButton = styled(Button)`
 
     @media ${device.mobileL} {
         display: none;
+    }
+`
+
+export const NavbarButtons = styled.div`
+    ${NavbarButton}:not(:first-child) {
+        margin-right: 8px;
     }
 `

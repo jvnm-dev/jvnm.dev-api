@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { device } from '../../../constants/responsive.ts'
-import {IThemeContainer} from '../../../constants/themes'
+import { device } from '../../../constants/responsive'
+import { IThemeContainer } from '../../../constants/themes'
 
 export const NavbarMenu = styled.ul`
     list-style-type: none;

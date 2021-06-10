@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Column } from './'
+import Particles from 'react-particles-js'
 
 const StyledImageColumn = styled(Column)`
     display: none;
@@ -10,7 +11,7 @@ const StyledImageColumn = styled(Column)`
     overflow: hidden;
     border-radius: 5px;
     min-height: 60vh;
-  
+
     @media only screen and (min-width: 768px) {
         display: flex;
         align-items: center;
@@ -21,7 +22,7 @@ const StyledImageColumn = styled(Column)`
 const Image = styled.img`
     flex: 1;
     border-radius: 5px;
-     width: 100%;
+    width: 100%;
 `
 
 interface IImageColumnProps {

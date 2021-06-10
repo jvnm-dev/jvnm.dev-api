@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ITechnology } from '../../../redux/slices/technologies'
 
 const TechnologyContainer = styled.div`
-    margin-top: 36px;
+    margin-top: 24px;
     margin-right: 24px;
     position: relative;
     :hover {
@@ -13,7 +13,7 @@ const TechnologyContainer = styled.div`
         }
     }
     @media only screen and (min-width: 1024px) {
-        margin-top: 48px;
+        margin-top: 24px;
     }
 `
 export const TechnologyImage = styled.img.attrs(() => ({
@@ -34,16 +34,6 @@ export const TechnologyImage = styled.img.attrs(() => ({
         height: 70px;
         width: 70px;
     }
-
-    ${({ dashboard }) =>
-        dashboard &&
-        `
-    margin-right: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    height: 80px !important;
-    width: 80px !important;
-  `}
 `
 
 const TechnologyTooltipContainer = styled.div`

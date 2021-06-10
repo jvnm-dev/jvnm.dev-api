@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import {IThemeContainer} from '../../../constants/themes'
+import { IThemeContainer } from '../../../constants/themes'
 
 export const NavbarLogo = styled(Link)`
     text-decoration: none;
@@ -8,7 +8,7 @@ export const NavbarLogo = styled(Link)`
     font-size: 27px;
     span {
         display: inline-block;
-        color: #6961fb;
+        color: ${({ theme }: IThemeContainer) => theme.colorPrimary};
         transition: 0.2s;
     }
     span:first-child {

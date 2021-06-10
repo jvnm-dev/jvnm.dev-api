@@ -9,7 +9,8 @@ import { ExperienceModule } from './experience/experience.module'
 import { TechnologyModule } from './technology/technology.module'
 import { UserModule } from './user/user.module'
 import { JourneyModule } from './journey/journey.module'
-import {EmailModule} from './email/email.module'
+import { EmailModule } from './email/email.module'
+import { AppController } from './app.controller'
 
 @Module({
     imports: [
@@ -35,7 +36,7 @@ import {EmailModule} from './email/email.module'
             context: ({ req }) => ({ headers: req.headers }),
         }),
     ],
-    controllers: [],
+    controllers: [AppController],
     providers: [],
 })
 export class ApplicationModule {
