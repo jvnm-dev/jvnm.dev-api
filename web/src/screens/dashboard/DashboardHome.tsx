@@ -70,10 +70,7 @@ export const DashboardHome = () => {
             <AdminDrawer>
                 <AdminDrawerList>
                     <ListItem button onClick={() => history.push('/')}>
-                        <ListItemText primary="Landing" />
-                    </ListItem>
-                    <ListItem button onClick={() => history.push('/dashboard')}>
-                        <ListItemText primary="Dashboard" />
+                        <ListItemText primary="Back to landing" />
                     </ListItem>
                     {[
                         'Availability',

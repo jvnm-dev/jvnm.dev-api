@@ -47,6 +47,8 @@ type Query {
 
 type Mutation {
     updateAvailability(status: Float!): AvailabilityEntity!
+    updateExperience(experience: String!): ExperienceEntity!
+    updateTechnology(technology: String!): TechnologyEntity!
     login(userData: UserLoginDto!): String!
 }
 

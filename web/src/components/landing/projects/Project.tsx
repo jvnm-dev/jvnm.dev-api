@@ -59,7 +59,8 @@ const CardTitle = styled.h2`
     margin: 0;
     font-size: 20px;
     background: linear-gradient(135deg, #24292e 0%, #30363c);
-    color: ${({ theme }: IThemeContainer) => theme.title?.inverse};
+    color: ${({ theme }: IThemeContainer) =>
+        theme.name === 'THEME_LIGHT' ? theme.title?.inverse : theme.text};
     padding: 8px 16px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;

@@ -8,10 +8,6 @@ import {
 import { Field, Int, ObjectType } from '@nestjs/graphql'
 import { ExperienceEntity } from '../experience/experience.entity'
 
-/**
- * Extension of Experience
- * It explains in details what I did during that experience
- */
 @Entity('journey')
 @ObjectType()
 export class JourneyEntity {

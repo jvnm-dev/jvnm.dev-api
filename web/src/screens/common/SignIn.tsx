@@ -47,10 +47,17 @@ export const SignIn = () => {
 
     const handleSubmit = async (e?: MouseEvent) => {
         e?.preventDefault()
+
+        let email = formData.jvm_email
+
+        if (email?.length && !email?.includes('@')) {
+            email += '@gmail.com'
+        }
+
         await login({
             variables: {
                 userData: {
-                    email: formData.jvm_email,
+                    email,
                 },
             },
         })

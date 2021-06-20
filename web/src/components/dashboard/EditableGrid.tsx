@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactText } from 'react'
 import {
     DataGrid,
     GridColDef,
@@ -9,10 +9,12 @@ import { IThemeContainer } from '../../constants/themes'
 
 const StyledDataGrid = styled(DataGrid)``
 
+type rowProps = { [key: string]: string | number }
+
 interface IEditableGridProps {
     columns: GridColDef[]
     rows: any
-    onSave: (rows: any[]) => void
+    onSave: (typedProps: rowProps) => void
     loading: boolean
 }
 
@@ -34,26 +36,16 @@ export const EditableGrid = ({
 }: IEditableGridProps) => {
     const handleEditCellChangeCommitted = React.useCallback(
         ({ id, field, props }: GridEditCellPropsParams) => {
-            const { value } = props
+            let parsedValue = props.value
 
-            let parsedValue = value
+            if (!Number.isNaN(Number(parsedValue))) {
+                parsedValue = Number(parsedValue)
+            }
 
-            try {
-                parsedValue = parseInt(value as string)
-            } catch {}
-
-            try {
-                parsedValue = parseFloat(value as string)
-            } catch {}
-
-            const updatedRows = rows.map((row: any) => {
-                if (row.id === id) {
-                    return { ...row, [field]: parsedValue }
-                }
-                return row
+            onSave({
+                id,
+                [field]: parsedValue as ReactText,
             })
-
-            onSave(updatedRows)
         },
         [rows]
     )

@@ -12,6 +12,7 @@ import { EditableGrid } from '../../components/dashboard/EditableGrid'
 import { AVAILABILITY } from '../../components/landing/availability/Availability'
 import { Loader } from '../../components/common'
 import { STATUS_TEXTS } from '../../constants'
+import { AvailabilityEntity } from '../../../../api/src/availability/availability.entity'
 
 const UPDATE_AVAILABILITY = gql`
     mutation UpdateAvailability($status: Float!) {
@@ -53,16 +54,14 @@ export const DashboardAvailability = () => {
         }
     }, [data])
 
-    const handleSave = async (rows: any) => {
-        const availability = rows[0]
-
-        const result = await updateAvailability({
-            variables: {
-                status: availability.status,
-            },
-        })
-
-        console.log(result)
+    const handleSave = async (newAvailability: Partial<AvailabilityEntity>) => {
+        if (availability.status !== newAvailability.status) {
+            await updateAvailability({
+                variables: {
+                    status: newAvailability.status,
+                },
+            })
+        }
     }
 
     if (loading) {

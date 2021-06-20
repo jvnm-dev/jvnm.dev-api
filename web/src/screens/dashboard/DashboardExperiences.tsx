@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { GridCellParams, GridColDef } from '@material-ui/data-grid'
-import { useQuery } from '@apollo/react-hooks'
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
 
 import { EditableGrid } from '../../components/dashboard/EditableGrid'
-import { Loader } from '../../components/common'
 import { EXPERIENCES } from '../../components/landing/experience/Experiences'
 import { setExperiences } from '../../redux/slices/experiences'
+import { ExperienceEntity } from '../../../../api/src/experience/experience.entity'
+
+const UPDATE_EXPERIENCE = gql`
+    mutation UpdateExperience($experience: String!) {
+        updateExperience(experience: $experience) {
+            id
+        }
+    }
+`
 
 export const DashboardExperiences = () => {
     const [rows, setRows] = useState([])
     const { loading, error, data } = useQuery(EXPERIENCES)
+    const [updateExperience] = useMutation(UPDATE_EXPERIENCE)
     const dispatch = useDispatch()
 
     const columns: GridColDef[] = [
@@ -71,8 +81,12 @@ export const DashboardExperiences = () => {
         }
     }, [data])
 
-    const handleSave = async (rows: any) => {
-        console.log(rows)
+    const handleSave = async (experience: Partial<ExperienceEntity>) => {
+        await updateExperience({
+            variables: {
+                experience: JSON.stringify(experience),
+            },
+        })
     }
 
     if (error) {
