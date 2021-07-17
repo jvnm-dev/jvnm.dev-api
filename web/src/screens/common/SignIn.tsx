@@ -54,6 +54,8 @@ export const SignIn = () => {
             email += '@gmail.com'
         }
 
+        email = email?.toLowerCase()
+
         await login({
             variables: {
                 userData: {

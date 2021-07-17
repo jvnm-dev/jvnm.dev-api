@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+/*import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { IThemeContainer } from '../../../constants/themes'
 
@@ -20,3 +20,4 @@ export const NavbarLogo = styled(Link)`
         }
     }
 `
+*/
