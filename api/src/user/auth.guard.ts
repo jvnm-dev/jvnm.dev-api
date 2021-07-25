@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common'
 import { GqlExecutionContext } from '@nestjs/graphql'
 import { verify } from 'jsonwebtoken'
-import { SECRET } from '../config'
+import { Config } from '../config'
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
         const token = authParts[1]
 
         try {
-            return await verify(token, SECRET)
+            return await verify(token, Config.getInstance().get('SECRET'))
         } catch (err) {
             this.invalidTokenError()
         }

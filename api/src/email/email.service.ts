@@ -1,6 +1,6 @@
 import mailjet from 'node-mailjet'
+import { Config } from '../config'
 
-import { MAILJET } from '../config'
 import {
     getTemplate,
     IEmailTemplate,
@@ -13,7 +13,10 @@ export class EmailService {
     private mailjetUtility
 
     constructor() {
-        this.mailjetUtility = mailjet.connect(...(MAILJET ?? []))
+        const config = Config.getInstance()
+        this.mailjetUtility = mailjet.connect(
+            ...[config.get('MAILJET1'), config.get('MAILJET2')]
+        )
     }
 
     async send(
@@ -60,6 +63,8 @@ export class EmailService {
                 },
             ],
         }
+
+        console.log(completeTemplate)
 
         await this.mailjetUtility
             .post('send', { version: 'v3.1' })

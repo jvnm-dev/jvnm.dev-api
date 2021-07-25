@@ -1,13 +1,12 @@
 import { Repository } from 'typeorm'
-import bcrypt from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { InjectRepository } from '@nestjs/typeorm'
+import { HttpException, HttpStatus } from '@nestjs/common'
 
 import { UserEntity } from './user.entity'
 import { UserLoginDto } from './dto/user-login.dto'
-import { SECRET } from '../config'
 import { EmailService } from '../email/email.service'
-import { HttpException, HttpStatus } from '@nestjs/common'
+import { Config } from '../config'
 
 export class UserService {
     constructor(
@@ -26,7 +25,7 @@ export class UserService {
 
     async login({ email }: UserLoginDto): Promise<string> {
         if (!(email ?? '').length) {
-            return HttpStatus.BAD_REQUEST.toString()
+            throw new HttpException('Bad data', HttpStatus.BAD_REQUEST)
         }
 
         let user = await this.userRepository.findOne({
@@ -35,31 +34,33 @@ export class UserService {
             },
         })
 
-        if (!user) {
-            user = this.userRepository.create()
-            user.email = email
+        if (user) {
+            user.otp = Math.random().toString(36).substring(2)
+            user = await this.userRepository.save(user)
+
+            await this.emailService.send(
+                'AuthenticationTemplate',
+                {
+                    email,
+                },
+                {
+                    email,
+                    otp: user.otp,
+                }
+            )
+
+            return HttpStatus.OK.toString()
         }
 
-        user.otp = Math.random().toString(36).substring(2)
-        user = await this.userRepository.save(user)
-
-        await this.emailService.send(
-            'AuthenticationTemplate',
-            {
-                email,
-            },
-            {
-                email,
-                otp: user.otp,
-            }
+        throw new HttpException(
+            'You are not allowed to sign in here',
+            HttpStatus.FORBIDDEN
         )
-
-        return HttpStatus.OK.toString()
     }
 
     async authenticate(email: string, otp: string): Promise<string> {
         if (!(email ?? '').length || !(otp ?? '').length) {
-            return HttpStatus.BAD_REQUEST.toString()
+            throw new HttpException('Bad data', HttpStatus.BAD_REQUEST)
         }
 
         const user = await this.userRepository.findOne({ email })
@@ -74,9 +75,13 @@ export class UserService {
 
         user.otp = null
 
-        const token = (user.token = await sign({ email }, SECRET, {
-            algorithm: 'HS512',
-        }))
+        const token = (user.token = await sign(
+            { email },
+            Config.getInstance().get('SECRET'),
+            {
+                algorithm: 'HS512',
+            }
+        ))
 
         await this.userRepository.save(user)
 

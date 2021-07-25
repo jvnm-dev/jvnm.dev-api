@@ -11,6 +11,7 @@ import { UserModule } from './user/user.module'
 import { JourneyModule } from './journey/journey.module'
 import { EmailModule } from './email/email.module'
 import { AppController } from './app.controller'
+import { Config } from './config'
 
 @Module({
     imports: [
@@ -21,7 +22,7 @@ import { AppController } from './app.controller'
         UserModule,
         JourneyModule,
 
-        TypeOrmModule.forRoot(),
+        TypeOrmModule.forRoot(Config.getInstance().typeOrmConfig),
         GraphQLModule.forRoot({
             debug: true,
             playground: true,

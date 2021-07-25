@@ -1,9 +1,11 @@
 import React, { MouseEvent, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { NavbarButton, NavbarContainer, NavbarLogo } from './'
 import { ISessionReducer, setToken } from '../../../redux/slices/session'
-import { AppBar, Button, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Toolbar } from '@material-ui/core'
 import styled from 'styled-components'
 import { NavbarButtons } from './NavbarButton'
 
@@ -29,6 +31,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
     const dispatch = useDispatch()
     const navbarMenu = useRef(null)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const router = useRouter()
 
     const handleContactButtonClick = (e: MouseEvent) => {
         e.preventDefault()
@@ -38,7 +41,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
     const handleSignOutButtonClick = (e: MouseEvent) => {
         e.preventDefault()
         dispatch(setToken(undefined))
-        // history.push('/')
+        router.push('/')
     }
 
     const toggleMobileMenu = () => {
@@ -70,8 +73,13 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
             )
         }
 
-        const firstPart = 'To'
-        const secondPart = 'Do'
+        const path = router.pathname.split('/')
+        const name = path[path.length - 1]
+
+        let firstPart = name.slice(0, Math.floor(name.length / 2))
+        firstPart = firstPart.charAt(0).toUpperCase() + firstPart.slice(1)
+
+        const secondPart = name.slice(Math.floor(name.length / 2))
 
         return (
             <>
@@ -85,13 +93,14 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
         <NavbarContainer>
             <NavbarAppBar position="static">
                 <NavbarToolbar>
-                    <NavbarLogo to="/">{getLogo()}</NavbarLogo>
+                    <Link href="/" passHref>
+                        <NavbarLogo>{getLogo()}</NavbarLogo>
+                    </Link>
 
                     <NavbarButtons>
                         {contact && shouldShowContact && (
                             <NavbarButton
                                 aria-label="Contact"
-                                to="/"
                                 onClick={handleContactButtonClick}
                             >
                                 Contact
@@ -99,24 +108,24 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
                         )}
 
                         {shouldShowSignIn && !session.token && (
-                            <NavbarButton aria-label="Sign in" to="/signin">
-                                Sign in
-                            </NavbarButton>
+                            <Link href="/signin" passHref>
+                                <NavbarButton aria-label="Sign in">
+                                    Sign in
+                                </NavbarButton>
+                            </Link>
                         )}
 
                         {shouldShowSignIn && session.token && !dashboard && (
-                            <NavbarButton
-                                aria-label="dashboard"
-                                to="/dashboard"
-                            >
-                                Dashboard
-                            </NavbarButton>
+                            <Link href="/dashboard" passHref>
+                                <NavbarButton aria-label="dashboard">
+                                    Dashboard
+                                </NavbarButton>
+                            </Link>
                         )}
 
                         {!contact && session.token && (
                             <NavbarButton
                                 aria-label="Sign out"
-                                to="/"
                                 onClick={handleSignOutButtonClick}
                             >
                                 Sign out

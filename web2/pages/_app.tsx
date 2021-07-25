@@ -131,7 +131,10 @@ export const ProvidedApp = ({ Component, pageProps, router }: AppProps) => {
             <StylesProvider injectFirst>
                 <Head>
                     <title>Jason Van Malder</title>
-                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <meta
+                        name="viewport"
+                        content="initial-scale=1.0, width=device-width"
+                    />
                 </Head>
                 <App
                     Component={Component}

@@ -7,7 +7,7 @@ export const Button = styled(MuiButton).attrs({
 })<{
     width?: string
     small?: boolean
-    to?: string
+    href?: string
 }>`
     height: fit-content;
     display: inline-block;

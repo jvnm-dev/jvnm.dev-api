@@ -51,7 +51,6 @@ export const Home = () => {
                             </Text>
                             <Button
                                 aria-label="Learn more"
-                                to="/"
                                 onClick={handleLearnMoreClick}
                             >
                                 Learn more

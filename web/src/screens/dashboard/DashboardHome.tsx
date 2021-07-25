@@ -13,7 +13,6 @@ import {
     useHistory,
     useRouteMatch,
 } from 'react-router-dom'
-import NotFound from '../common/NotFound'
 import { DashboardAvailability } from './DashboardAvailability'
 import { DashboardExperiences } from './DashboardExperiences'
 import { DashboardTechnologies } from './DashboardTechnologies'

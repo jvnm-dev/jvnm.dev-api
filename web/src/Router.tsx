@@ -9,12 +9,14 @@ import {
 } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { useRouter } from 'next/router'
 
 import { Loader } from './components/common'
 import { ErrorBoundary } from './components/error'
 import { ThemeSwitcher } from './components/themes'
 import { ITheme, IThemeContainer, THEMES } from './constants/themes'
 import { ISession, setToken } from './redux/slices/session'
+import useEffect from 'react';
 
 const Home = lazy(() => import('./screens/landing/Home'))
 const Journey = lazy(() => import('./screens/landing/Journey'))
@@ -67,9 +69,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const NotAuthenticated = (): JSX.Element => {
-    return <Redirect to="/" />
-}
 
 const AuthenticatedRoute = ({
     session,

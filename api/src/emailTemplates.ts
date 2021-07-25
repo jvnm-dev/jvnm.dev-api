@@ -1,4 +1,4 @@
-import { URL } from './config'
+import { Config } from './config'
 
 export interface IEmailTemplateCoordinates {
     email: string
@@ -20,7 +20,9 @@ const templates: IEmailTemplate[] = [
             name: 'jvnm-dev',
         },
         subject: 'Your authentication token',
-        HTMLPart: `<h3>Hey!</h3><br />Here is your authentication token: <a href="${URL}/auth/{{email}}/{{otp}}">click here</a>.`,
+        HTMLPart: `<h3>Hey!</h3><br />Here is your authentication token: <a href="${Config.getInstance().get(
+            'URL'
+        )}/auth/{{email}}/{{otp}}">click here</a>.`,
     },
 ]
 
