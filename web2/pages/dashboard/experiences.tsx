@@ -39,8 +39,7 @@ export const DashboardExperiences = () => {
                         alt="availability image"
                         width={48}
                         height={48}
-                        loading="lazy"
-                        decoding="async"
+                        priority={true}
                     />
                 )
             },

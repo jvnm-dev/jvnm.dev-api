@@ -1,0 +1,18 @@
+{
+  "name": "jvm",
+  "version": "1.0.0",
+  "description": "Personal website made with React, Flask and GraphQL",
+  "scripts": {
+    "bootstrap": "cd api && yarn && cd ../web2 && yarn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvnm-dev/jvm.git"
+  },
+  "author": "Jason Van Malder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jvnm-dev/jvm/issues"
+  },
+  "homepage": "https://github.com/jvnm-dev/jvm#readme"
+}

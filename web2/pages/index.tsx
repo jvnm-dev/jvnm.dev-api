@@ -57,7 +57,7 @@ export const Home = () => {
                             </Button>
                             <Availability />
                         </Column>
-                        <ImageColumn background='/developer3.svg' />
+                        <ImageColumn background="/developer3.svg" />
                     </ColumnsContainer>
                 </Section>
                 <Section
