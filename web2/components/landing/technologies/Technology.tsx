@@ -17,8 +17,9 @@ const TechnologyContainer = styled.div`
     }
 `
 export const TechnologyImage = styled.img`
-    height: 40px;
-    width: 40px;
+    height: 42px;
+    width: 42px;
+
     @media only screen and (min-width: 768px) {
         height: 36px;
         width: 36px;

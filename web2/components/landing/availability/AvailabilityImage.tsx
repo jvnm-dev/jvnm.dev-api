@@ -12,10 +12,10 @@ interface IAvailabilityImage {
 
 const AvailabilityImageContainer = styled.div`
     position: relative;
-    
+
     height: 48px;
     width: 48px;
-    
+
     @media only screen and (min-width: 1440px) {
         height: 64px;
         width: 64px;
@@ -61,10 +61,10 @@ const AvailabilityIndicator = styled.span<IAvailabilityImage>`
 
     &:after {
         position: absolute;
-        bottom: -1px;
-        right: -1px;
-        height: 10px;
-        width: 10px;
+        bottom: -0.8px;
+        right: -0.8px;
+        height: 6px;
+        width: 6px;
         border: 1px solid ${({ status }) => getColorFromStatus(status)};
         border-radius: 50%;
         content: ' ';
@@ -87,7 +87,7 @@ const AvailabilityIndicator = styled.span<IAvailabilityImage>`
 export const AvailabilityImage = ({ status }: IAvailabilityImage) => {
     return (
         <AvailabilityImageContainer>
-            <StyledImage src='/me.jpg' alt="Jason Van Malder" />
+            <StyledImage src="/me.jpg" alt="Jason Van Malder" />
             <AvailabilityIndicator status={status} />
         </AvailabilityImageContainer>
     )

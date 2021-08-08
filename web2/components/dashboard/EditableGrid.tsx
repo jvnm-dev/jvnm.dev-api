@@ -1,11 +1,11 @@
 import React, { ReactText } from 'react'
+import styled from 'styled-components'
 
 import {
     DataGrid,
     GridColDef,
     GridEditCellPropsParams,
 } from '@material-ui/data-grid'
-import styled from 'styled-components'
 
 import { IThemeContainer } from '../../constants/themes'
 

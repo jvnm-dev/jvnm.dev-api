@@ -33,9 +33,7 @@ export const ExperienceInfo = ({
 
     return (
         <ExperienceInfoContainer>
-            <Text small>
-                <ExperiencePlace>{place}</ExperiencePlace>
-            </Text>
+            <ExperiencePlace>{place}</ExperiencePlace>
             <Text
                 small
                 bold

@@ -1,13 +1,14 @@
 import React, { MouseEvent, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-
-import { NavbarButton, NavbarContainer, NavbarLogo } from './'
-import { ISessionReducer, setToken } from '../../../redux/slices/session'
 import { AppBar, Toolbar } from '@material-ui/core'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 import styled from 'styled-components'
+
 import { NavbarButtons } from './NavbarButton'
+import { ISessionReducer, setToken } from '../../../redux/slices/session'
+import { NavbarButton, NavbarContainer, NavbarLogo } from './'
+import { device } from '../../../constants/responsive'
 
 interface INavbarProps {
     contact?: boolean
@@ -22,8 +23,10 @@ const NavbarAppBar = styled(AppBar)`
 
 const NavbarToolbar = styled(Toolbar)`
     justify-content: space-between;
-    padding: 0;
     height: 80px;
+    @media ${device.tablet} {
+        padding: 24px;
+    }
 `
 
 export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {

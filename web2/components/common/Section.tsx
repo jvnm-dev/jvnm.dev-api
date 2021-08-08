@@ -22,9 +22,9 @@ export const Section = styled.section<{
         verticallyCentered ? 'center' : 'flex-start'};
     padding: ${({ mobilePadding }) =>
         mobilePadding ? '80px 24px' : '50px 24px'};
+
     @media only screen and (min-width: 768px) {
         max-width: 720px;
-        padding: 50px 0;
     }
     @media only screen and (min-width: 1024px) {
         max-width: 920px;
