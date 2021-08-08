@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
+import { Drawer, List, ListItem, ListItemText } from '@material-ui/core'
 
 import { Navbar } from '../../components/common/navbar'
-import { Drawer, List, ListItem, ListItemText } from '@material-ui/core'
 import { IThemeContainer } from '../../constants/themes'
 import { Container, Section } from '../../components/common'
 import { Footer } from '../../components/common/Footer'
@@ -22,7 +21,6 @@ const AdminDrawer = styled(Drawer).attrs({
 const AdminDrawerList = styled(List)`
     width: 300px;
     color: ${({ theme }: IThemeContainer) => theme.title.default};
-
     .MuiTypography-root {
         font-weight: bold !important;
     }

@@ -1,10 +1,12 @@
 import React, { ReactText } from 'react'
+
 import {
     DataGrid,
     GridColDef,
     GridEditCellPropsParams,
 } from '@material-ui/data-grid'
 import styled from 'styled-components'
+
 import { IThemeContainer } from '../../constants/themes'
 
 const StyledDataGrid = styled(DataGrid)``
