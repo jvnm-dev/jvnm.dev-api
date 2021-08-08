@@ -29,11 +29,11 @@ export const Text = styled.p<{
     `}
 
     @media only screen and (min-width: 768px) {
-        display: inline-block;
         font-size: ${({ small }) => (small ? '12px' : '16px')};
     }
 
     @media only screen and (min-width: 1024px) {
+        display: inline-block;
         font-size: ${({ small }) => (small ? '14px' : '18px')};
         ${({ margin }) =>
             margin &&
