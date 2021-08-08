@@ -8,4 +8,8 @@ export const ExperiencePlace = styled(Text)`
     @media only screen and (min-width: 768px) {
         font-size: 14px;
     }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: 16px;
+    }
 `
