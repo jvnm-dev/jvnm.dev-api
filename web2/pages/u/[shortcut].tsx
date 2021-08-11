@@ -29,9 +29,9 @@ export const ShortUrlRedirect = () => {
         if (data?.url) {
             const original = data.url.original
             window.location.href = original
+        } else {
+            router.push('/')
         }
-
-        router.push('/')
     }, [router, data])
 
     return <Loader full />
