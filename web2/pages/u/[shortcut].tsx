@@ -17,9 +17,9 @@ export const URL = gql`
 
 export const ShortUrlRedirect = () => {
     const router = useRouter()
-    const shortcut = window.location.pathname.replace('/u/', '')
+    const shortcut = router.query?.shortcut
 
-    const { data } = useQuery(URL, {
+    const { data, refetch } = useQuery(URL, {
         variables: {
             shortcut,
         },
@@ -29,10 +29,12 @@ export const ShortUrlRedirect = () => {
         if (data?.url) {
             const original = data.url.original
             window.location.href = original
-        } else {
+        } else if ((shortcut ?? '').length > 0) {
             router.push('/')
+        } else {
+            refetch()
         }
-    }, [router, data])
+    }, [router, data, shortcut, refetch])
 
     return <Loader full />
 }
