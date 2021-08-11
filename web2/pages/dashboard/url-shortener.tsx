@@ -10,7 +10,7 @@ import { Input } from '../../components/common/form'
 import { DashboardTemplate } from '../../components/dashboard/DashboardTemplate'
 import { IThemeContainer } from '../../constants/themes'
 import { EditableGrid } from '../../components/dashboard/EditableGrid'
-import { IUrlReducer, setUrls } from '../../redux/slices/urls'
+import { IUrlReducer, setUrls, IUrl } from '../../redux/slices/urls'
 
 const PrimaryColored = styled.span`
     color: ${({ theme }: IThemeContainer) => theme.colorPrimary};
