@@ -17,9 +17,7 @@ export const URL = gql`
 
 export const ShortUrlRedirect = () => {
     const router = useRouter()
-    const shortcut =
-        router.query.shortcut ||
-        router.asPath.match(new RegExp(`[&?]shortcut=(.*)(&|$)`))
+    const shortcut = window.location.pathname.replace('/u/', '')
 
     const { data } = useQuery(URL, {
         variables: {
