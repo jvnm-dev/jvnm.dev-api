@@ -77,7 +77,7 @@ export const Navbar = ({ contact, dashboard, signin }: INavbarProps) => {
         }
 
         const path = router.pathname.split('/')
-        const name = path[path.length - 1]
+        const name = path[path.length - 1].replace('-', ' ')
 
         let firstPart = name.slice(0, Math.floor(name.length / 2))
         firstPart = firstPart.charAt(0).toUpperCase() + firstPart.slice(1)
