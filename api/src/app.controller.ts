@@ -31,7 +31,7 @@ export class AppController {
                 <h2>You found my super secret place...</h2>
                 
                 <p>
-                  Here is your <a href="https://www.youtube.com/watch?v=YddwkMJG1Jo">reward</a>.
+                  Here is your <a href="https://www.youtube.com/watch?v=iik25wqIuFo">reward</a>.
                 </p>
                 
                 <br />

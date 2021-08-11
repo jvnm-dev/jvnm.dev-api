@@ -64,8 +64,6 @@ export class EmailService {
             ],
         }
 
-        console.log(completeTemplate)
-
         await this.mailjetUtility
             .post('send', { version: 'v3.1' })
             .request(completeTemplate)
