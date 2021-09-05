@@ -24,8 +24,7 @@ export const DashboardIndex = () => {
                 <AdminDashboardImage
                     src={adminDashboardImage}
                     alt="dashboard"
-                    loading="lazy"
-                    decoding="async"
+                    priority={true}
                     layout="fill"
                 />
             </AdminDashboardImageContainer>

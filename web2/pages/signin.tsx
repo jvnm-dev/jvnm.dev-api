@@ -117,8 +117,7 @@ export const SignIn = () => {
                                 <Image
                                     src={emailImage}
                                     alt={'email'}
-                                    loading="lazy"
-                                    decoding="async"
+                                    priority={true}
                                     layout="fill"
                                 />
                             </ImageContainer>

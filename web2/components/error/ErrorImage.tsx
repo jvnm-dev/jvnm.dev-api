@@ -6,7 +6,9 @@ interface IErrorImageProps {
     alt: string
 }
 
-export const ErrorImage = (props: IErrorImageProps) => <Image {...props} layout="fill" loading="lazy" decoding="async" />
+export const ErrorImage = (props: IErrorImageProps) => (
+    <Image {...props} layout="fill" priority={true} alt="Error" />
+)
 
 export const ErrorImageContainer = styled.div`
     position: relative;

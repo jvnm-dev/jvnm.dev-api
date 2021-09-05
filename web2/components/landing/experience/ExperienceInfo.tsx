@@ -11,7 +11,7 @@ import { THEMES } from '../../../constants'
 const ExperienceInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 1024px) {
         flex-direction: row;
     }
 `
@@ -33,9 +33,7 @@ export const ExperienceInfo = ({
 
     return (
         <ExperienceInfoContainer>
-            <Text small>
-                <ExperiencePlace>{place}</ExperiencePlace>
-            </Text>
+            <ExperiencePlace>{place}</ExperiencePlace>
             <Text
                 small
                 bold

@@ -16,12 +16,10 @@ const TechnologyContainer = styled.div`
         margin-top: 24px;
     }
 `
-export const TechnologyImage = styled.img.attrs(() => ({
-    loading: 'lazy',
-    decoding: 'async',
-}))`
-    height: 40px;
-    width: 40px;
+export const TechnologyImage = styled.img`
+    height: 42px;
+    width: 42px;
+
     @media only screen and (min-width: 768px) {
         height: 36px;
         width: 36px;

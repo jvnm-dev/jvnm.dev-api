@@ -27,13 +27,18 @@ const StyledImage = styled(Image)`
 `
 
 interface IImageColumnProps {
-    background?: string
+    background: string
 }
 
 export const ImageColumn = ({ background }: IImageColumnProps) => {
     return (
         <StyledImageColumn padding>
-            <StyledImage src={background} alt="Jason Van Malder - Computer" layout='fill' />
+            <StyledImage
+                src={background}
+                alt="Jason Van Malder - Computer"
+                layout="fill"
+                priority={true}
+            />
         </StyledImageColumn>
     )
 }

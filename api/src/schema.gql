@@ -36,6 +36,12 @@ type UserEntity {
   token: String
 }
 
+type UrlEntity {
+  id: Int!
+  original: String
+  shortcut: String
+}
+
 type Query {
   availability: AvailabilityEntity!
   experiences: [ExperienceEntity!]!
@@ -43,6 +49,8 @@ type Query {
   me: UserEntity!
   users: [UserEntity!]!
   journey(id: Int!): JourneyEntity!
+  urls: [UrlEntity!]!
+  url(shortcut: String!): UrlEntity!
 }
 
 type Mutation {
@@ -50,6 +58,7 @@ type Mutation {
   updateExperience(experience: String!): ExperienceEntity!
   updateTechnology(technology: String!): TechnologyEntity!
   login(userData: UserLoginDto!): String!
+  shorten(original: String!): UrlEntity!
 }
 
 input UserLoginDto {

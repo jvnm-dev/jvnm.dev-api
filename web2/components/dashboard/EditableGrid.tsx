@@ -1,10 +1,12 @@
 import React, { ReactText } from 'react'
+import styled from 'styled-components'
+
 import {
     DataGrid,
     GridColDef,
     GridEditCellPropsParams,
 } from '@material-ui/data-grid'
-import styled from 'styled-components'
+
 import { IThemeContainer } from '../../constants/themes'
 
 const StyledDataGrid = styled(DataGrid)``
@@ -12,6 +14,7 @@ const StyledDataGrid = styled(DataGrid)``
 type rowProps = { [key: string]: string | number }
 
 interface IEditableGridProps {
+    sortingOrder: string[]
     columns: GridColDef[]
     rows: any
     onSave: (typedProps: rowProps) => void
@@ -21,6 +24,7 @@ interface IEditableGridProps {
 const DataGridContainer = styled.div`
     flex: 1;
     height: 600px;
+    width: 100%;
 
     .MuiDataGrid-root,
     .MuiTablePagination-root {
@@ -29,6 +33,7 @@ const DataGridContainer = styled.div`
 `
 
 export const EditableGrid = ({
+    sortingOrder = ['asc', 'desc'],
     columns,
     rows,
     onSave,
@@ -53,6 +58,7 @@ export const EditableGrid = ({
     return (
         <DataGridContainer>
             <StyledDataGrid
+                sortingOrder={sortingOrder}
                 rows={rows}
                 columns={columns}
                 pageSize={100}

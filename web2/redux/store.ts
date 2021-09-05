@@ -22,6 +22,7 @@ import availabilityReducer from './slices/availability'
 import experiencesReducer from './slices/experiences'
 import technologiesReducer from './slices/technologies'
 import projectsReducer from './slices/projects'
+import urlsReducer from './slices/urls'
 import { Persistor } from 'redux-persist/es/types'
 
 export const reducers = combineReducers({
@@ -31,6 +32,7 @@ export const reducers = combineReducers({
     experiences: experiencesReducer,
     technologies: technologiesReducer,
     projects: projectsReducer,
+    urls: urlsReducer,
 })
 
 const persistConfig = {
