@@ -22,6 +22,14 @@ import {
     Projects,
 } from '../components/landing'
 import { Footer } from '../components/common/Footer'
+import styled from 'styled-components'
+
+const GradientCompanyName = styled.strong`
+    background: -webkit-linear-gradient(45deg, #55a143, #88d676);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+`
 
 export const Home = () => {
     const secondSection = useRef(null)
@@ -35,6 +43,10 @@ export const Home = () => {
         })
     }
 
+    const handleCompanyNameClick = (e: MouseEvent) => {
+        window.location.href = 'https://haulogy.net/'
+    }
+
     return (
         <>
             <Navbar contact />
@@ -45,9 +57,14 @@ export const Home = () => {
                             <Title>Software Engineer</Title>
                             <Text margin intro={true}>
                                 Currently on assignment at{' '}
-                                <strong>Haulogy</strong>, a company that offers
-                                IT solutions both to Distribution Network
-                                Managers and energy suppliers.
+                                <GradientCompanyName
+                                    onClick={handleCompanyNameClick}
+                                >
+                                    Haulogy
+                                </GradientCompanyName>
+                                , a company that offers IT solutions both to
+                                Distribution Network Managers and energy
+                                suppliers.
                             </Text>
                             <Button
                                 aria-label="Learn more"
