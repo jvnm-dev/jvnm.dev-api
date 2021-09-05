@@ -45,9 +45,9 @@ export const Home = () => {
                             <Title>Software Engineer</Title>
                             <Text margin intro={true}>
                                 Currently on assignment at{' '}
-                                <strong>TAKTIK</strong>, a company specialized
-                                in IPTV, media management and secure solutions
-                                for the medical sector.
+                                <strong>Haulogy</strong>, a company that offers
+                                IT solutions both to Distribution Network
+                                Managers and energy suppliers.
                             </Text>
                             <Button
                                 aria-label="Learn more"
@@ -57,7 +57,7 @@ export const Home = () => {
                             </Button>
                             <Availability />
                         </Column>
-                        <ImageColumn background='/developer3.svg' />
+                        <ImageColumn background="/developer3.svg" />
                     </ColumnsContainer>
                 </Section>
                 <Section
