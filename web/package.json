@@ -9,8 +9,8 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@apollo/client": "^3.3.21",
-        "@apollo/react-hooks": "^4.0.0",
+        "@apollo/client": "3.3.21",
+        "@apollo/react-hooks": "4.0.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-brands-svg-icons": "^5.15.3",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
@@ -19,7 +19,7 @@
         "@material-ui/data-grid": "4.0.0-alpha.33",
         "@netlify/plugin-nextjs": "3.7.1",
         "@reduxjs/toolkit": "1.6.0",
-        "apollo-boost": "^0.4.9",
+        "apollo-boost": "0.4.9",
         "graphql": "15.5.1",
         "next": "11.0.1",
         "react": "17.0.2",
