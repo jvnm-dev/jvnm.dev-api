@@ -23,7 +23,7 @@ export class UserService {
         return this.userRepository.find()
     }
 
-    async login({ email }: UserLoginDto): Promise<string> {
+    async login({ email, source }: UserLoginDto): Promise<string> {
         if (!(email ?? '').length) {
             throw new HttpException('Bad data', HttpStatus.BAD_REQUEST)
         }
@@ -46,6 +46,9 @@ export class UserService {
                 {
                     email,
                     otp: user.otp,
+                    source: encodeURIComponent(
+                        Config.getInstance().get(source ?? 'FRONTEND_URL')
+                    ),
                 }
             )
 

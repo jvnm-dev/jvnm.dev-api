@@ -42,6 +42,20 @@ type UrlEntity {
   shortcut: String
 }
 
+type HealthEntity {
+  id: Int!
+  web: Int!
+}
+
+type DevelopmentEntity {
+  id: Int!
+  image: String
+  name: String
+  description: String
+  demoUrl: String
+  sourceCodeUrl: String
+}
+
 type Query {
   availability: AvailabilityEntity!
   experiences: [ExperienceEntity!]!
@@ -51,6 +65,8 @@ type Query {
   journey(id: Int!): JourneyEntity!
   urls: [UrlEntity!]!
   url(shortcut: String!): UrlEntity!
+  health: HealthEntity!
+  developments: [DevelopmentEntity!]!
 }
 
 type Mutation {
@@ -59,8 +75,14 @@ type Mutation {
   updateTechnology(technology: String!): TechnologyEntity!
   login(userData: UserLoginDto!): String!
   shorten(original: String!): UrlEntity!
+  updateHealth(health: UpdateHealthDTO!): HealthEntity!
 }
 
 input UserLoginDto {
   email: String!
+  source: String
+}
+
+input UpdateHealthDTO {
+  web: Int
 }

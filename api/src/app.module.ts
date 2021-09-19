@@ -1,9 +1,10 @@
-import { Connection } from 'typeorm'
 import { join } from 'path'
+import { Connection } from 'typeorm'
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { GraphQLModule } from '@nestjs/graphql'
 
+import { Config } from './config'
 import { AvailabilityModule } from './availability/availability.module'
 import { ExperienceModule } from './experience/experience.module'
 import { TechnologyModule } from './technology/technology.module'
@@ -12,7 +13,8 @@ import { JourneyModule } from './journey/journey.module'
 import { EmailModule } from './email/email.module'
 import { UrlModule } from './url/url.module'
 import { AppController } from './app.controller'
-import { Config } from './config'
+import { HealthModule } from './health/health.module'
+import { DevelopmentModule } from './development/development.module'
 
 const modules = [
     EmailModule,
@@ -22,7 +24,10 @@ const modules = [
     UserModule,
     JourneyModule,
     UrlModule,
+    HealthModule,
+    DevelopmentModule,
 ]
+
 @Module({
     imports: [
         ...modules,
@@ -32,7 +37,7 @@ const modules = [
             playground: true,
             include: modules,
             autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-            context: ({ req }) => ({ headers: req.headers }),
+            context: ({ req: { headers } }) => ({ headers }),
         }),
     ],
     controllers: [AppController],

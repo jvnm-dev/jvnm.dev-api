@@ -1,12 +1,11 @@
 import { Controller, Get, Param, Res } from '@nestjs/common'
-import { Config } from '../config'
 import { UserService } from './user.service'
 
 @Controller('auth')
 export class AuthController {
     constructor(private userService: UserService) {}
 
-    @Get(':email/:otp')
+    @Get(':email/:otp/:source')
     async authenticate(@Param() params, @Res() res): Promise<void> {
         try {
             const token = await this.userService.authenticate(
@@ -14,9 +13,7 @@ export class AuthController {
                 params.otp
             )
             res.redirect(
-                `${Config.getInstance().get(
-                    'FRONTEND_URL'
-                )}/authenticate/${token}`
+                `${decodeURIComponent(params.source)}/authenticate/${token}`
             )
         } catch (err) {
             throw err

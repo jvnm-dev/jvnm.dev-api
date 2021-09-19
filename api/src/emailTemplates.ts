@@ -22,7 +22,7 @@ const templates: IEmailTemplate[] = [
         subject: 'Your authentication token',
         HTMLPart: `<h3>Hey!</h3><br />Here is your authentication token: <a href="${Config.getInstance().get(
             'URL'
-        )}/auth/{{email}}/{{otp}}">click here</a>.`,
+        )}/auth/{{email}}/{{otp}}/{{source}}">click here</a>.`,
     },
 ]
 
