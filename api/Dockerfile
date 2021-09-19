@@ -1,4 +1,4 @@
-FROM node:14.17
+FROM node:16.9
 WORKDIR .
 COPY ./package.json ./
 RUN yarn
