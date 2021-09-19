@@ -58,7 +58,7 @@
         "deep-extend": "0.6.0",
         "extend": "3.0.2",
         "jest": "25.5.4",
-        "nodemon": "1.19.4",
+        "nodemon": "2.0.12",
         "supertest": "6.1.6",
         "ts-jest": "25.5.1",
         "ts-node": "10.2.1"
