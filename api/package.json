@@ -46,7 +46,7 @@
         "prettier": "^2.2.1",
         "reflect-metadata": "^0.1.13",
         "rxjs": "^6.5.5",
-        "slug": "^1.1.0",
+        "slug": "^5.0.0",
         "swagger-ui-express": "^4.1.4",
         "typeorm": "^0.2.25",
         "typescript": "^3.8.3"
