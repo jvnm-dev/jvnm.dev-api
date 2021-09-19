@@ -59,7 +59,7 @@
         "extend": "3.0.2",
         "jest": "25.5.4",
         "nodemon": "1.19.4",
-        "supertest": "3.4.2",
+        "supertest": "6.1.6",
         "ts-jest": "25.5.1",
         "ts-node": "8.10.2"
     },
