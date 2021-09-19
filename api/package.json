@@ -52,16 +52,16 @@
         "typescript": "^3.8.3"
     },
     "devDependencies": {
-        "@types/jest": "^25.2.1",
-        "@types/node": "^13.13.4",
-        "atob": ">=2.1.0",
-        "deep-extend": ">=0.5.1",
-        "extend": ">=3.0.2",
-        "jest": "^25.5.3",
-        "nodemon": "^1.19.4",
-        "supertest": "^3.4.2",
-        "ts-jest": "^25.4.0",
-        "ts-node": "^8.9.1"
+        "@types/jest": "25.2.3",
+        "@types/node": "13.13.50",
+        "atob": "2.1.2",
+        "deep-extend": "0.6.0",
+        "extend": "3.0.2",
+        "jest": "25.5.4",
+        "nodemon": "1.19.4",
+        "supertest": "3.4.2",
+        "ts-jest": "25.5.1",
+        "ts-node": "8.10.2"
     },
     "pre-commit": [
         "prettier --write ."
