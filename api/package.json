@@ -52,7 +52,7 @@
         "typescript": "^3.8.3"
     },
     "devDependencies": {
-        "@types/jest": "25.2.3",
+        "@types/jest": "27.0.1",
         "@types/node": "14.17.17",
         "atob": "2.1.2",
         "deep-extend": "0.6.0",
