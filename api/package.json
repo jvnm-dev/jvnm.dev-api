@@ -53,7 +53,7 @@
     },
     "devDependencies": {
         "@types/jest": "25.2.3",
-        "@types/node": "13.13.50",
+        "@types/node": "14.17.17",
         "atob": "2.1.2",
         "deep-extend": "0.6.0",
         "extend": "3.0.2",
