@@ -30,7 +30,7 @@
         "webfontloader": "1.6.28"
     },
     "devDependencies": {
-        "@types/react": "17.0.21",
+        "@types/react": "17.0.22",
         "@types/graphql": "14.5.0",
         "@types/loadable__component": "5.13.4",
         "@types/redux-persist": "4.3.1",
