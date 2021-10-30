@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Personal website made with React, Flask and GraphQL",
   "scripts": {
-    "bootstrap": "cd api && yarn && cd ../web2 && yarn"
+    "bootstrap": "cd api && yarn && cd ../web && yarn"
   },
   "repository": {
     "type": "git",
