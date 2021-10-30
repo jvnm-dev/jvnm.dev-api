@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { GridCellParams, GridColDef } from '@material-ui/data-grid'
-import { useMutation, useQuery } from '@apollo/react-hooks'
+import { useMutation, useQuery } from '@apollo/client'
 import { gql } from 'apollo-boost'
 import Image from 'next/image'
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GridColDef } from '@material-ui/data-grid'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 
 import { EditableGrid } from '../../components/dashboard/EditableGrid'
 import { gql } from 'apollo-boost'

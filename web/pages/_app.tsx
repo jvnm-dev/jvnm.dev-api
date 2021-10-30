@@ -12,7 +12,7 @@ import {
 import { setContext } from '@apollo/client/link/context'
 import { Provider as ReduxProvider, useSelector } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
@@ -99,7 +99,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         font-family: 'Ubuntu';
         font-weight: normal;
       }
-      
+
       @font-face {
         font-display: block;
         font-family: 'Ubuntu';
@@ -111,14 +111,14 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           -webkit-font-smoothing: antialiased;
           font-smoothing: antialiased;
       }
-      
+
       body {
         background-color: ${({ theme }: { theme: ITheme }) => theme.background};
         transition: background 0.2s;
         font-family: sans-serif; // fix font stress on page loading
         font-family: 'Ubuntu';
       }
-      
+
       a, a:visited {
         color: ${({ theme }: IThemeContainer) => theme.colorPrimary};
       }

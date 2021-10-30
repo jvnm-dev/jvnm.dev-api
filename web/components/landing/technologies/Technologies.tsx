@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { gql } from 'apollo-boost'
 import { useSelector, useDispatch } from 'react-redux'
 

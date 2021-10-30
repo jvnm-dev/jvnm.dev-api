@@ -1,7 +1,7 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { gql } from 'apollo-boost'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from 'next/image'

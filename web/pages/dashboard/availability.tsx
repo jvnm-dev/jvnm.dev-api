@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { gql } from 'apollo-boost'
 import { useDispatch, useSelector } from 'react-redux'
 import { GridColDef } from '@material-ui/data-grid'
-import { useMutation, useQuery } from '@apollo/react-hooks'
+import { useMutation, useQuery } from '@apollo/client'
 
 import {
     IAvailabilityReducer,

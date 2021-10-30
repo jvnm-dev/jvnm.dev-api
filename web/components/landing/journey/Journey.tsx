@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { gql } from 'apollo-boost'
-import { useQuery, QueryResult } from '@apollo/react-hooks'
+import { useQuery, QueryResult } from '@apollo/client'
 import { IExperience } from '../experience/Experience'
 import styled from 'styled-components'
 import { IThemeContainer } from '../../../constants/themes'
