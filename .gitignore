@@ -1,6 +1,10 @@
 .vscode/
 .netlify/
-api/.env
+.env
 .idea
 .netlify
 .DS_Store
+node_modules
+dist
+.next
+out
