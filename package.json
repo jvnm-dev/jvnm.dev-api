@@ -1,9 +1,15 @@
 {
+  "private": true,
   "name": "jvm",
   "version": "1.0.0",
   "description": "Personal website made with React, Flask and GraphQL",
   "scripts": {
-    "bootstrap": "cd api && yarn && cd ../web && yarn"
+    "bootstrap": "cd api && yarn && cd ../web && yarn",
+    "build:web": "yarn workspace web build",
+    "build:api": "yarn workspace api prestart:prod",
+    "start:web": "yarn workspace web dev",
+    "start:api": "yarn workspace api start",
+    "start": "concurrently \"yarn start:api\" \"yarn start:web\""
   },
   "repository": {
     "type": "git",
@@ -14,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/jvnm-dev/jvm/issues"
   },
-  "homepage": "https://github.com/jvnm-dev/jvm#readme"
+  "homepage": "https://github.com/jvnm-dev/jvm#readme",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "concurrently": "^6.3.0"
+  }
 }

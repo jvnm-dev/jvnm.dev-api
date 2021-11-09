@@ -1,5 +1,6 @@
 {
-    "name": "JVNM-Hub-API",
+    "private": true,
+    "name": "api",
     "version": "2.0.0",
     "description": "An API for jvnm.dev",
     "main": "index.js",
