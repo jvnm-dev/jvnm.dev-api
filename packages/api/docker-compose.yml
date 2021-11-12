@@ -9,7 +9,7 @@ services:
             - '3000:3000'
     db:
         container_name: db
-        image: postgres:13.4
+        image: postgres:14.1
         environment:
             POSTGRES_DB: jvnm
         env_file:
