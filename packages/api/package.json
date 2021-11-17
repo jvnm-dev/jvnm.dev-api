@@ -50,7 +50,7 @@
         "slug": "^5.0.0",
         "swagger-ui-express": "^4.1.4",
         "typeorm": "^0.2.25",
-        "typescript": "^4.0.0"
+        "typescript": "4.5.2"
     },
     "devDependencies": {
         "@types/jest": "27.0.2",
