@@ -1,10 +1,25 @@
-.vscode/
-.netlify/
-.env
-.idea
-.netlify
+# Logs
+logs
+*.log
 .DS_Store
+
+npm-debug.log*
+
+# Dependency directory
 node_modules
-dist
-.next
-out
+
+# Optional npm cache directory
+.npm
+
+#IDEs
+.idea
+
+#config files
+ormconfig.json
+.env
+
+# code testing coverage
+coverage
+
+
+dist/*

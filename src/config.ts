@@ -25,8 +25,8 @@ export class Config {
         const mode = this.get('MODE')
         const entitiesPath =
             mode === MODE.DEVELOPMENT
-                ? './src/*/*.entity.ts'
-                : './dist/*/*.entity.js'
+                ? 'src/**/*.entity.ts'
+                : 'dist/*/*.entity.js'
 
         return {
             type: this.get('PG_TYPE'),
