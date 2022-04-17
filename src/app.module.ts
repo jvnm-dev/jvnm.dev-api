@@ -15,6 +15,7 @@ import { UrlModule } from './url/url.module'
 import { AppController } from './app.controller'
 import { HealthModule } from './health/health.module'
 import { DevelopmentModule } from './development/development.module'
+import { VisitorModule } from './visitor/visitor.module'
 
 const modules = [
     EmailModule,
@@ -26,6 +27,7 @@ const modules = [
     UrlModule,
     HealthModule,
     DevelopmentModule,
+    VisitorModule,
 ]
 
 @Module({
