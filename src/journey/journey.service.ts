@@ -9,9 +9,9 @@ export class JourneyService {
     ) {}
 
     async findById(id: number) {
-        return this.journeyRepository.findOne(
-            { id },
-            { relations: ['experience'] }
-        )
+        return this.journeyRepository.findOne({
+            where: { id },
+            relations: ['experience'],
+        })
     }
 }

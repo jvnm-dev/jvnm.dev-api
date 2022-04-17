@@ -13,12 +13,10 @@ export class ExperienceService {
     }
 
     async update(newExperience: Partial<ExperienceEntity>) {
-        const experience = await this.experienceRepository.findOne(
-            newExperience.id,
-            {
-                relations: ['journey'],
-            }
-        )
+        const experience = await this.experienceRepository.findOne({
+            where: { id: newExperience.id },
+            relations: ['journey'],
+        })
 
         Object.entries(newExperience).forEach(([key, value]) => {
             experience[key] = value

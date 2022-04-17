@@ -57,32 +57,32 @@ type DevelopmentEntity {
 }
 
 type Query {
-  availability: AvailabilityEntity!
-  experiences: [ExperienceEntity!]!
-  technologies: [TechnologyEntity!]!
-  me: UserEntity!
-  users: [UserEntity!]!
-  journey(id: Int!): JourneyEntity!
+  developments: [DevelopmentEntity!]!
+  health: HealthEntity!
   urls: [UrlEntity!]!
   url(shortcut: String!): UrlEntity!
-  health: HealthEntity!
-  developments: [DevelopmentEntity!]!
+  journey(id: Int!): JourneyEntity!
+  me: UserEntity!
+  users: [UserEntity!]!
+  technologies: [TechnologyEntity!]!
+  experiences: [ExperienceEntity!]!
+  availability: AvailabilityEntity!
 }
 
 type Mutation {
-  updateAvailability(status: Float!): AvailabilityEntity!
-  updateExperience(experience: String!): ExperienceEntity!
-  updateTechnology(technology: String!): TechnologyEntity!
-  login(userData: UserLoginDto!): String!
-  shorten(original: String!): UrlEntity!
   updateHealth(health: UpdateHealthDTO!): HealthEntity!
+  shorten(original: String!): UrlEntity!
+  login(userData: UserLoginDto!): String!
+  updateTechnology(technology: String!): TechnologyEntity!
+  updateExperience(experience: String!): ExperienceEntity!
+  updateAvailability(status: Float!): AvailabilityEntity!
+}
+
+input UpdateHealthDTO {
+  web: Int
 }
 
 input UserLoginDto {
   email: String!
   source: String
-}
-
-input UpdateHealthDTO {
-  web: Int
 }

@@ -10,7 +10,7 @@ export class AvailabilityService {
     ) {}
 
     async find(): Promise<AvailabilityEntity> {
-        return this.availabilityRepository.findOne()
+        return this.availabilityRepository.find()?.[0]
     }
 
     async update(status: AvailabilityStatus): Promise<AvailabilityEntity> {

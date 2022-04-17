@@ -13,9 +13,9 @@ export class TechnologyService {
     }
 
     async update(newTechnology: Partial<TechnologyEntity>) {
-        const technology = await this.technologyRepository.findOne(
-            newTechnology.id
-        )
+        const technology = await this.technologyRepository.findOne({
+            where: { id: newTechnology.id },
+        })
 
         Object.entries(newTechnology).forEach(([key, value]) => {
             technology[key] = value

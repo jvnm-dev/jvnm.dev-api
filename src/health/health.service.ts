@@ -11,7 +11,7 @@ export class HealthService {
     ) {}
 
     async find(): Promise<HealthEntity> {
-        return this.healthRepository.findOne()
+        return this.healthRepository.find()?.[0]
     }
 
     async update(newHealth: UpdateHealthDTO): Promise<HealthEntity> {

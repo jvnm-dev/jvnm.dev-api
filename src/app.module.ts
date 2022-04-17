@@ -3,6 +3,7 @@ import { Connection } from 'typeorm'
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { GraphQLModule } from '@nestjs/graphql'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 
 import { Config } from './config'
 import { AvailabilityModule } from './availability/availability.module'
@@ -34,10 +35,11 @@ const modules = [
     imports: [
         ...modules,
         TypeOrmModule.forRoot(Config.getInstance().typeOrmConfig),
-        GraphQLModule.forRoot({
+        GraphQLModule.forRoot<ApolloDriverConfig>({
             debug: true,
             playground: true,
             include: modules,
+            driver: ApolloDriver,
             autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
             context: ({ req: { headers } }) => ({ headers }),
         }),

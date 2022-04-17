@@ -16,7 +16,7 @@ export class UserService {
     ) {}
 
     async find(email: string): Promise<UserEntity> {
-        return this.userRepository.findOne({ email })
+        return this.userRepository.findOne({ where: { email } })
     }
 
     async findAll(): Promise<UserEntity[]> {
@@ -66,7 +66,7 @@ export class UserService {
             throw new HttpException('Bad data', HttpStatus.BAD_REQUEST)
         }
 
-        const user = await this.userRepository.findOne({ email })
+        const user = await this.userRepository.findOne({ where: { email } })
 
         if (!user) {
             throw new HttpException('Unknown email', HttpStatus.BAD_REQUEST)

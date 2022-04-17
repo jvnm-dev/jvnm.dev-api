@@ -1,7 +1,7 @@
 FROM node:16.9
 WORKDIR .
 COPY ./package.json ./
-RUN yarn
+RUN npm i
 COPY . .
 EXPOSE 3000
-CMD ["yarn", "start:prod"]
+CMD ["npm", "run start:prod"]
