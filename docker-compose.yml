@@ -6,7 +6,7 @@ services:
             - db
         build: .
         ports:
-            - '3000:3000'
+            - '3000:3001'
     db:
         container_name: db
         image: postgres:13.4
