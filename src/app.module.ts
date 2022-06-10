@@ -40,7 +40,7 @@ const modules = [
             playground: true,
             include: modules,
             cors: {
-                origin: 'http://127.0.0.1',
+                origin: 'http://0.0.0.0:3000',
             },
             driver: ApolloDriver,
             autoSchemaFile: join(process.cwd(), 'src/schema.gql'),

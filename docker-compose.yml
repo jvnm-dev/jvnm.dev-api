@@ -4,4 +4,4 @@ services:
         container_name: api
         build: .
         ports:
-            - '3000:3001'
+            - '8080:8080'

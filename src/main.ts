@@ -8,7 +8,7 @@ async function bootstrap() {
 
     const app = await NestFactory.create(ApplicationModule, appOptions)
 
-    await app.listen(3001)
+    await app.listen(8080)
 }
 
 bootstrap()
