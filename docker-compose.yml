@@ -6,11 +6,11 @@ services:
         ports:
             - '8080:8080'
         networks:
-            app:
+            network:
                 ipv4_address: 172.20.128.2
 
 networks:
-    app:
+    network:
         ipam:
             config:
                 - subnet: 172.20.0.0/16
