@@ -5,3 +5,12 @@ services:
         build: .
         ports:
             - '8080:8080'
+        networks:
+            app:
+                ipv4_address: 172.20.128.2
+
+networks:
+    app:
+        ipam:
+            config:
+                - subnet: 172.20.0.0/16

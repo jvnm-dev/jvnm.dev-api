@@ -29,7 +29,7 @@ const randomColor = (() => {
 
 @WebSocketGateway({
     cors: {
-        origin: 'http://0.0.0.0:3000',
+        origin: '*',
     },
 })
 export class VisitorGateway
