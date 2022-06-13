@@ -3,86 +3,87 @@
 # ------------------------------------------------------
 
 type AvailabilityEntity {
-  id: Int!
-  status: Int!
+    id: Int!
+    status: Int!
 }
 
 type JourneyEntity {
-  id: Int!
-  experience: ExperienceEntity
-  description: String
+    id: Int!
+    experience: ExperienceEntity
+    description: String
 }
 
 type ExperienceEntity {
-  id: Int!
-  image: String
-  place: String
-  dateFrom: String
-  dateTo: String
-  role: String
-  journey: JourneyEntity
+    id: Int!
+    image: String
+    place: String
+    dateFrom: String
+    dateTo: String
+    role: String
+    url: String
+    journey: JourneyEntity
 }
 
 type TechnologyEntity {
-  id: Int!
-  image: String
-  name: String
+    id: Int!
+    image: String
+    name: String
 }
 
 type UserEntity {
-  id: Int!
-  email: String
-  otp: String
-  token: String
+    id: Int!
+    email: String
+    otp: String
+    token: String
 }
 
 type UrlEntity {
-  id: Int!
-  original: String
-  shortcut: String
+    id: Int!
+    original: String
+    shortcut: String
 }
 
 type HealthEntity {
-  id: Int!
-  web: Int!
+    id: Int!
+    web: Int!
 }
 
 type DevelopmentEntity {
-  id: Int!
-  image: String
-  name: String
-  description: String
-  demoUrl: String
-  sourceCodeUrl: String
+    id: Int!
+    image: String
+    name: String
+    description: String
+    demoUrl: String
+    sourceCodeUrl: String
 }
 
 type Query {
-  developments: [DevelopmentEntity!]!
-  health: HealthEntity!
-  urls: [UrlEntity!]!
-  url(shortcut: String!): UrlEntity!
-  journey(id: Int!): JourneyEntity!
-  me: UserEntity!
-  users: [UserEntity!]!
-  technologies: [TechnologyEntity!]!
-  experiences: [ExperienceEntity!]!
-  availability: AvailabilityEntity!
+    developments: [DevelopmentEntity!]!
+    health: HealthEntity!
+    urls: [UrlEntity!]!
+    url(shortcut: String!): UrlEntity!
+    journey(id: Int!): JourneyEntity!
+    me: UserEntity!
+    users: [UserEntity!]!
+    technologies: [TechnologyEntity!]!
+    experiences: [ExperienceEntity!]!
+    availability: AvailabilityEntity!
 }
 
 type Mutation {
-  updateHealth(health: UpdateHealthDTO!): HealthEntity!
-  shorten(original: String!): UrlEntity!
-  login(userData: UserLoginDto!): String!
-  updateTechnology(technology: String!): TechnologyEntity!
-  updateExperience(experience: String!): ExperienceEntity!
-  updateAvailability(status: Float!): AvailabilityEntity!
+    updateHealth(health: UpdateHealthDTO!): HealthEntity!
+    shorten(original: String!): UrlEntity!
+    login(userData: UserLoginDto!): String!
+    updateTechnology(technology: String!): TechnologyEntity!
+    updateExperience(experience: String!): ExperienceEntity!
+    updateAvailability(status: Float!): AvailabilityEntity!
 }
 
 input UpdateHealthDTO {
-  web: Int
+    web: Int
 }
 
 input UserLoginDto {
-  email: String!
-  source: String
+    email: String!
+    source: String
 }
