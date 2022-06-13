@@ -4,7 +4,7 @@
     "description": "An API for jvnm.dev",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "tsc && node index.js",
         "start:watch": "nodemon",
         "prestart:prod": "tsc",
         "start:prod": "MODE=production node dist/main.js",
