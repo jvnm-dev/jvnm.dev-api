@@ -39,6 +39,10 @@ export class ExperienceEntity {
     @Field({ nullable: true })
     url: string
 
+    @Column({ nullable: true })
+    @Field({ nullable: true, defaultValue: false })
+    isExtiaConsulting: boolean
+
     @OneToOne(() => JourneyEntity, (journey) => journey.experience)
     @JoinColumn()
     @Field((type) => JourneyEntity, { nullable: true })

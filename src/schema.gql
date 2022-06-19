@@ -21,6 +21,7 @@ type ExperienceEntity {
   dateTo: String
   role: String
   url: String
+  isExtiaConsulting: Boolean
   journey: JourneyEntity
 }
 
